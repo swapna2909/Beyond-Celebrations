@@ -1,4 +1,4 @@
-package com.dao.inf;
+tpackage com.dao.inf;
 
 public interface booking_inf {
 
