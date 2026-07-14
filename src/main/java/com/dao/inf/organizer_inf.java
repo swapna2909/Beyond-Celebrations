@@ -13,7 +13,9 @@ public interface organizer_inf {
 	    void updateOrganizer(Organizer o);
 	    void updatePassword(Integer organizerId, String password);
 	    void deleteOrganizerById(Integer id);
-	}
+}
+
+
 	
 
 

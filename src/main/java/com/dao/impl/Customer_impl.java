@@ -9,6 +9,7 @@ import java.util.List;
 
 import com.dao.inf.customer_inf;
 import com.dto.Customer;
+import com.utility.Connectivity;
 
 public class Customer_impl implements customer_inf{
 	
