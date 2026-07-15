@@ -1,5 +1,7 @@
 package com.dto;
 
+import java.time.LocalDate;
+
 public class Booking {
 	private Integer booking_id;
 	private  Integer customer_id;
@@ -45,14 +47,14 @@ public class Booking {
 	public String getBooking_date() {
 		return booking_date;
 	}
-	public void setBooking_date(String booking_date) {
-		this.booking_date = booking_date;
+	public void setBooking_date(String i) {
+		this.booking_date = i;
 	}
 	public String getEvent_date() {
 		return event_date;
 	}
-	public void setEvent_date(String event_date) {
-		this.event_date = event_date;
+	public void setEvent_date(String localDate) {
+		this.event_date = localDate;
 	}
 	public Integer getGuest_count() {
 		return guest_count;
