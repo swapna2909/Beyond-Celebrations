@@ -1,2 +1,6 @@
 eclipse.preferences.version=1
+encoding//src/main/webapp/ApprovedBookings.jsp=UTF-8
+encoding//src/main/webapp/CompletedBookings.jsp=UTF-8
+encoding//src/main/webapp/PendingBookings.jsp=UTF-8
+encoding//src/main/webapp/ViewBookings.jsp=UTF-8
 encoding/<project>=UTF-8
