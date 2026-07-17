@@ -1,5 +1,6 @@
 package com.dao.inf;
 import java.util.List;
+
 import com.dto.Event_Category;
 public interface event_category_inf {
 	    void addEventCategory(Event_Category ec);

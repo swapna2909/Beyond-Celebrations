@@ -1,5 +1,6 @@
 package com.dao.inf;
 import java.util.List;
+
 import com.dto.Event_type;
 public interface event_type_inf {
 	    void addEventType(Event_type et);

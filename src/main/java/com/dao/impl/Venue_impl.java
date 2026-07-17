@@ -1,14 +1,14 @@
 package com.dao.impl;
 
-import com.dao.inf.venue_inf;
-import com.dto.Venue;
-import com.utility.Connectivity;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.dao.inf.venue_inf;
+import com.dto.Venue;
+import com.utility.Connectivity;
 
 
 public class Venue_impl implements venue_inf {
@@ -154,7 +154,7 @@ public class Venue_impl implements venue_inf {
         return list;
     }
 
-   
+
     public List<Venue> findByLocation(String location) {
 
         String sql = "SELECT * FROM venue WHERE location=?";
@@ -225,7 +225,7 @@ public class Venue_impl implements venue_inf {
         return list;
     }
 
-   
+
     public List<Venue> AvailableVenues() {
 
         String sql = "SELECT * FROM venue WHERE availability='Available'";
