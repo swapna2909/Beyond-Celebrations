@@ -25,7 +25,6 @@ public class Register extends HttpServlet {
         c.setLast_name(req.getParameter("last_name"));
         c.setEmail(req.getParameter("email"));
         c.setPhone(Long.parseLong(req.getParameter("phone")));
-
         c.setPassword("1234");
         c.setAddress(req.getParameter("address"));
         customer.CustomerRegister(c);

@@ -35,7 +35,7 @@ public class Login extends HttpServlet {
             if (email.equals("admin@gmail.com") &&
                 password.equals("admin@123")) {
 
-                resp.sendRedirect("admindashboard.jsp");
+                resp.sendRedirect("AdminDashboard.jsp");
 
             } else {
 
