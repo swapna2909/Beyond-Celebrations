@@ -3,7 +3,7 @@ import java.util.List;
 
 import com.dto.Venue;
 public interface venue_inf {
-	
+
 	public interface VenueDAO {
 
 	    void AddVenue(Venue v);
@@ -22,6 +22,6 @@ public interface venue_inf {
 
 	    List<Venue> AvailableVenues();
 	}
-	
-	
+
+
 }

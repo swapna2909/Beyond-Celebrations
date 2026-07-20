@@ -9,5 +9,5 @@ public interface customer_inf {
 	Customer searchbyId(Integer id);
 	List<Customer> findAll();
 	Customer findByMailPassword(String mail,String Password);
-	
+
 }

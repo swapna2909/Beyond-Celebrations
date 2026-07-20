@@ -63,8 +63,8 @@ public class Customer {
 				+ ", email=" + email + ", phone=" + phone + ", password=" + password + ", address=" + address
 				+ ", created_at=" + created_at + "]";
 	}
-	
-	
-	
+
+
+
 
 }

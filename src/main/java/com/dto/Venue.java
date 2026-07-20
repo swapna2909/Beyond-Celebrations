@@ -48,6 +48,6 @@ public class Venue {
 		return "Venue [venue_id=" + venue_id + ", venue_name=" + venue_name + ", location=" + location + ", capacity="
 				+ capacity + ", price=" + price + ", availability=" + availability + "]";
 	}
-	
-	
+
+
 }

@@ -6,7 +6,7 @@ public class Organizer {
 	private String email;
 	private Long phone;
 	private String password;
-	
+
 	public Integer getOrganizer_id() {
 		return organizer_id;
 	}
@@ -42,7 +42,7 @@ public class Organizer {
 		return "Organizer [organizer_id=" + organizer_id + ", organizer_name=" + organizer_name + ", email=" + email
 				+ ", phone=" + phone + ", password=" + password + "]";
 	}
-	
-	
+
+
 
 }

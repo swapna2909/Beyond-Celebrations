@@ -49,6 +49,6 @@ public class Event_type {
 				+ event_name + ", description=" + description + ", min_budget=" + min_budget + ", max_budget="
 				+ max_budget + "]";
 	}
-	
+
 
 }

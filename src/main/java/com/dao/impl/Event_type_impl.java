@@ -16,7 +16,7 @@ public class Event_type_impl implements event_type_inf{
 	public Event_type_impl() {
 		this.con=Connectivity.requestConnection();
 	}
-	
+
 
 	@Override
 	public void addEventType(Event_type et) {
@@ -41,8 +41,8 @@ public class Event_type_impl implements event_type_inf{
 			e.printStackTrace();
 			System.out.println("Failed to add the Event Type");
 		}
-		
-		
+
+
 	}
 
 	@Override
@@ -60,9 +60,9 @@ public class Event_type_impl implements event_type_inf{
 				et.setEvent_name(rs.getString("event_name"));
 				et.setDescription(rs.getString("description"));
 				et.setMin_budget(rs.getDouble("min_budget"));
-				et.setMax_budget(rs.getDouble("max_budget"));	
+				et.setMax_budget(rs.getDouble("max_budget"));
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -85,16 +85,16 @@ public class Event_type_impl implements event_type_inf{
 			et.setEvent_name(rs.getString("event_name"));
 			et.setDescription(rs.getString("description"));
 			et.setMin_budget(rs.getDouble("min_budget"));
-			et.setMax_budget(rs.getDouble("max_budget"));	
+			et.setMax_budget(rs.getDouble("max_budget"));
 			list.add(et);
-			
+
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
+
+
 		return list;
 	}
 
@@ -114,20 +114,20 @@ public class Event_type_impl implements event_type_inf{
 				et.setEvent_name(rs.getString("event_name"));
 				et.setDescription(rs.getString("description"));
 				et.setMin_budget(rs.getDouble("min_budget"));
-				et.setMax_budget(rs.getDouble("max_budget"));	
-				list.add(et);	
+				et.setMax_budget(rs.getDouble("max_budget"));
+				list.add(et);
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
 
 	@Override
 	public Event_type findByEventName(String eventName) {
-	
+
 		String s1="select * from event_type where event_name=?";
 		Event_type et=null;
 		try {
@@ -141,14 +141,14 @@ public class Event_type_impl implements event_type_inf{
 				et.setEvent_name(rs.getString("event_name"));
 				et.setDescription(rs.getString("description"));
 				et.setMin_budget(rs.getDouble("min_budget"));
-				et.setMax_budget(rs.getDouble("max_budget"));	
-				
+				et.setMax_budget(rs.getDouble("max_budget"));
+
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return et;
 	}
 
@@ -170,15 +170,15 @@ public class Event_type_impl implements event_type_inf{
 			} else {
 			    System.out.println("No Event Type Found");
 			}
-			
-			
+
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("Failed to Update the Data");
 		}
-		
-		
+
+
 	}
 
 	@Override
@@ -195,15 +195,15 @@ public class Event_type_impl implements event_type_inf{
 			else {
 			    System.out.println("No Event Type Found");
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("Failed to Delete the Data");
 		}
-		
-		
+
+
 	}
-	
+
 
 }
