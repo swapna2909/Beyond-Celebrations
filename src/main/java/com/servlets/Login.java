@@ -32,15 +32,14 @@ public class Login extends HttpServlet {
             HttpSession session = req.getSession();
             session.setAttribute("Customer", c);
 
-
-            if (email.equals("admin@gmail.com") && password.equals("admin@123")) {
+            if (email.equals("admin@gmail.com") &&
+                password.equals("admin@123")) {
 
                 resp.sendRedirect("admindashboard.jsp");
 
             } else {
 
                 resp.sendRedirect("customerdashboard.jsp");
-
             }
 
         } else {
@@ -48,9 +47,8 @@ public class Login extends HttpServlet {
             req.setAttribute("error", "Invalid Email or Password");
             RequestDispatcher rd = req.getRequestDispatcher("login.jsp");
             rd.forward(req, resp);
-
         }
-    }
+}
 }
 
 
