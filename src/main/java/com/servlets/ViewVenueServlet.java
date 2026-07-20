@@ -1,31 +1,38 @@
 package com.servlets;
+
+
+
 import java.io.IOException;
 import java.util.List;
-import com.dao.impl.Booking_impl;
-import com.dao.inf.booking_inf;
-import com.dto.Booking;
 
+import com.dao.impl.Venue_impl;
+import com.dto.Venue;
+
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/ViewBookingsServlet")
+@WebServlet("/viewVenue")
+public class ViewVenueServlet extends HttpServlet {
 
-public class ViewBookingsServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        booking_inf dao = new Booking_impl();
+        Venue_impl dao = new Venue_impl();
 
-        List<Booking> bookings = dao.getAllBookings();
+        List<Venue> list = dao.findAll();
 
-        request.setAttribute("bookings", bookings);
+        request.setAttribute("list", list);
 
-        request.getRequestDispatcher("ViewBookings.jsp").forward(request, response);
+        RequestDispatcher rd =
+                request.getRequestDispatcher("viewVenue.jsp");
 
+        rd.forward(request, response);
     }
+
 }
