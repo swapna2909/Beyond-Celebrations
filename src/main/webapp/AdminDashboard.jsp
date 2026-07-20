@@ -294,24 +294,6 @@ Create new event categories, event types and venue details with ease.
             </div>
         </a>
 
-        <!-- Search Customer -->
-        <a href="searchCustomer.jsp">
-            <div class="module-card bg-cyan-600 text-white rounded-2xl p-8 h-72 flex flex-col justify-between text-center">
-
-                <i class="fa-solid fa-magnifying-glass text-5xl"></i>
-
-                <div>
-                    <h3 class="text-2xl font-bold mt-5">
-                        Search Customer
-                    </h3>
-
-                    <p class="mt-3 text-cyan-100">
-                        Search customers by ID or Name.
-                    </p>
-                </div>
-
-            </div>
-        </a>
 
         <!-- Update Customer -->
         <a href="updateCustomer.jsp">
@@ -351,24 +333,6 @@ Create new event categories, event types and venue details with ease.
             </div>
         </a>
 
-        <!-- Customer Bookings -->
-        <a href="customerBookings.jsp">
-            <div class="module-card bg-emerald-600 text-white rounded-2xl p-8 h-72 flex flex-col justify-between text-center">
-
-                <i class="fa-solid fa-book text-5xl"></i>
-
-                <div>
-                    <h3 class="text-2xl font-bold mt-5">
-                        Customer Bookings
-                    </h3>
-
-                    <p class="mt-3">
-                        View booking history.
-                    </p>
-                </div>
-
-            </div>
-        </a>
 
     </div>
 

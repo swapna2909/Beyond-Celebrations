@@ -317,4 +317,10 @@ public class Booking_impl implements booking_inf{
         return list;
     }
 
+	@Override
+	public List<Booking> getAllBookings() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
