@@ -352,7 +352,7 @@ Event Category Management
 
 <div class="grid md:grid-cols-3 gap-8">
 
-<a href="addEventCategory.jsp">
+<a href="AddEventCategory.jsp">
 
 <div class="module-card bg-indigo-600 text-white rounded-2xl p-8">
 
@@ -436,7 +436,7 @@ Event Type Management
 
 <div class="grid md:grid-cols-3 gap-8">
 
-<a href="addEventType.jsp">
+<a href="AddEventType.jsp">
 
 <div class="module-card bg-emerald-600 text-white rounded-2xl p-8">
 
