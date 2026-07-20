@@ -22,7 +22,7 @@ String firstLetter = customer.getFirst_name().substring(0,1).toUpperCase();
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Customer Dashboard | Beyond Celebrations</title>
+<title>Customer Profile | Beyond Celebrations</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -106,13 +106,29 @@ Welcome
 </p>
 
 </div>
+<a href="customerprofile">
 
-<div
-class="w-12 h-12 rounded-full bg-purple-700 text-white flex items-center justify-center font-bold text-xl">
+    <div
+        class="w-12 h-12 rounded-full
+        bg-gradient-to-r
+        from-purple-700
+        to-pink-500
+        flex
+        items-center
+        justify-center
+        text-white
+        font-bold
+        text-xl
+        cursor-pointer
+        shadow-lg
+        hover:scale-110
+        transition">
 
-<%=firstLetter%>
+        <%=firstLetter%>
 
-</div>
+    </div>
+
+</a>
 
 <a href="logout"
 class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">
@@ -180,61 +196,6 @@ My Bookings
 
 </section>
 
-<!-- ================= PROFILE CARD ================= -->
-
-<div class="max-w-7xl mx-auto px-8 py-10">
-
-<div class="bg-white rounded-3xl shadow-lg p-8">
-
-<div class="flex flex-col md:flex-row items-center">
-
-<div
-class="w-32 h-32 rounded-full bg-purple-700 text-white flex items-center justify-center text-5xl font-bold">
-
-<%=firstLetter%>
-
-</div>
-
-<div class="md:ml-10 mt-6 md:mt-0">
-
-<h2 class="text-3xl font-bold">
-
-<%=customer.getFirst_name()%>
-<%=customer.getLast_name()%>
-
-</h2>
-
-<p class="text-gray-600 mt-2">
-
-<i class="fa-solid fa-envelope text-purple-700 mr-2"></i>
-
-<%=customer.getEmail()%>
-
-</p>
-
-<p class="text-gray-600 mt-2">
-
-<i class="fa-solid fa-phone text-purple-700 mr-2"></i>
-
-<%=customer.getPhone()%>
-
-</p>
-
-<p class="text-gray-600 mt-2">
-
-<i class="fa-solid fa-location-dot text-purple-700 mr-2"></i>
-
-<%=customer.getAddress()%>
-
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
 <!-- ================= DASHBOARD STATISTICS ================= -->
 
 <div class="max-w-7xl mx-auto px-8 pb-12">
@@ -413,7 +374,7 @@ class="w-32 h-32 rounded-full bg-purple-700 text-white flex items-center justify
 
         <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 transition">
 
-            <img src="Images/wedding.jpg"
+            <img src="https://i.pinimg.com/736x/f6/a4/67/f6a467315df1cad1efc70ffd1770f711.jpg"
                  class="w-full h-60 object-cover">
 
             <div class="p-6">
@@ -449,7 +410,7 @@ class="w-32 h-32 rounded-full bg-purple-700 text-white flex items-center justify
 
         <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 transition">
 
-            <img src="Images/birthday.jpg"
+            <img src="https://i.pinimg.com/736x/ff/f6/3c/fff63c1f1ae031369a90cfa7f5787be3.jpg"
                  class="w-full h-60 object-cover">
 
             <div class="p-6">
@@ -486,7 +447,7 @@ class="w-32 h-32 rounded-full bg-purple-700 text-white flex items-center justify
 
         <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 transition">
 
-            <img src="Images/corporate.jpg"
+            <img src="https://i.pinimg.com/736x/a8/3f/97/a83f975010e8f14038a37fcf9640cf99.jpg"
                  class="w-full h-60 object-cover">
 
             <div class="p-6">

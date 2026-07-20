@@ -1,5 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,312 +22,142 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 </head>
 
-<body
-class="min-h-screen flex flex-col bg-cover bg-center"
+<body class="min-h-screen flex flex-col bg-cover bg-center"
 style="background-image: url('Images/Login.png');">
 
-    <!-- Center Login Card -->
-    <div class="flex-1 flex items-center justify-center">
+<div class="flex-1 flex items-center justify-center">
 
-        <div class="relative z-10 w-full max-w-md">
+<div class="relative z-10 w-full max-w-md">
 
-            <div class="bg-[#241827]/70 backdrop-blur-xl border border-yellow-500/30 rounded-3xl shadow-2xl px-8 py-8">
+<div class="bg-[#241827]/70 backdrop-blur-xl border border-yellow-500/30 rounded-3xl shadow-2xl px-8 py-8">
 
-                <!-- Logo -->
-                <div class="text-center">
 
-                    <div class="w-20 h-20 rounded-full border border-yellow-400 flex items-center justify-center mx-auto">
-                        <div class="text-yellow-300 text-2xl font-bold" style="font-family:Cinzel;">
-                            BC
-                        </div>
-                    </div>
+<!-- Logo & Brand -->
 
-                    <h1 class="text-4xl text-white mt-4 tracking-wide"
-                        style="font-family:Cinzel;">
-                        Beyond Celebrations
-                    </h1>
+<div class="text-center">
 
-                    <p class="text-yellow-300 text-2xl"
-                        style="font-family:'Great Vibes';">
-                        More than events, we create experiences.
-                    </p>
+    <div class="w-20 h-20 rounded-full border border-yellow-400 flex items-center justify-center mx-auto">
 
-                    <p class="text-gray-300 text-sm leading-6 mt-4">
-                        Because every celebration tells a story, we help you create
-                        unforgettable moments through personalized planning,
-                        elegant decor, customized catering and smart budget-friendly
-                        recommendations.
-                    </p>
-
-                </div>
-
-                <!-- Form -->
-                <form action="login" method="POST" class="mt-7 space-y-4">
-
-                    <div class="relative">
-                        <i class="fa-regular fa-user absolute left-4 top-4 text-gray-300"></i>
-
-                        <input type="email"
-                               name="email"
-                               placeholder="Email Address"
-                               class="w-full bg-transparent border border-gray-500 rounded-lg py-3 pl-11 pr-4 text-white placeholder-gray-300 focus:outline-none focus:border-yellow-400">
-                    </div>
-
-                    <div class="relative">
-                        <i class="fa-solid fa-lock absolute left-4 top-4 text-gray-300"></i>
-
-                        <input type="password"
-                               name="password"
-                               placeholder="Password"
-                               class="w-full bg-transparent border border-gray-500 rounded-lg py-3 pl-11 pr-10 text-white placeholder-gray-300 focus:outline-none focus:border-yellow-400">
-
-                        <i class="fa-regular fa-eye absolute right-4 top-4 text-gray-300 cursor-pointer"></i>
-                    </div>
-
-                    <div class="text-right">
-                        <a href="forgot.jsp" class="text-yellow-300 text-sm hover:underline">
-                            Forgot Password?
-                        </a>
-                    </div>
-
-                    <button
-                        class="w-full py-3 rounded-lg bg-gradient-to-r from-purple-700 via-pink-500 to-orange-500 text-white font-semibold text-lg hover:scale-105 transition">
-                       <a href="customerDashboard.jsp" class="text-black-300 hover:underline">
-                        LOGIN
-                    </button>
-
-                    <div class="flex items-center my-4">
-                        <hr class="flex-1 border-gray-500">
-                        <span class="px-3 text-gray-300 text-sm">OR</span>
-                        <hr class="flex-1 border-gray-500">
-                    </div>
-
-                    <p class="text-center text-white text-sm">
-                        Don't have an account?
-                        <a href="register.jsp" class="text-yellow-300 hover:underline">
-                            Register Here
-                        </a>
-                    </p>
-
-                </form>
-
-            </div>
-
-        </div>
+        <span class="text-yellow-300 text-3xl font-bold"
+              style="font-family:Cinzel;">
+            BC
+        </span>
 
     </div>
 
-    <!-- Footer -->
-<footer class="bg-[#1b0f1d]/95 backdrop-blur-md border-t border-yellow-500/20">
+    <h1 class="text-4xl text-white mt-5 tracking-wide"
+        style="font-family:Cinzel;">
+        Beyond Celebrations
+    </h1>
 
-    <div class="max-w-7xl mx-auto px-8 py-12">
+    <p class="text-yellow-300 text-2xl mt-2"
+       style="font-family:'Great Vibes';">
+        More than events, we create experiences
+    </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+    <p class="text-gray-300 text-sm leading-7 mt-5 px-2">
 
-            <!-- Company -->
-            <div>
+        <span class="text-yellow-300 font-semibold">
+        Beyond Celebrations</span> transforms your special moments into unforgettable experiences with personalized planning, elegant decor, and seamless event management. Every celebration is thoughtfully crafted to create memories that last a lifetime.
+    </p>
 
-                <div class="flex items-center mb-5">
+</div>
 
-                    <div class="w-16 h-16 rounded-full border-2 border-yellow-400 flex items-center justify-center">
 
-                        <span class="text-yellow-300 text-2xl font-bold"
-                              style="font-family:Cinzel;">
-                            BC
-                        </span>
+<%
+String error = (String)request.getAttribute("error");
+if(error != null){
+%>
 
-                    </div>
+<div class="bg-red-100 text-red-700 rounded-lg p-3 mt-5 text-center">
+<%= error %>
+</div>
 
-                    <div class="ml-4">
+<%
+}
+%>
 
-                        <h2 class="text-white text-2xl"
-                            style="font-family:Cinzel;">
-                            Beyond Celebrations
-                        </h2>
+<form action="login" method="post" class="mt-7 space-y-4">
 
-                        <p class="text-yellow-300"
-                           style="font-family:'Great Vibes';">
-                            Creating Memories Forever
-                        </p>
+<div class="relative">
 
-                    </div>
+<i class="fa-regular fa-user absolute left-4 top-4 text-gray-300"></i>
 
-                </div>
+<input
+type="email"
+name="email"
+placeholder="Email Address"
+required
+class="w-full bg-transparent border border-gray-500 rounded-lg py-3 pl-11 pr-4 text-white placeholder-gray-300 focus:outline-none focus:border-yellow-400">
 
-                <p class="text-gray-400 text-sm leading-7">
-                    Beyond Celebrations is a premium event management
-                    platform specializing in weddings, birthdays,
-                    corporate events, anniversaries and customized
-                    celebrations. We transform your dream events into
-                    unforgettable memories with elegance and creativity.
-                </p>
+</div>
 
-            </div>
+<div class="relative">
 
-            <!-- Office Address -->
-            <div>
+<i class="fa-solid fa-lock absolute left-4 top-4 text-gray-300"></i>
 
-                <h3 class="text-yellow-300 text-xl font-semibold mb-5">
-                    Our Office
-                </h3>
+<input
+type="password"
+name="password"
+placeholder="Password"
+required
+class="w-full bg-transparent border border-gray-500 rounded-lg py-3 pl-11 pr-10 text-white placeholder-gray-300 focus:outline-none focus:border-yellow-400">
 
-                <div class="space-y-4 text-gray-300 text-sm">
+</div>
 
-                    <p>
-                        <i class="fa-solid fa-location-dot text-yellow-400 mr-2"></i>
-                        Bengaluru, Karnataka, India
-                    </p>
+<div class="text-right">
 
-                    <p>
-                        <i class="fa-solid fa-phone text-yellow-400 mr-2"></i>
-                        +91 98765 43210
-                    </p>
+<a href="forgot.jsp"
+class="text-yellow-300 text-sm hover:underline">
 
-                    <p>
-                        <i class="fa-solid fa-envelope text-yellow-400 mr-2"></i>
-                        info@beyondcelebrations.com
-                    </p>
+Forgot Password?
 
-                </div>
+</a>
 
-            </div>
+</div>
 
-            <!-- Quick Links -->
-            <div>
+<!-- Correct Login Button -->
 
-                <h3 class="text-yellow-300 text-xl font-semibold mb-5">
-                    Quick Links
-                </h3>
+<button
+type="submit"
+class="w-full py-3 rounded-lg bg-gradient-to-r from-purple-700 via-pink-500 to-orange-500 text-white font-semibold text-lg hover:scale-105 transition">
 
-                <ul class="space-y-3 text-gray-300">
+LOGIN
 
-                    <li>
-                        <a href="#" class="hover:text-yellow-300 transition">
-                            Home
-                        </a>
-                    </li>
+</button>
 
-                    <li>
-                        <a href="#" class="hover:text-yellow-300 transition">
-                            About Us
-                        </a>
-                    </li>
+<div class="flex items-center my-4">
 
-                    <li>
-                        <a href="#" class="hover:text-yellow-300 transition">
-                            Services
-                        </a>
-                    </li>
+<hr class="flex-1 border-gray-500">
 
-                    <li>
-                        <a href="#" class="hover:text-yellow-300 transition">
-                            Gallery
-                        </a>
-                    </li>
+<span class="px-3 text-gray-300 text-sm">OR</span>
 
-                    <li>
-                        <a href="#" class="hover:text-yellow-300 transition">
-                            Contact Us
-                        </a>
-                    </li>
+<hr class="flex-1 border-gray-500">
 
-                    <li>
-                        <a href="#" class="hover:text-yellow-300 transition">
-                            Privacy Policy
-                        </a>
-                    </li>
+</div>
 
-                    <li>
-                        <a href="#" class="hover:text-yellow-300 transition">
-                            Terms & Conditions
-                        </a>
-                    </li>
+<p class="text-center text-white text-sm">
 
-                </ul>
+Don't have an account?
 
-            </div>
+<a href="register.jsp"
+class="text-yellow-300 hover:underline">
 
-            <!-- Working Hours -->
-            <div>
+Register Here
 
-                <h3 class="text-yellow-300 text-xl font-semibold mb-5">
-                    Working Hours
-                </h3>
+</a>
 
-                <div class="space-y-3 text-gray-300">
+</p>
 
-                    <p>
-                        <strong class="text-white">
-                            Monday - Saturday
-                        </strong>
-                    </p>
+</form>
 
-                    <p>
-                        9:00 AM - 7:00 PM
-                    </p>
+</div>
 
-                    <p>
-                        <strong class="text-white">
-                            Sunday
-                        </strong>
-                    </p>
+</div>
 
-                    <p>
-                        Closed
-                    </p>
+</div>
 
-                </div>
-
-                <div class="mt-6">
-
-                    <h4 class="text-yellow-300 font-semibold mb-2">
-                        Follow Us
-                    </h4>
-
-                    <div class="flex space-x-4 text-xl">
-
-                        <a href="#" class="text-white hover:text-yellow-300">
-                            <i class="fab fa-facebook"></i>
-                        </a>
-
-                        <a href="#" class="text-white hover:text-yellow-300">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-
-                        <a href="#" class="text-white hover:text-yellow-300">
-                            <i class="fab fa-x-twitter"></i>
-                        </a>
-
-                        <a href="#" class="text-white hover:text-yellow-300">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- Bottom Footer -->
-
-        <div class="border-t border-gray-700 mt-10 pt-6">
-
-            <p class="text-center text-gray-400 text-sm">
-
-                © 2026 <span class="text-yellow-300 font-semibold">
-                    Beyond Celebrations
-                </span>.
-                All Rights Reserved.
-
-            </p>
-
-        </div>
-
-    </div>
-
-</footer>
-
+</div>
 </body>
+
 </html>
