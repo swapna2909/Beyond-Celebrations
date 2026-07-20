@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
 import com.dao.inf.event_category_inf;
 import com.dto.Event_Category;
 import com.utility.Connectivity;
@@ -31,9 +32,9 @@ public class Event_Category_impl implements event_category_inf{
 			else {
 			    System.out.println("Failed to Add Event Category");
 			}
-			
+
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 			System.out.println("Failed to Add the Event Category");
 		}
@@ -46,7 +47,7 @@ public class Event_Category_impl implements event_category_inf{
 		try {
 			PreparedStatement ps=con.prepareStatement(s1);
 			ps.setInt(1, id);
-			ResultSet rs=ps.executeQuery();	
+			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 			ec=new Event_Category();
 			ec.setCategory_id(rs.getInt("category_id"));
@@ -54,11 +55,11 @@ public class Event_Category_impl implements event_category_inf{
 			ec.setDescription(rs.getString("description"));
 			}
 		} catch (SQLException e) {
-			
+
 			e.printStackTrace();
 			System.out.println("Failed to Fetch the Event Category Data");
 		}
-		
+
 		return ec;
 	}
 
@@ -69,7 +70,7 @@ public class Event_Category_impl implements event_category_inf{
 		try {
 			PreparedStatement ps=con.prepareStatement(s1);
 			ps.setString(1,categoryName);
-			ResultSet rs=ps.executeQuery();	
+			ResultSet rs=ps.executeQuery();
 			while(rs.next()) {
 			ec=new Event_Category();
 			ec.setCategory_id(rs.getInt("category_id"));
@@ -88,7 +89,7 @@ public class Event_Category_impl implements event_category_inf{
 		List<Event_Category>list=new ArrayList<>();
 		String s1="Select * from event_category";
 		Event_Category ec=null;
-		
+
 		try {
 			PreparedStatement ps = con.prepareStatement(s1);
 			ResultSet rs=ps.executeQuery();
@@ -99,11 +100,11 @@ public class Event_Category_impl implements event_category_inf{
 				ec.setDescription(rs.getString("description"));
 				list.add(ec);
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();	
-		}	
+			e.printStackTrace();
+		}
 		return list;
 	}
 
@@ -123,12 +124,12 @@ public class Event_Category_impl implements event_category_inf{
 			else {
 			    System.out.println("No Event Category Found");
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			System.out.println("event category failed to add");
-		}	
+		}
 	}
 
 	@Override
@@ -145,11 +146,11 @@ public class Event_Category_impl implements event_category_inf{
 		else {
 		    System.out.println("No Event Category Found");
 		}
-		
+
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 		System.out.println("event category failed to delete");
-	}	
+	}
 	}
 }

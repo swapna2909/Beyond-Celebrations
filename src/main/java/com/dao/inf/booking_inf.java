@@ -22,4 +22,5 @@ public interface booking_inf {
     void completeBooking(Integer bookingId);
     void updateBooking(Booking b);
     void deleteBookingById(Integer id);
+	List<Booking> getAllBookings();
 }

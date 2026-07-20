@@ -12,7 +12,7 @@ import com.dto.Customer;
 import com.utility.Connectivity;
 
 public class Customer_impl implements customer_inf{
-	
+
 	private Connection con;
 	public Customer_impl() {
 		this.con=Connectivity.requestConnection();
@@ -31,12 +31,12 @@ public class Customer_impl implements customer_inf{
 			 ps.setString(6, c.getAddress());
 			 ps.setString(7, c.getCreated_at());
 			 ps.executeUpdate();
-			 
+
 		}
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class Customer_impl implements customer_inf{
 		catch(SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	@Override
@@ -58,7 +58,7 @@ public class Customer_impl implements customer_inf{
 	String Query="update Customer set first_name=?,last_name=?,email=?,phone=?,password=?,address=?,created_at=? where customer_id=?";
 	try {
 		PreparedStatement ps=con.prepareStatement(Query);
-		
+
 		ps.setString(1, c.getFirst_name());
 		ps.setString(2,c.getLast_name());
 		ps.setString(3, c.getEmail());
@@ -68,13 +68,13 @@ public class Customer_impl implements customer_inf{
 		ps.setString(7, c.getCreated_at());
 		ps.setInt(8,c.getCustomer_id());
 		ps.executeUpdate();
-	
-		} 
+
+		}
 	 catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
 	}
-		
+
 	}
 
 	@Override
@@ -95,9 +95,9 @@ public class Customer_impl implements customer_inf{
 			c.setPassword(rs.getString("password"));
 			c.setAddress(rs.getString("address"));
 			c.setCreated_at(rs.getString("created_at"));
-			
+
 		  }
-		} 
+		}
 	    catch (SQLException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -124,9 +124,8 @@ public class Customer_impl implements customer_inf{
 						c.setAddress(rs.getString("address"));
 						c.setCreated_at(rs.getString("created_at"));
 						l.add(c);
-						
+
 					}
-;
 			} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -154,12 +153,12 @@ public class Customer_impl implements customer_inf{
 				c.setAddress(rs.getString("address"));
 				c.setCreated_at(rs.getString("created_at"));
 			}
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return c;
 	}
-    
+
 }

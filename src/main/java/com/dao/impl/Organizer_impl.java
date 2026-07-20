@@ -10,17 +10,17 @@ import com.dao.inf.organizer_inf;
 import com.dto.Organizer;
 import com.utility.Connectivity;
 public class Organizer_impl implements organizer_inf {
-	
+
 
 	private Connection con;
 	public Organizer_impl() {
 		this.con=Connectivity.requestConnection();
 	}
 
-	
-	    
 
-	    
+
+
+
 	    @Override
 	    public Organizer findById(Integer id) {
 
@@ -247,9 +247,9 @@ public class Organizer_impl implements organizer_inf {
 	        } catch (Exception e) {
 	            e.printStackTrace();
 	        }
-			
+
 		}
 
-		
+
 	}
 

@@ -27,6 +27,6 @@ public class Event_Category {
 		return "Event_Category [category_id=" + category_id + ", category_name=" + category_name + ", description="
 				+ description + "]";
 	}
-	
+
 
 }

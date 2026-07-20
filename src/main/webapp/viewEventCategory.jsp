@@ -56,7 +56,7 @@ body{
                 placeholder="Search Category..."
                 class="w-80 px-4 py-3 rounded-xl border border-gray-300 focus:ring-4 focus:ring-cyan-400 outline-none">
 
-            <a href="addEventCategory.jsp"
+            <a href="AddEventCategory.jsp"
                class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-xl shadow-lg hover:scale-105 duration-300">
                 + Add Category
             </a>

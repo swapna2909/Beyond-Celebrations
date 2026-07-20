@@ -1,7 +1,5 @@
 package com.dto;
 
-import java.time.LocalDate;
-
 public class Booking {
 	private Integer booking_id;
 	private  Integer customer_id;
@@ -87,7 +85,7 @@ public class Booking {
 				+ ", event_date=" + event_date + ", guest_count=" + guest_count + ", budget=" + budget + ", status="
 				+ status + ", special_request=" + special_request + "]";
 	}
-	
-	
-	
+
+
+
 }
