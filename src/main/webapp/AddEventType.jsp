@@ -168,6 +168,10 @@ class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 py-3 rounded-xl">
 Add Event Type
 
 </button>
+                <a href="AdminDashboard.jsp"
+   class="px-8 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-xl font-semibold transition duration-300 shadow-md">
+    ← Back
+</a>
 
 </div>
 

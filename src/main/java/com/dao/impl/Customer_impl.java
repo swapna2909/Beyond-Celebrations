@@ -161,4 +161,21 @@ public class Customer_impl implements customer_inf{
 		return c;
 	}
 
+	@Override
+	public Long CountOfCustomers() {
+		String Query="Select * from Customer";
+		Long count=(long) 0;
+		try {
+			PreparedStatement ps=con.prepareStatement(Query);
+			ResultSet rs = ps.executeQuery();
+					while(rs.next()) {
+						count++;
+					}
+			} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+	}
+
 }

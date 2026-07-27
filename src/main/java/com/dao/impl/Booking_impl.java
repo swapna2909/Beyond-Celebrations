@@ -323,4 +323,26 @@ public class Booking_impl implements booking_inf{
 		return null;
 	}
 
+	@Override
+	public Long countOfBooking() {
+        String sql = "SELECT * FROM booking";
+        Long count=0l;
+        try {
+
+            PreparedStatement st = con.prepareStatement(sql);
+
+            ResultSet rs = st.executeQuery();
+
+            while (rs.next()) {
+
+                count++;
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return count;
+	}
+
 }

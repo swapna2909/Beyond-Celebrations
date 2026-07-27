@@ -206,4 +206,25 @@ public class Event_type_impl implements event_type_inf{
 	}
 
 
+	@Override
+	public Long countOfEvent() {
+		String s1="select * from event_type";
+		Long count=0l;
+		try {
+			PreparedStatement ps=con.prepareStatement(s1);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+			count++;
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+		return count;	
+	}
+
+
 }

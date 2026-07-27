@@ -94,6 +94,10 @@ body{
                     class="px-8 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-indigo-600 hover:to-purple-700 text-white rounded-xl font-semibold transition duration-300 shadow-lg hover:scale-105">
                     Add Category
                 </button>
+                <a href="AdminDashboard.jsp"
+   class="px-8 py-3 bg-gray-500 hover:bg-gray-600 text-white rounded-xl font-semibold transition duration-300 shadow-md">
+    ← Back
+</a>
 
             </div>
 

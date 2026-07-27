@@ -40,7 +40,7 @@ public class AddEventCategoryServlet extends HttpServlet {
         request.setAttribute("msg", "Event Category Added Successfully!");
 
         // Redirect to same page
-        request.getRequestDispatcher("addEventCategory.jsp")
+        request.getRequestDispatcher("AddEventCategory.jsp")
                .forward(request, response);
     }
 }

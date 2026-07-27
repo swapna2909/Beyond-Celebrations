@@ -1,7 +1,8 @@
 <%@ page language="java"
     contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@page import="java.util.List"%>
+<%@page import="com.dto.Event_type"%>
 <%@ page import="com.dto.Customer"%>
 
 <%
@@ -362,125 +363,116 @@ My Bookings
 
 <!-- ================= FEATURED PACKAGES ================= -->
 
+
+<%
+List<Event_type> packageList =
+(List<Event_type>)request.getAttribute("packageList");
+%>
+
 <section class="max-w-7xl mx-auto px-8 pb-16">
 
     <h2 class="text-3xl font-bold text-gray-800 mb-8">
-
         Featured Packages
-
     </h2>
 
     <div class="grid md:grid-cols-3 gap-8">
 
-        <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 transition">
+        <%
+        if(packageList != null){
 
-            <img src="https://i.pinimg.com/736x/f6/a4/67/f6a467315df1cad1efc70ffd1770f711.jpg"
+            for(Event_type event : packageList){
+
+                String image="";
+
+                switch(event.getCategory_id()){
+
+                case 1:
+                    image="https://i.pinimg.com/736x/f6/a4/67/f6a467315df1cad1efc70ffd1770f711.jpg";
+                    break;
+
+                case 7:
+                    image="https://i.pinimg.com/736x/ff/f6/3c/fff63c1f1ae031369a90cfa7f5787be3.jpg";
+                    break;
+
+                case 8:
+                    image="https://i.pinimg.com/736x/6b/f0/e8/6bf0e84ca6c4cc6c6dc3cfcbb1dd7cb7.jpg";
+                    break;
+
+                case 9:
+                    image="https://i.pinimg.com/736x/62/76/83/627683963f778e5660bb535f554efc0b.jpg";
+                    break;
+
+                default:
+                    image="https://images.unsplash.com/photo-1511795409834-ef04bbd61622";
+                }
+        %>
+
+        <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 transition duration-300">
+
+            <img src="<%=image%>"
                  class="w-full h-60 object-cover">
 
             <div class="p-6">
 
-                <h3 class="text-2xl font-bold">
-
-                    Royal Wedding
-
+                <h3 class="text-2xl font-bold text-gray-800">
+                    <%=event.getEvent_name()%>
                 </h3>
 
-                <p class="text-gray-600 mt-3">
-
-                    Premium decoration, catering,
-                    photography and luxury venue.
-
+                <p class="text-gray-600 mt-3 h-20">
+                    <%=event.getDescription()%>
                 </p>
 
-                <p class="text-purple-700 font-bold text-2xl mt-4">
+                <div class="mt-4">
 
-                    ₹2,50,000
+                    <p class="text-green-700 font-semibold">
+                        Starting From
+                    </p>
 
-                </p>
+                    <p class="text-2xl font-bold text-purple-700">
+                        ₹<%=String.format("%,.0f",event.getMin_budget())%>
+                    </p>
 
-                <button class="mt-5 w-full py-3 rounded-xl bg-purple-700 text-white hover:bg-purple-800">
+                </div>
+
+                <div class="mt-2">
+
+                    <p class="text-gray-600">
+                        Up To
+                    </p>
+
+                    <p class="text-lg font-semibold text-pink-600">
+                        ₹<%=String.format("%,.0f",event.getMax_budget())%>
+                    </p>
+
+                </div>
+
+                <a href="bookevents?eventTypeId=<%=event.getEvent_type_id()%>"
+
+                   class="block text-center mt-6 w-full py-3 rounded-xl bg-purple-700 text-white hover:bg-purple-800 transition">
 
                     Book Now
 
-                </button>
+                </a>
 
             </div>
 
         </div>
 
-        <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 transition">
+        <%
+            }
+        }
+        else{
+        %>
 
-            <img src="https://i.pinimg.com/736x/ff/f6/3c/fff63c1f1ae031369a90cfa7f5787be3.jpg"
-                 class="w-full h-60 object-cover">
+        <div class="col-span-3 text-center text-gray-500 text-xl">
 
-            <div class="p-6">
-
-                <h3 class="text-2xl font-bold">
-
-                    Birthday Celebration
-
-                </h3>
-
-                <p class="text-gray-600 mt-3">
-
-                    Theme decoration,
-                    entertainment,
-                    cake and photography.
-
-                </p>
-
-                <p class="text-pink-600 font-bold text-2xl mt-4">
-
-                    ₹35,000
-
-                </p>
-
-                <button class="mt-5 w-full py-3 rounded-xl bg-pink-600 text-white hover:bg-pink-700">
-
-                    Book Now
-
-                </button>
-
-            </div>
+            No Packages Available
 
         </div>
 
-        <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 transition">
-
-            <img src="https://i.pinimg.com/736x/a8/3f/97/a83f975010e8f14038a37fcf9640cf99.jpg"
-                 class="w-full h-60 object-cover">
-
-            <div class="p-6">
-
-                <h3 class="text-2xl font-bold">
-
-                    Corporate Event
-
-                </h3>
-
-                <p class="text-gray-600 mt-3">
-
-                    Conference hall,
-                    branding,
-                    catering and sound system.
-
-                </p>
-
-                <p class="text-blue-600 font-bold text-2xl mt-4">
-
-                    ₹1,20,000
-
-                </p>
-
-                <button class="mt-5 w-full py-3 rounded-xl bg-blue-600 text-white hover:bg-blue-700">
-
-                    Book Now
-
-                </button>
-
-            </div>
-
-        </div>
+        <%
+        }
+        %>
 
     </div>
 

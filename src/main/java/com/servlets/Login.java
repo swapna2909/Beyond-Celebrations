@@ -1,10 +1,8 @@
 package com.servlets;
 import java.io.IOException;
-
 import com.dao.impl.Customer_impl;
 import com.dao.inf.customer_inf;
 import com.dto.Customer;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -35,7 +33,7 @@ public class Login extends HttpServlet {
             if (email.equals("admin@gmail.com") &&
                 password.equals("admin@123")) {
 
-                resp.sendRedirect("admindashboard.jsp");
+                resp.sendRedirect("AdminDashboard.jsp");
 
             } else {
 
