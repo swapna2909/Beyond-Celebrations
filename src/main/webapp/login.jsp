@@ -101,7 +101,7 @@ type="password"
 name="password"
 placeholder="Password"
 required
-class="w-full bg-transparent border border-gray-500 rounded-lg py-3 pl-11 pr-10 text-white placeholder-gray-300 focus:outline-none focus:border-yellow-400">
+class="w-full bg-transparent border border-gray-500 rounded-lg py-3 pl-11 pr-10 text-white placeholder-grey-300 focus:outline-none focus:border-yellow-400">
 
 </div>
 

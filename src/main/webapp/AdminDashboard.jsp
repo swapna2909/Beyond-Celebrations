@@ -104,7 +104,7 @@ Dashboard
 </li>
 
 <li>
-    <a href="#customers" class="nav-link">
+    <a href="" class="nav-link">
         Customers
     </a>
 </li>
@@ -135,7 +135,7 @@ Venues
 
 <li>
 
-<a href="logout.jsp"
+<a href="logout"
 class="bg-red-600 hover:bg-red-700 px-5 py-2 rounded-lg">
 
 Logout
@@ -296,7 +296,7 @@ Create new event categories, event types and venue details with ease.
 
 
         <!-- Update Customer -->
-        <a href="updateCustomer.jsp">
+        <a href="updatecustomer.jsp">
             <div class="module-card bg-amber-500 text-white rounded-2xl p-8 h-72 flex flex-col justify-between text-center">
 
                 <i class="fa-solid fa-user-pen text-5xl"></i>
