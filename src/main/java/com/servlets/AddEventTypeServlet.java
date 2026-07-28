@@ -44,7 +44,7 @@ public class AddEventTypeServlet extends HttpServlet {
         request.setAttribute("msg",
                 "Event Type Added Successfully!");
 
-        request.getRequestDispatcher("addEventType.jsp")
+        request.getRequestDispatcher("AddEventType.jsp")
                .forward(request, response);
     }
 }

@@ -1,5 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ page import="java.util.List"%>
+   <%@ page import="com.dao.inf.customer_inf"%>
+   <%@ page import="com.dao.impl.Customer_impl"%>
+   <%@ page import="com.dto.Customer"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -102,17 +107,16 @@ Search
 
 <tbody class="text-center">
 
+<%customer_inf inf = new Customer_impl();
+List<Customer> li = inf.findAll();%>
+
+<% for(Customer c: li){%>
 <tr class="border-b hover:bg-gray-100">
-
-<td class="py-4">101</td>
-
-<td>Rahul Kumar</td>
-
-<td>rahul@gmail.com</td>
-
-<td>9876543210</td>
-
-<td>Hyderabad</td>
+<td class="py-4"><%= c.getCustomer_id() %></td>
+<td><%= c.getFirst_name()+" "+c.getLast_name() %></td>
+<td><%= c.getEmail() %></td>
+<td><%= c.getPhone() %></td>
+<td><%= c.getAddress() %></td>
 
 <td>
 <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">
@@ -121,66 +125,10 @@ Active
 </td>
 
 </tr>
+<%	
+}
+%>
 
-<tr class="border-b hover:bg-gray-100">
-
-<td class="py-4">102</td>
-
-<td>Priya Sharma</td>
-
-<td>priya@gmail.com</td>
-
-<td>9876501234</td>
-
-<td>Bangalore</td>
-
-<td>
-<span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">
-Active
-</span>
-</td>
-
-</tr>
-
-<tr class="border-b hover:bg-gray-100">
-
-<td class="py-4">103</td>
-
-<td>Arjun Reddy</td>
-
-<td>arjun@gmail.com</td>
-
-<td>9123456780</td>
-
-<td>Chennai</td>
-
-<td>
-<span class="bg-red-500 text-white px-3 py-1 rounded-full text-sm">
-Inactive
-</span>
-</td>
-
-</tr>
-
-<tr class="hover:bg-gray-100">
-
-<td class="py-4">104</td>
-
-<td>Neha Singh</td>
-
-<td>neha@gmail.com</td>
-
-<td>9988776655</td>
-
-<td>Pune</td>
-
-<td>
-<span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">
-Active
-</span>
-</td>
-
-</tr>
 
 </tbody>
 

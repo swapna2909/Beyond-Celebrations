@@ -1,26 +1,26 @@
 
 
-	<%@ page language="java" contentType="text/html; charset=UTF-8"
-		pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 
-	<%@ page import="com.dto.Customer"%>
+<%@ page import="com.dto.Customer"%>
 
-	<%
-	response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
-	response.setHeader("Pragma", "no-cache");
-	response.setDateHeader("Expires", 0);
+<%
+response.setHeader("Cache-Control", "no-cache,no-store,must-revalidate");
+response.setHeader("Pragma", "no-cache");
+response.setDateHeader("Expires", 0);
 
-	Customer customer = (Customer) request.getAttribute("customer");
+Customer customer = (Customer) request.getAttribute("customer");
 
-	if (customer == null) {
-		response.sendRedirect("customerLogin.jsp");
-		return;
-	}
+if (customer == null) {
+	response.sendRedirect("customerLogin.jsp");
+	return;
+}
 
-	String firstLetter = customer.getFirst_name().substring(0, 1).toUpperCase();
-	%>
+String firstLetter = customer.getFirst_name().substring(0, 1).toUpperCase();
+%>
 
-	<!DOCTYPE html>
+<!DOCTYPE html>
 
 
 <html>
@@ -52,197 +52,148 @@
 
 	<!-- Navbar -->
 
-<nav class="bg-white shadow-md">
+	<nav class="bg-white shadow-md">
 
-<div class="max-w-7xl mx-auto px-8">
+		<div class="max-w-7xl mx-auto px-8">
 
-<div class="flex justify-between items-center h-20">
+			<div class="flex justify-between items-center h-20">
 
-<div class="flex items-center">
+				<div class="flex items-center">
 
-<div
+					<div
 						class="w-14 h-14 rounded-full bg-gradient-to-r from-purple-700 to-pink-500 flex items-center justify-center text-white text-xl font-bold">
 
-BC
+						BC</div>
 
-</div>
+					<div class="ml-4">
 
-<div class="ml-4">
+						<h1 class="text-2xl text-purple-700" style="font-family: Cinzel">
 
-<h1 class="text-2xl text-purple-700" style="font-family:Cinzel">
+							Beyond Celebrations</h1>
 
-Beyond Celebrations
+						<p class="text-yellow-600" style="font-family: Great Vibes">
 
-</h1>
+							More than events, we create experiences</p>
 
-<p class="text-yellow-600" style="font-family:Great Vibes">
+					</div>
 
-More than events, we create experiences
+				</div>
 
-</p>
+				<div class="flex items-center gap-5">
 
-</div>
+					<div class="text-right">
 
-</div>
+						<p class="text-gray-500 text-sm">Welcome</p>
 
-<div class="flex items-center gap-5">
+						<p class="font-semibold">
 
-<div class="text-right">
+							<%=customer.getFirst_name()%>
 
-<p class="text-gray-500 text-sm">
+						</p>
 
-Welcome
+					</div>
 
-</p>
-
-<p class="font-semibold">
-
-<%=customer.getFirst_name()%>
-
-</p>
-
-</div>
-
-<div
+					<div
 						class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-700 to-pink-500 flex items-center justify-center text-white font-bold">
 
-<%=firstLetter%>
+						<%=firstLetter%>
 
-</div>
+					</div>
 
-</div>
+				</div>
 
-</div>
+			</div>
 
-</div>
+		</div>
 
-</nav>
+	</nav>
 
-<!-- Profile -->
+	<!-- Profile -->
 
-<div class="max-w-5xl mx-auto mt-12">
+	<div class="max-w-5xl mx-auto mt-12">
 
-<div class="bg-white rounded-3xl shadow-xl p-10">
+		<div class="bg-white rounded-3xl shadow-xl p-10">
 
-<h2 class="text-4xl font-bold text-purple-700 mb-10">
+			<h2 class="text-4xl font-bold text-purple-700 mb-10">My Profile
 
-My Profile
+			</h2>
 
-</h2>
+			<div class="grid grid-cols-2 gap-8">
 
-<div class="grid grid-cols-2 gap-8">
+				<div>
 
-<div>
-
-<label class="font-semibold">
-
-First Name
-
-</label>
-
-<input type="text" readonly value="<%=customer.getFirst_name()%>"
+					<label class="font-semibold"> First Name </label> <input
+						type="text" readonly value="<%=customer.getFirst_name()%>"
 						class="w-full mt-2 border rounded-lg p-3 bg-gray-100">
 
-</div>
+				</div>
 
-<div>
+				<div>
 
-<label class="font-semibold">
-
-Last Name
-
-</label>
-
-<input type="text" readonly value="<%=customer.getLast_name()%>"
+					<label class="font-semibold"> Last Name </label> <input type="text"
+						readonly value="<%=customer.getLast_name()%>"
 						class="w-full mt-2 border rounded-lg p-3 bg-gray-100">
 
-</div>
+				</div>
 
-<div>
+				<div>
 
-<label class="font-semibold">
-
-Email
-
-</label>
-
-<input type="email" readonly value="<%=customer.getEmail()%>"
+					<label class="font-semibold"> Email </label> <input type="email"
+						readonly value="<%=customer.getEmail()%>"
 						class="w-full mt-2 border rounded-lg p-3 bg-gray-100">
 
-</div>
+				</div>
 
-<div>
+				<div>
 
-<label class="font-semibold">
-
-Phone
-
-</label>
-
-<input type="text" readonly value="<%=customer.getPhone()%>"
+					<label class="font-semibold"> Phone </label> <input type="text"
+						readonly value="<%=customer.getPhone()%>"
 						class="w-full mt-2 border rounded-lg p-3 bg-gray-100">
 
-</div>
+				</div>
 
-<div class="col-span-2">
+				<div class="col-span-2">
 
-<label class="font-semibold">
+					<label class="font-semibold"> Address </label>
 
-Address
-
-</label>
-
-<textarea readonly rows="4"
+					<textarea readonly rows="4"
 						class="w-full mt-2 border rounded-lg p-3 bg-gray-100"><%=customer.getAddress()%></textarea>
 
-</div>
+				</div>
 
-</div>
+			</div>
 
-<div class="mt-10 flex gap-5">
+			<div class="mt-10 flex gap-5">
 
-<a href="updateCustomer.jsp"
+				<a href="updatecustomer.jsp"
 					class="bg-purple-700 text-white px-8 py-3 rounded-xl hover:bg-purple-800">
 
-<i class="fa-solid fa-user-pen"></i>
+					<i class="fa-solid fa-user-pen"></i> Edit Profile
 
-Edit Profile
-
-</a>
-
-<a href="customerdashboard"
+				</a> <a href="customerdashboard"
 					class="bg-gray-700 text-white px-8 py-3 rounded-xl hover:bg-gray-800">
 
-<i class="fa-solid fa-arrow-left"></i>
+					<i class="fa-solid fa-arrow-left"></i> Dashboard
 
-Dashboard
-
-</a>
-
-<a href="logout"
+				</a> <a href="logout"
 					class="bg-red-600 text-white px-8 py-3 rounded-xl hover:bg-red-700">
 
-<i class="fa-solid fa-right-from-bracket"></i>
+					<i class="fa-solid fa-right-from-bracket"></i> Logout
 
-Logout
+				</a>
 
-</a>
+			</div>
 
-</div>
+		</div>
 
-</div>
+	</div>
 
-</div>
+	<footer class="mt-16 bg-[#1b0f1d] text-white">
 
-<footer class="mt-16 bg-[#1b0f1d] text-white">
+		<div class="text-center py-6">© 2026 Beyond Celebrations. All
+			Rights Reserved.</div>
 
-<div class="text-center py-6">
-
-© 2026 Beyond Celebrations. All Rights Reserved.
-
-</div>
-
-</footer>
+	</footer>
 
 </body>
 </html>
