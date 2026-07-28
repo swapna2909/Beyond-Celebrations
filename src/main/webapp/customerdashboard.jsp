@@ -1,1055 +1,1602 @@
-<%@ page language="java"
-    contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@page import="java.util.List"%>
-<%@page import="com.dto.Event_type"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+
 <%@ page import="com.dto.Customer"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.dto.Booking"%>
+<%@ page import="java.util.List"%>
+<%@ page import="com.dto.Event_Category"%>
+<%@ page import="com.dao.impl.Event_Category_impl"%>
+
 
 <%
 Customer customer = (Customer) session.getAttribute("Customer");
 
 if (customer == null) {
-    response.sendRedirect("login.jsp");
-    return;
+
+	response.sendRedirect("login.jsp");
+	return;
+
 }
 
-String firstLetter = customer.getFirst_name().substring(0,1).toUpperCase();
+String firstLetter = customer.getFirst_name().substring(0, 1).toUpperCase();
+
+Integer totalBookings = (Integer) request.getAttribute("totalBookings");
+
+Integer upcomingBookings = (Integer) request.getAttribute("upcomingBookings");
+
+Integer wishlistCount = (Integer) request.getAttribute("wishlistCount");
+
+if (totalBookings == null) {
+
+	totalBookings = 0;
+
+}
+
+if (upcomingBookings == null) {
+
+	upcomingBookings = 0;
+
+}
+
+if (wishlistCount == null) {
+
+	wishlistCount = 0;
+
+}
+
+List<Booking> bookings = (List<Booking>) request.getAttribute("bookings");
 %>
 
+
+
 <!DOCTYPE html>
+
 <html>
+
 <head>
 
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Customer Profile | Beyond Celebrations</title>
+
+<title>Customer Dashboard | Beyond Celebrations</title>
+
 
 <script src="https://cdn.tailwindcss.com"></script>
+
+
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link
+	href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap"
+	rel="stylesheet">
+
+
 
 <link rel="stylesheet"
-href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
 
 </head>
 
-<body class="bg-gray-100" style="font-family:Poppins;">
 
-<!-- ================= NAVBAR ================= -->
 
-<nav class="bg-white shadow-lg sticky top-0 z-50">
+<body class="bg-gray-100" style="font-family: Poppins;">
 
-<div class="max-w-7xl mx-auto px-8">
 
-<div class="flex justify-between items-center h-20">
 
-<div class="flex items-center">
+	<!-- ================= NAVBAR ================= -->
 
-<div class="w-14 h-14 rounded-full bg-purple-700 text-white flex items-center justify-center text-2xl font-bold">
 
-BC
+	<nav class="bg-white shadow-lg sticky top-0 z-50">
 
-</div>
 
-<div class="ml-4">
+		<div class="max-w-7xl mx-auto px-8">
 
-<h1 class="text-2xl text-purple-700"
-style="font-family:Cinzel;">
 
-Beyond Celebrations
+			<div class="flex justify-between items-center h-20">
 
-</h1>
 
-<p class="text-yellow-500"
-style="font-family:'Great Vibes';">
 
-More than events, we create experiences
+				<!-- LOGO -->
 
-</p>
 
-</div>
+				<div class="flex items-center">
 
-</div>
 
-<ul class="hidden lg:flex gap-8 font-medium">
+					<div
+						class="w-14 h-14 rounded-full 
+bg-gradient-to-r from-purple-700 to-pink-500
+flex items-center justify-center
+text-white text-2xl font-bold">
 
-<li><a href="#" class="hover:text-purple-700">Home</a></li>
 
-<li><a href="#" class="hover:text-purple-700">Packages</a></li>
+						BC</div>
 
-<li><a href="#" class="hover:text-purple-700">Bookings</a></li>
 
-<li><a href="#" class="hover:text-purple-700">Gallery</a></li>
 
-<li><a href="#" class="hover:text-purple-700">Contact</a></li>
+					<div class="ml-4">
 
-</ul>
 
-<div class="flex items-center gap-4">
+						<h1 class="text-2xl text-purple-700" style="font-family: Cinzel;">
 
-<div class="text-right">
 
-<p class="text-gray-500 text-sm">
+							Beyond Celebrations</h1>
 
-Welcome
 
-</p>
+						<p class="text-yellow-500" style="font-family: 'Great Vibes';">
 
-<p class="font-semibold">
 
-<%=customer.getFirst_name()%>
+							More than events, we create experiences</p>
 
-</p>
 
-</div>
-<a href="customerprofile">
 
-    <div
-        class="w-12 h-12 rounded-full
-        bg-gradient-to-r
-        from-purple-700
-        to-pink-500
-        flex
-        items-center
-        justify-center
-        text-white
-        font-bold
-        text-xl
-        cursor-pointer
-        shadow-lg
-        hover:scale-110
-        transition">
+					</div>
 
-        <%=firstLetter%>
 
-    </div>
+				</div>
 
-</a>
 
-<a href="logout"
-class="bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700">
 
-Logout
 
-</a>
 
-</div>
+				<!-- MENU -->
 
-</div>
 
-</div>
+				<ul class="hidden lg:flex gap-8 font-medium">
 
-</nav>
 
-<!-- ================= HERO ================= -->
+					<li><a href="customerdashboard" class="hover:text-purple-700">
 
-<section
-class="bg-gradient-to-r from-purple-700 via-pink-600 to-orange-500 text-white">
 
-<div class="max-w-7xl mx-auto px-8 py-16">
+							Home </a></li>
 
-<h1 class="text-5xl font-bold">
 
-Welcome,
 
-<%=customer.getFirst_name()%> 🎉
 
-</h1>
+					<li><a href="bookevents.jsp" class="hover:text-purple-700">
 
-<p class="text-2xl mt-3"
-style="font-family:'Great Vibes';">
 
-Let's make your celebrations unforgettable.
+							Bookings </a></li>
 
-</p>
 
-<p class="mt-6 max-w-2xl leading-8">
 
-Manage your bookings, explore event packages,
-track upcoming celebrations and discover exciting offers.
 
-</p>
+					<li><a href="contact.jsp" class="hover:text-purple-700">
 
-<div class="mt-8 flex gap-5">
 
-<button
-class="bg-white text-purple-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100">
+							Contact </a></li>
 
-Explore Packages
 
-</button>
+				</ul>
 
-<button
-class="border border-white px-6 py-3 rounded-lg hover:bg-white hover:text-purple-700">
 
-My Bookings
 
-</button>
 
-</div>
 
-</div>
 
-</section>
 
-<!-- ================= DASHBOARD STATISTICS ================= -->
+				<!-- PROFILE -->
 
-<div class="max-w-7xl mx-auto px-8 pb-12">
 
-    <h2 class="text-3xl font-bold text-gray-800 mb-8">
-        Dashboard Overview
-    </h2>
+				<div class="flex items-center gap-4">
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
 
-        <div class="bg-white rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition">
+					<div class="text-right">
 
-            <div class="flex justify-between items-center">
 
-                <div>
+						<p class="text-gray-500 text-sm">Welcome</p>
 
-                    <p class="text-gray-500">Total Bookings</p>
 
-                    <h2 class="text-4xl font-bold text-purple-700 mt-2">
-                        12
-                    </h2>
+						<p class="font-semibold">
 
-                </div>
 
-                <div class="w-16 h-16 rounded-full bg-purple-100 flex items-center justify-center">
+							<%=customer.getFirst_name()%>
 
-                    <i class="fa-solid fa-calendar-check text-3xl text-purple-700"></i>
 
-                </div>
+						</p>
 
-            </div>
 
-        </div>
+					</div>
 
-        <div class="bg-white rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition">
 
-            <div class="flex justify-between items-center">
 
-                <div>
 
-                    <p class="text-gray-500">Upcoming Events</p>
 
-                    <h2 class="text-4xl font-bold text-pink-600 mt-2">
-                        4
-                    </h2>
+					<a href="customerprofile">
 
-                </div>
 
-                <div class="w-16 h-16 rounded-full bg-pink-100 flex items-center justify-center">
+						<div
+							class="
+w-12 h-12 rounded-full
+bg-gradient-to-r from-purple-700 to-pink-500
+flex items-center justify-center
+text-white font-bold text-xl
+cursor-pointer
+shadow-lg
+hover:scale-110
+transition">
 
-                    <i class="fa-solid fa-gift text-3xl text-pink-600"></i>
 
-                </div>
+							<%=firstLetter%>
 
-            </div>
 
-        </div>
+						</div>
 
-        <div class="bg-white rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition">
 
-            <div class="flex justify-between items-center">
+					</a> <a href="logout"
+						class="
+bg-red-600
+text-white
+px-4
+py-2
+rounded-lg
+hover:bg-red-700">
 
-                <div>
 
-                    <p class="text-gray-500">Wishlist</p>
+						Logout </a>
 
-                    <h2 class="text-4xl font-bold text-red-500 mt-2">
-                        6
-                    </h2>
 
-                </div>
 
-                <div class="w-16 h-16 rounded-full bg-red-100 flex items-center justify-center">
+				</div>
 
-                    <i class="fa-solid fa-heart text-3xl text-red-500"></i>
 
-                </div>
 
-            </div>
+			</div>
 
-        </div>
 
-        <div class="bg-white rounded-2xl shadow-lg p-6 hover:-translate-y-2 transition">
+		</div>
 
-            <div class="flex justify-between items-center">
 
-                <div>
+	</nav>
 
-                    <p class="text-gray-500">Reward Points</p>
 
-                    <h2 class="text-4xl font-bold text-yellow-500 mt-2">
-                        850
-                    </h2>
 
-                </div>
 
-                <div class="w-16 h-16 rounded-full bg-yellow-100 flex items-center justify-center">
 
-                    <i class="fa-solid fa-star text-3xl text-yellow-500"></i>
+	<!-- ================= HERO SECTION ================= -->
 
-                </div>
 
-            </div>
 
-        </div>
+	<section
+		class="
+bg-gradient-to-r
+from-purple-700
+via-pink-600
+to-orange-500
+text-white">
 
-    </div>
 
-</div>
+		<div class="max-w-7xl mx-auto px-8 py-16">
 
-<!-- ================= EVENT CATEGORIES ================= -->
+
+
+			<h1 class="text-5xl font-bold">
+
+
+				Welcome,
+
+				<%=customer.getFirst_name()%>
+
+				🎉
+
+
+			</h1>
+
+
+
+
+			<p class="text-2xl mt-3" style="font-family: 'Great Vibes';">
+
+
+				Let's make your celebrations unforgettable.</p>
+
+
+
+
+			<p class="mt-6 max-w-2xl leading-8">Manage your bookings, explore
+				event packages, track upcoming celebrations and discover exciting
+				offers.</p>
+
+
+
+
+			<div class="mt-8 flex gap-5">
+
+
+				<a href="#packages"
+					class="
+bg-white
+text-purple-700
+px-6
+py-3
+rounded-lg
+font-semibold
+hover:bg-gray-100">
+
+
+					Explore Packages </a> <a href="bookevents.jsp"
+					class="
+border
+border-white
+px-6
+py-3
+rounded-lg
+hover:bg-white
+hover:text-purple-700">
+
+
+					My Bookings </a>
+
+
+
+			</div>
+
+
+
+		</div>
+
+
+	</section>
+	<!-- ================= DASHBOARD STATISTICS ================= -->
+
+
+	<div class="max-w-7xl mx-auto px-8 py-12">
+
+
+		<h2 class="text-3xl font-bold text-gray-800 mb-8">Dashboard
+			Overview</h2>
+
+
+
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+
+
+			<!-- TOTAL BOOKINGS -->
+
+
+			<div
+				class="
+bg-white
+rounded-2xl
+shadow-lg
+p-6
+hover:-translate-y-2
+transition">
+
+
+				<div class="flex justify-between items-center">
+
+
+					<div>
+
+
+						<p class="text-gray-500">Total Bookings</p>
+
+
+
+						<h2 class="text-4xl font-bold text-purple-700 mt-2">
+
+							<%=totalBookings%>
+
+						</h2>
+
+
+					</div>
+
+
+
+					<div
+						class="
+w-16
+h-16
+rounded-full
+bg-purple-100
+flex
+items-center
+justify-center">
+
+
+						<i class="fa-solid fa-calendar-check text-3xl text-purple-700"></i>
+
+
+					</div>
+
+
+
+				</div>
+
+
+			</div>
+
+
+
+
+
+			<!-- UPCOMING EVENTS -->
+
+
+			<div
+				class="
+bg-white
+rounded-2xl
+shadow-lg
+p-6
+hover:-translate-y-2
+transition">
+
+
+				<div class="flex justify-between items-center">
+
+
+					<div>
+
+
+						<p class="text-gray-500">Upcoming Events</p>
+
+
+
+						<h2 class="text-4xl font-bold text-pink-600 mt-2">
+
+
+							<%=upcomingBookings%>
+
+
+						</h2>
+
+
+					</div>
+
+
+
+					<div
+						class="
+w-16
+h-16
+rounded-full
+bg-pink-100
+flex
+items-center
+justify-center">
+
+
+						<i class="fa-solid fa-gift text-3xl text-pink-600"></i>
+
+
+					</div>
+
+
+
+				</div>
+
+
+			</div>
+
+
+
+
+
+			<!-- WISHLIST -->
+
+
+			<div
+				class="
+bg-white
+rounded-2xl
+shadow-lg
+p-6
+hover:-translate-y-2
+transition">
+
+
+				<div class="flex justify-between items-center">
+
+
+					<div>
+
+
+						<p class="text-gray-500">Wishlist</p>
+
+
+
+						<h2 class="text-4xl font-bold text-red-500 mt-2">
+
+
+							<%=wishlistCount%>
+
+
+						</h2>
+
+
+					</div>
+
+
+
+					<div
+						class="
+w-16
+h-16
+rounded-full
+bg-red-100
+flex
+items-center
+justify-center">
+
+
+						<i class="fa-solid fa-heart text-3xl text-red-500"></i>
+
+
+					</div>
+
+
+
+				</div>
+
+
+			</div>
+
+
+
+
+		</div>
+
+
+	</div>
+
+
+
+
+
+	<!-- ================= EVENT CATEGORIES ================= -->
 
 <section class="max-w-7xl mx-auto px-8 pb-16">
 
-    <h2 class="text-3xl font-bold text-gray-800 mb-8">
-        Explore Event Categories
-    </h2>
 
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+<h2 class="text-3xl font-bold text-gray-800 mb-8">
+    Explore Event Categories
+</h2>
 
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:bg-purple-700 hover:text-white transition">
 
-            <i class="fa-solid fa-ring text-5xl mb-4"></i>
 
-            <h3 class="font-semibold">
-                Wedding
-            </h3>
-
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:bg-pink-600 hover:text-white transition">
-
-            <i class="fa-solid fa-cake-candles text-5xl mb-4"></i>
-
-            <h3 class="font-semibold">
-                Birthday
-            </h3>
-
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:bg-blue-600 hover:text-white transition">
-
-            <i class="fa-solid fa-building text-5xl mb-4"></i>
-
-            <h3 class="font-semibold">
-                Corporate
-            </h3>
-
-        </div>
-
-        <div class="bg-white rounded-2xl shadow-lg p-8 text-center hover:bg-orange-500 hover:text-white transition">
-
-            <i class="fa-solid fa-heart text-5xl mb-4"></i>
-
-            <h3 class="font-semibold">
-                Anniversary
-            </h3>
-
-        </div>
-
-    </div>
-
-</section>
-
-<!-- ================= FEATURED PACKAGES ================= -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8">
 
 
 <%
-List<Event_type> packageList =
-(List<Event_type>)request.getAttribute("packageList");
+
+Event_Category_impl dao = new Event_Category_impl();
+
+List<Event_Category> categoryList = dao.findAll();
+
+
+
+if(categoryList != null && !categoryList.isEmpty()){
+
+
+    for(Event_Category category : categoryList){
+
+
+
+        String icon = "fa-calendar-check";
+        String gradient = "from-purple-600 to-indigo-600";
+
+
+        if(category.getCategory_name()
+                .equalsIgnoreCase("Wedding")){
+
+
+            icon = "fa-ring";
+            gradient = "from-rose-500 to-pink-600";
+
+
+        }
+
+
+        else if(category.getCategory_name()
+                .equalsIgnoreCase("Birthday")){
+
+
+            icon = "fa-cake-candles";
+            gradient = "from-orange-400 to-pink-500";
+
+
+        }
+
+
+        else if(category.getCategory_name()
+                .equalsIgnoreCase("Corporate")){
+
+
+            icon = "fa-building";
+            gradient = "from-blue-600 to-cyan-500";
+
+
+        }
+
+
+        else if(category.getCategory_name()
+                .equalsIgnoreCase("Anniversary")){
+
+
+            icon = "fa-heart";
+            gradient = "from-red-500 to-rose-600";
+
+
+        }
+
+
+        else if(category.getCategory_name()
+                .equalsIgnoreCase("Baby Shower")){
+
+
+            icon = "fa-baby";
+            gradient = "from-green-400 to-teal-500";
+
+
+        }
+
+
 %>
 
-<section class="max-w-7xl mx-auto px-8 pb-16">
 
-    <h2 class="text-3xl font-bold text-gray-800 mb-8">
-        Featured Packages
-    </h2>
 
-    <div class="grid md:grid-cols-3 gap-8">
+<!-- CATEGORY CARD -->
 
-        <%
-        if(packageList != null){
+<a href="<%=request.getContextPath()%>/eventtypes?categoryId=<%=category.getCategory_id()%>">
 
-            for(Event_type event : packageList){
 
-                String image="";
+<div
+class="
+bg-white
+rounded-3xl
+shadow-xl
+overflow-hidden
+cursor-pointer
+hover:-translate-y-3
+hover:shadow-2xl
+transition-all
+duration-300
+">
 
-                switch(event.getCategory_id()){
 
-                case 1:
-                    image="https://i.pinimg.com/736x/f6/a4/67/f6a467315df1cad1efc70ffd1770f711.jpg";
-                    break;
 
-                case 7:
-                    image="https://i.pinimg.com/736x/ff/f6/3c/fff63c1f1ae031369a90cfa7f5787be3.jpg";
-                    break;
 
-                case 8:
-                    image="https://i.pinimg.com/736x/6b/f0/e8/6bf0e84ca6c4cc6c6dc3cfcbb1dd7cb7.jpg";
-                    break;
 
-                case 9:
-                    image="https://i.pinimg.com/736x/62/76/83/627683963f778e5660bb535f554efc0b.jpg";
-                    break;
+<!-- ICON HEADER -->
 
-                default:
-                    image="https://images.unsplash.com/photo-1511795409834-ef04bbd61622";
-                }
-        %>
+<div
+class="
+h-36
+bg-gradient-to-r
+<%=gradient%>
+flex
+items-center
+justify-center
+">
 
-        <div class="bg-white rounded-3xl shadow-xl overflow-hidden hover:scale-105 transition duration-300">
 
-            <img src="<%=image%>"
-                 class="w-full h-60 object-cover">
+<i
+class="
+fa-solid
+<%=icon%>
+text-white
+text-6xl
+">
+</i>
 
-            <div class="p-6">
 
-                <h3 class="text-2xl font-bold text-gray-800">
-                    <%=event.getEvent_name()%>
-                </h3>
+</div>
 
-                <p class="text-gray-600 mt-3 h-20">
-                    <%=event.getDescription()%>
-                </p>
 
-                <div class="mt-4">
 
-                    <p class="text-green-700 font-semibold">
-                        Starting From
-                    </p>
 
-                    <p class="text-2xl font-bold text-purple-700">
-                        ₹<%=String.format("%,.0f",event.getMin_budget())%>
-                    </p>
 
-                </div>
+<!-- CONTENT -->
 
-                <div class="mt-2">
 
-                    <p class="text-gray-600">
-                        Up To
-                    </p>
+<div class="p-6 text-center">
 
-                    <p class="text-lg font-semibold text-pink-600">
-                        ₹<%=String.format("%,.0f",event.getMax_budget())%>
-                    </p>
 
-                </div>
 
-                <a href="bookevents?eventTypeId=<%=event.getEvent_type_id()%>"
+<h3
+class="
+text-xl
+font-bold
+text-gray-800
+">
 
-                   class="block text-center mt-6 w-full py-3 rounded-xl bg-purple-700 text-white hover:bg-purple-800 transition">
+<%=category.getCategory_name()%>
 
-                    Book Now
+</h3>
 
-                </a>
 
-            </div>
 
-        </div>
+<p
+class="
+text-gray-500
+text-sm
+mt-3
+leading-6
+">
 
-        <%
-            }
-        }
-        else{
-        %>
+<%=category.getDescription()%>
 
-        <div class="col-span-3 text-center text-gray-500 text-xl">
+</p>
 
-            No Packages Available
 
-        </div>
 
-        <%
-        }
-        %>
 
-    </div>
 
-</section>
-<!-- ================= UPCOMING EVENTS ================= -->
+<button
+type="button"
+class="
+mt-6
+px-6
+py-3
+rounded-xl
+bg-gradient-to-r
+from-purple-700
+to-pink-500
+text-white
+font-semibold
+shadow-md
+hover:scale-105
+transition
+">
 
-<section class="max-w-7xl mx-auto px-8 py-12">
 
-    <h2 class="text-3xl font-bold text-gray-800 mb-8">
-        Upcoming Events
-    </h2>
+<i class="fa-solid fa-calendar-plus mr-2"></i>
 
-    <div class="bg-white rounded-2xl shadow-lg overflow-hidden">
+View Events
 
-        <table class="w-full">
 
-            <thead class="bg-purple-700 text-white">
+</button>
 
-                <tr>
 
-                    <th class="py-4">Event</th>
-                    <th>Date</th>
-                    <th>Venue</th>
-                    <th>Status</th>
 
-                </tr>
 
-            </thead>
+</div>
 
-            <tbody>
 
-                <tr class="border-b hover:bg-gray-50">
 
-                    <td class="py-4 text-center">
-                        Royal Wedding
-                    </td>
 
-                    <td class="text-center">
-                        15 Aug 2026
-                    </td>
+</div>
 
-                    <td class="text-center">
-                        Bengaluru
-                    </td>
 
-                    <td class="text-center">
+</a>
 
-                        <span class="bg-green-100 text-green-700 px-4 py-1 rounded-full">
 
-                            Confirmed
 
-                        </span>
 
-                    </td>
 
-                </tr>
+<%
 
-                <tr class="border-b hover:bg-gray-50">
+    }
 
-                    <td class="py-4 text-center">
-                        Birthday Party
-                    </td>
+}
 
-                    <td class="text-center">
-                        05 Sept 2026
-                    </td>
+else{
 
-                    <td class="text-center">
-                        Mysuru
-                    </td>
 
-                    <td class="text-center">
+%>
 
-                        <span class="bg-yellow-100 text-yellow-700 px-4 py-1 rounded-full">
 
-                            Pending
 
-                        </span>
+<div
+class="
+col-span-4
+bg-white
+rounded-3xl
+shadow-lg
+p-12
+text-center
+">
 
-                    </td>
 
-                </tr>
+<i
+class="
+fa-solid
+fa-calendar-xmark
+text-5xl
+text-gray-300
+">
+</i>
 
-                <tr class="hover:bg-gray-50">
 
-                    <td class="py-4 text-center">
-                        Corporate Meet
-                    </td>
 
-                    <td class="text-center">
-                        12 Oct 2026
-                    </td>
+<h3
+class="
+mt-5
+text-xl
+text-gray-500
+">
 
-                    <td class="text-center">
-                        Hyderabad
-                    </td>
+No Event Categories Available
 
-                    <td class="text-center">
+</h3>
 
-                        <span class="bg-blue-100 text-blue-700 px-4 py-1 rounded-full">
 
-                            Processing
 
-                        </span>
+</div>
 
-                    </td>
 
-                </tr>
 
-            </tbody>
 
-        </table>
+<%
 
-    </div>
+}
+
+%>
+
+
+
+
+</div>
+
 
 </section>
 
-<!-- ================= BOOKING SUMMARY ================= -->
+	<!-- ================= FEATURED PACKAGES ================= -->
 
-<section class="max-w-7xl mx-auto px-8 py-10">
 
-    <div class="grid md:grid-cols-2 gap-8">
+	<section id="packages" class="max-w-7xl mx-auto px-8 pb-16">
 
-        <div class="bg-white rounded-2xl shadow-lg p-8">
 
-            <h2 class="text-2xl font-bold text-purple-700 mb-6">
+		<h2 class="text-3xl font-bold text-gray-800 mb-8">Featured
+			Packages</h2>
 
-                Booking History
 
-            </h2>
 
-            <ul class="space-y-5">
 
-                <li class="flex justify-between">
+		<div class="grid md:grid-cols-3 gap-8">
 
-                    <span>Wedding Package</span>
 
-                    <span class="text-green-600 font-semibold">
 
-                        Completed
 
-                    </span>
 
-                </li>
+			<!-- PACKAGE 1 -->
 
-                <li class="flex justify-between">
 
-                    <span>Birthday Decoration</span>
+			<div
+				class="
+bg-white
+rounded-3xl
+shadow-xl
+overflow-hidden
+hover:scale-105
+transition">
 
-                    <span class="text-blue-600 font-semibold">
 
-                        Confirmed
+				<img
+					src="https://i.pinimg.com/736x/f6/a4/67/f6a467315df1cad1efc70ffd1770f711.jpg"
+					class="w-full h-60 object-cover">
 
-                    </span>
 
-                </li>
 
-                <li class="flex justify-between">
+				<div class="p-6">
 
-                    <span>Baby Shower</span>
 
-                    <span class="text-yellow-600 font-semibold">
+					<h3 class="text-2xl font-bold">Royal Wedding</h3>
 
-                        Upcoming
 
-                    </span>
 
-                </li>
+					<p class="text-gray-600 mt-3">Premium decoration, catering,
+						photography and luxury venue.</p>
 
-                <li class="flex justify-between">
 
-                    <span>Corporate Event</span>
 
-                    <span class="text-purple-600 font-semibold">
+					<p class="text-purple-700 font-bold text-2xl mt-4">₹2,50,000</p>
 
-                        Booked
 
-                    </span>
 
-                </li>
+					<a href="bookevents.jsp"
+						class="
+block
+text-center
+mt-5
+w-full
+py-3
+rounded-xl
+bg-purple-700
+text-white
+hover:bg-purple-800">
 
-            </ul>
 
-        </div>
+						Book Now </a>
 
-        <div class="bg-white rounded-2xl shadow-lg p-8">
 
-            <h2 class="text-2xl font-bold text-purple-700 mb-6">
+				</div>
 
-                Payment Summary
 
-            </h2>
+			</div>
 
-            <div class="space-y-5">
 
-                <div class="flex justify-between">
 
-                    <span>Total Paid</span>
 
-                    <span class="font-bold text-green-600">
 
-                        ₹4,50,000
 
-                    </span>
 
-                </div>
+			<!-- PACKAGE 2 -->
 
-                <div class="flex justify-between">
 
-                    <span>Pending Amount</span>
+			<div
+				class="
+bg-white
+rounded-3xl
+shadow-xl
+overflow-hidden
+hover:scale-105
+transition">
 
-                    <span class="font-bold text-red-600">
 
-                        ₹25,000
+				<img
+					src="https://i.pinimg.com/736x/ff/f6/3c/fff63c1f1ae031369a90cfa7f5787be3.jpg"
+					class="w-full h-60 object-cover">
 
-                    </span>
 
-                </div>
 
-                <div class="flex justify-between">
+				<div class="p-6">
 
-                    <span>Wallet Balance</span>
 
-                    <span class="font-bold text-purple-700">
+					<h3 class="text-2xl font-bold">Birthday Celebration</h3>
 
-                        ₹5,500
 
-                    </span>
 
-                </div>
+					<p class="text-gray-600 mt-3">Theme decoration, entertainment,
+						cake and photography.</p>
 
-                <div class="flex justify-between">
 
-                    <span>Reward Points</span>
 
-                    <span class="font-bold text-yellow-500">
+					<p class="text-pink-600 font-bold text-2xl mt-4">₹35,000</p>
 
-                        850
 
-                    </span>
 
-                </div>
+					<a href="bookevents.jsp"
+						class="
+block
+text-center
+mt-5
+w-full
+py-3
+rounded-xl
+bg-pink-600
+text-white
+hover:bg-pink-700">
 
-            </div>
 
-        </div>
+						Book Now </a>
 
-    </div>
 
-</section>
-<!-- ================= EXCLUSIVE OFFER ================= -->
+				</div>
 
-<section class="max-w-7xl mx-auto px-8 py-12">
 
-    <div class="rounded-3xl bg-gradient-to-r from-purple-700 via-pink-600 to-orange-500 text-white p-10 shadow-xl">
+			</div>
 
-        <h2 class="text-4xl font-bold">
-            🎉 Exclusive Offer
-        </h2>
 
-        <p class="mt-5 text-lg leading-8">
 
-            Book any Premium Wedding Package this month and receive
-            <span class="font-bold">15% Discount</span>,
-            complimentary photography,
-            luxury stage decoration and welcome drinks.
 
-        </p>
 
-        <button
-            class="mt-8 px-8 py-3 rounded-xl bg-white text-purple-700 font-bold hover:scale-105 transition">
 
-            Claim Offer
 
-        </button>
+			<!-- PACKAGE 3 -->
 
-    </div>
 
-</section>
+			<div
+				class="
+bg-white
+rounded-3xl
+shadow-xl
+overflow-hidden
+hover:scale-105
+transition">
 
-<!-- ================= CUSTOMER SUPPORT ================= -->
 
-<section class="max-w-7xl mx-auto px-8 py-12">
+				<img
+					src="https://i.pinimg.com/736x/a8/3f/97/a83f975010e8f14038a37fcf9640cf99.jpg"
+					class="w-full h-60 object-cover">
 
-    <h2 class="text-3xl font-bold text-gray-800 mb-8">
 
-        Need Assistance?
 
-    </h2>
+				<div class="p-6">
 
-    <div class="grid md:grid-cols-3 gap-8">
 
-        <div class="bg-white rounded-3xl shadow-lg p-8 text-center">
+					<h3 class="text-2xl font-bold">Corporate Event</h3>
 
-            <div
-                class="w-20 h-20 mx-auto rounded-full bg-purple-100 flex items-center justify-center">
 
-                <i class="fa-solid fa-headset text-4xl text-purple-700"></i>
 
-            </div>
+					<p class="text-gray-600 mt-3">Conference hall, branding,
+						catering and sound system.</p>
 
-            <h3 class="text-xl font-bold mt-6">
 
-                Customer Support
 
-            </h3>
+					<p class="text-blue-600 font-bold text-2xl mt-4">₹1,20,000</p>
 
-            <p class="mt-4 text-gray-600">
 
-                Our support team is available 24 × 7 to help you.
 
-            </p>
+					<a href="bookevents.jsp"
+						class="
+block
+text-center
+mt-5
+w-full
+py-3
+rounded-xl
+bg-blue-600
+text-white
+hover:bg-blue-700">
 
-            <button
-                class="mt-6 px-6 py-3 rounded-xl bg-purple-700 text-white hover:bg-purple-800">
 
-                Contact Support
+						Book Now </a>
 
-            </button>
 
-        </div>
+				</div>
 
-        <div class="bg-white rounded-3xl shadow-lg p-8 text-center">
 
-            <div
-                class="w-20 h-20 mx-auto rounded-full bg-pink-100 flex items-center justify-center">
+			</div>
 
-                <i class="fa-solid fa-comments text-4xl text-pink-600"></i>
 
-            </div>
 
-            <h3 class="text-xl font-bold mt-6">
 
-                Live Chat
 
-            </h3>
+		</div>
 
-            <p class="mt-4 text-gray-600">
 
-                Chat directly with our event consultants.
+	</section>
+	<!-- ================= EXCLUSIVE OFFER ================= -->
 
-            </p>
+	<section class="max-w-7xl mx-auto px-8 py-12">
 
-            <button
-                class="mt-6 px-6 py-3 rounded-xl bg-pink-600 text-white hover:bg-pink-700">
 
-                Start Chat
+		<div
+			class="
+rounded-3xl
+bg-gradient-to-r
+from-purple-700
+via-pink-600
+to-orange-500
+text-white
+p-10
+shadow-xl">
 
-            </button>
 
-        </div>
+			<h2 class="text-4xl font-bold">🎉 Exclusive Offer</h2>
 
-        <div class="bg-white rounded-3xl shadow-lg p-8 text-center">
 
-            <div
-                class="w-20 h-20 mx-auto rounded-full bg-yellow-100 flex items-center justify-center">
 
-                <i class="fa-solid fa-envelope text-4xl text-yellow-500"></i>
+			<p class="mt-5 text-lg leading-8">
 
-            </div>
 
-            <h3 class="text-xl font-bold mt-6">
+				Book any Premium Wedding Package this month and receive <span
+					class="font-bold"> 15% Discount </span> , complimentary
+				photography, luxury stage decoration and welcome drinks.
 
-                Email Us
 
-            </h3>
+			</p>
 
-            <p class="mt-4 text-gray-600">
 
-                support@beyondcelebrations.com
 
-            </p>
+			<a href="bookevents.jsp"
+				class="
+inline-block
+mt-8
+px-8
+py-3
+rounded-xl
+bg-white
+text-purple-700
+font-bold
+hover:scale-105
+transition">
 
-            <button
-                class="mt-6 px-6 py-3 rounded-xl bg-yellow-500 text-white hover:bg-yellow-600">
 
-                Send Email
+				Claim Offer </a>
 
-            </button>
 
-        </div>
+		</div>
 
-    </div>
 
-</section>
+	</section>
 
-<!-- ================= TESTIMONIALS ================= -->
 
-<section class="max-w-7xl mx-auto px-8 py-12">
 
-    <h2 class="text-3xl font-bold text-gray-800 mb-8">
 
-        What Our Customers Say
 
-    </h2>
 
-    <div class="grid md:grid-cols-3 gap-8">
+	<!-- ================= CUSTOMER SUPPORT ================= -->
 
-        <div class="bg-white rounded-3xl shadow-lg p-8">
 
-            <div class="text-yellow-400 text-xl">
+	<section class="max-w-7xl mx-auto px-8 py-12">
 
-                ★★★★★
 
-            </div>
+		<h2 class="text-3xl font-bold text-gray-800 mb-8">Need
+			Assistance?</h2>
 
-            <p class="mt-5 italic text-gray-600">
 
-                "Excellent planning and wonderful decoration.
-                Our wedding became unforgettable."
 
-            </p>
 
-            <h4 class="mt-6 font-bold">
+		<div class="grid md:grid-cols-3 gap-8">
 
-                - Priya Sharma
 
-            </h4>
 
-        </div>
 
-        <div class="bg-white rounded-3xl shadow-lg p-8">
 
-            <div class="text-yellow-400 text-xl">
+			<!-- SUPPORT -->
 
-                ★★★★★
 
-            </div>
+			<div class="
+bg-white
+rounded-3xl
+shadow-lg
+p-8
+text-center">
 
-            <p class="mt-5 italic text-gray-600">
 
-                "Professional staff and beautiful event management."
+				<div
+					class="
+w-20
+h-20
+mx-auto
+rounded-full
+bg-purple-100
+flex
+items-center
+justify-center">
 
-            </p>
 
-            <h4 class="mt-6 font-bold">
+					<i class="fa-solid fa-headset text-4xl text-purple-700"></i>
 
-                - Rahul Verma
 
-            </h4>
+				</div>
 
-        </div>
 
-        <div class="bg-white rounded-3xl shadow-lg p-8">
 
-            <div class="text-yellow-400 text-xl">
+				<h3 class="text-xl font-bold mt-6">Customer Support</h3>
 
-                ★★★★★
 
-            </div>
 
-            <p class="mt-5 italic text-gray-600">
+				<p class="mt-4 text-gray-600">Our support team is available 24 ×
+					7 to help you.</p>
 
-                "Highly recommended for customized celebrations."
 
-            </p>
 
-            <h4 class="mt-6 font-bold">
+				<a href="contact.jsp"
+					class="
+inline-block
+mt-6
+px-6
+py-3
+rounded-xl
+bg-purple-700
+text-white
+hover:bg-purple-800">
 
-                - Sneha Reddy
 
-            </h4>
+					Contact Support </a>
 
-        </div>
 
-    </div>
+			</div>
 
-</section>
 
-<!-- ================= FOOTER ================= -->
 
-<footer class="bg-[#1b0f1d] text-white mt-10">
 
-    <div class="max-w-7xl mx-auto px-8 py-12">
 
-        <div class="grid md:grid-cols-4 gap-10">
 
-            <div>
+			<!-- CHAT -->
 
-                <h2
-                    class="text-3xl text-yellow-300"
-                    style="font-family:Cinzel;">
 
-                    Beyond Celebrations
+			<div class="
+bg-white
+rounded-3xl
+shadow-lg
+p-8
+text-center">
 
-                </h2>
 
-                <p
-                    class="text-yellow-200 text-xl"
-                    style="font-family:'Great Vibes';">
+				<div
+					class="
+w-20
+h-20
+mx-auto
+rounded-full
+bg-pink-100
+flex
+items-center
+justify-center">
 
-                    More than events, we create experiences
 
-                </p>
+					<i class="fa-solid fa-comments text-4xl text-pink-600"></i>
 
-                <p class="mt-5 text-gray-400 leading-7">
 
-                    Your trusted event planning partner.
+				</div>
 
-                </p>
 
-            </div>
 
-            <div>
+				<h3 class="text-xl font-bold mt-6">Live Chat</h3>
 
-                <h3 class="text-yellow-300 text-xl font-bold mb-5">
 
-                    Quick Links
 
-                </h3>
+				<p class="mt-4 text-gray-600">Chat directly with our event
+					consultants.</p>
 
-                <ul class="space-y-3">
 
-                    <li><a href="#">Home</a></li>
 
-                    <li><a href="#">Packages</a></li>
+				<button
+					class="
+mt-6
+px-6
+py-3
+rounded-xl
+bg-pink-600
+text-white
+hover:bg-pink-700">
 
-                    <li><a href="#">Bookings</a></li>
 
-                    <li><a href="#">Contact</a></li>
+					Start Chat</button>
 
-                </ul>
 
-            </div>
+			</div>
 
-            <div>
 
-                <h3 class="text-yellow-300 text-xl font-bold mb-5">
 
-                    Contact
 
-                </h3>
 
-                <p>Bengaluru</p>
 
-                <p class="mt-3">+91 9876543210</p>
 
-                <p class="mt-3">support@beyondcelebrations.com</p>
 
-            </div>
+			<!-- EMAIL -->
 
-            <div>
 
-                <h3 class="text-yellow-300 text-xl font-bold mb-5">
+			<div class="
+bg-white
+rounded-3xl
+shadow-lg
+p-8
+text-center">
 
-                    Follow Us
 
-                </h3>
+				<div
+					class="
+w-20
+h-20
+mx-auto
+rounded-full
+bg-yellow-100
+flex
+items-center
+justify-center">
 
-                <div class="flex gap-5 text-2xl">
 
-                    <i class="fab fa-facebook"></i>
+					<i class="fa-solid fa-envelope text-4xl text-yellow-500"></i>
 
-                    <i class="fab fa-instagram"></i>
 
-                    <i class="fab fa-linkedin"></i>
+				</div>
 
-                    <i class="fab fa-x-twitter"></i>
 
-                </div>
 
-                
-            </div>
 
-        </div>
+				<h3 class="text-xl font-bold mt-6">Email Us</h3>
 
-        <hr class="my-10 border-gray-700">
 
-        <p class="text-center text-gray-400">
 
-            © 2026 Beyond Celebrations. All Rights Reserved.
 
-        </p>
+				<p class="mt-4 text-gray-600">support@beyondcelebrations.com</p>
 
-    </div>
 
-</footer>
+
+				<a href="mailto:support@beyondcelebrations.com"
+					class="
+inline-block
+mt-6
+px-6
+py-3
+rounded-xl
+bg-yellow-500
+text-white
+hover:bg-yellow-600">
+
+
+					Send Email </a>
+
+
+			</div>
+
+
+
+		</div>
+
+
+	</section>
+
+
+
+
+
+
+	<!-- ================= TESTIMONIALS ================= -->
+
+
+	<section class="max-w-7xl mx-auto px-8 py-12">
+
+
+		<h2 class="text-3xl font-bold text-gray-800 mb-8">What Our
+			Customers Say</h2>
+
+
+
+
+		<div class="grid md:grid-cols-3 gap-8">
+
+
+
+
+
+			<div class="
+bg-white
+rounded-3xl
+shadow-lg
+p-8">
+
+
+				<div class="text-yellow-400 text-xl">★★★★★</div>
+
+
+
+				<p class="mt-5 italic text-gray-600">"Excellent planning and
+					wonderful decoration. Our wedding became unforgettable."</p>
+
+
+
+				<h4 class="mt-6 font-bold">- Priya Sharma</h4>
+
+
+			</div>
+
+
+
+
+
+
+
+			<div class="
+bg-white
+rounded-3xl
+shadow-lg
+p-8">
+
+
+				<div class="text-yellow-400 text-xl">★★★★★</div>
+
+
+
+				<p class="mt-5 italic text-gray-600">"Professional staff and
+					beautiful event management."</p>
+
+
+
+				<h4 class="mt-6 font-bold">- Rahul Verma</h4>
+
+
+			</div>
+
+
+
+
+
+
+
+
+			<div class="
+bg-white
+rounded-3xl
+shadow-lg
+p-8">
+
+
+				<div class="text-yellow-400 text-xl">★★★★★</div>
+
+
+
+				<p class="mt-5 italic text-gray-600">"Highly recommended for
+					customized celebrations."</p>
+
+
+
+				<h4 class="mt-6 font-bold">- Sneha Reddy</h4>
+
+
+			</div>
+
+
+
+
+		</div>
+
+
+	</section>
+
+
+
+
+
+
+
+	<!-- ================= FOOTER ================= -->
+
+
+	<footer class="
+bg-[#1b0f1d]
+text-white
+mt-10">
+
+
+		<div class="
+max-w-7xl
+mx-auto
+px-8
+py-12">
+
+
+			<div class="grid md:grid-cols-4 gap-10">
+
+
+
+
+
+				<div>
+
+
+					<h2 class="
+text-3xl
+text-yellow-300"
+						style="font-family: Cinzel;">Beyond Celebrations</h2>
+
+
+
+
+					<p class="
+text-yellow-200
+text-xl"
+						style="font-family: 'Great Vibes';">More than events, we
+						create experiences</p>
+
+
+
+					<p class="mt-5 text-gray-400">Your trusted event planning
+						partner.</p>
+
+
+
+				</div>
+
+
+
+
+
+
+
+				<div>
+
+
+					<h3 class="text-yellow-300 text-xl font-bold mb-5">Quick Links
+
+					</h3>
+
+
+
+					<ul class="space-y-3">
+
+
+						<li><a href="customerdashboard"> Home </a></li>
+
+
+
+						<li><a href="#packages"> Packages </a></li>
+
+
+
+						<li><a href="bookevents.jsp"> Bookings </a></li>
+
+
+
+						<li><a href="contact.jsp"> Contact </a></li>
+
+
+
+					</ul>
+
+
+				</div>
+
+
+
+
+
+
+
+				<div>
+
+
+					<h3 class="text-yellow-300 text-xl font-bold mb-5">Contact</h3>
+
+
+
+					<p>Bengaluru</p>
+
+
+
+					<p class="mt-3">+91 9876543210</p>
+
+
+
+					<p class="mt-3">support@beyondcelebrations.com</p>
+
+
+				</div>
+
+
+
+
+
+
+
+
+				<div>
+
+
+					<h3 class="text-yellow-300 text-xl font-bold mb-5">Follow Us</h3>
+
+
+
+					<div class="flex gap-5 text-2xl">
+
+
+						<i class="fab fa-facebook"></i> <i class="fab fa-instagram"></i> <i
+							class="fab fa-linkedin"></i> <i class="fab fa-x-twitter"></i>
+
+
+
+					</div>
+
+
+				</div>
+
+
+
+
+
+			</div>
+
+
+
+
+
+			<hr class="my-10 border-gray-700">
+
+
+
+
+
+			<p class="text-center text-gray-400">© 2026 Beyond Celebrations.
+				All Rights Reserved.</p>
+
+
+
+		</div>
+
+
+	</footer>
+
+
+
+
 
 </body>
+
 </html>

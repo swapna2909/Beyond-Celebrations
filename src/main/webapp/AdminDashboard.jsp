@@ -633,8 +633,10 @@ Manage Bookings
                 </p>
 
             </div>
-
         </a>
+
+
+
 
 
         <!-- Delete Customer -->

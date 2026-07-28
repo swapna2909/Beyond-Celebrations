@@ -6,6 +6,13 @@ encoding//src/main/webapp/ApprovedBookings.jsp=UTF-8
 encoding//src/main/webapp/CompletedBookings.jsp=UTF-8
 encoding//src/main/webapp/PendingBookings.jsp=UTF-8
 encoding//src/main/webapp/ViewBookings.jsp=UTF-8
+<<<<<<< HEAD
 encoding//src/main/webapp/login.jsp=UTF-8
 encoding//src/main/webapp/viewEventCategory.jsp=UTF-8
+=======
+encoding//src/main/webapp/customerdashboard.jsp=UTF-8
+encoding//src/main/webapp/eventTypes.jsp=UTF-8
+encoding//src/main/webapp/login.jsp=UTF-8
+encoding//src/main/webapp/mybookings.jsp=UTF-8
+>>>>>>> 001d877f7862c5adf5c8de88cc82d078f8ac029c
 encoding/<project>=UTF-8
