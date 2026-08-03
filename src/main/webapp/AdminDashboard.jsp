@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+pageEncoding="UTF-8"%>
 <%@page import="com.dao.impl.Customer_impl"%>
 <%@page import="com.dao.inf.customer_inf"%>
 <%@page import="com.dao.impl.Event_Category_impl"%>
@@ -21,150 +21,153 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link
-	href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap"
-	rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Great+Vibes&display=swap"
+rel="stylesheet">
 
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Poppins', sans-serif;
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
 }
 
-body {
-	background: #f8fafc;
+body{
+background:#f8fafc;
 }
 
-html {
-	scroll-behavior: smooth;
+html{
+scroll-behavior:smooth;
 }
 
-.nav-link {
-	position: relative;
-	transition: .3s;
+.nav-link{
+position:relative;
+transition:.3s;
 }
 
-.nav-link:hover {
-	color: #7c3aed;
+.nav-link:hover{
+color:#7c3aed;
 }
 
-.nav-link::after {
-	content: "";
-	position: absolute;
-	left: 0;
-	bottom: -6px;
-	height: 3px;
-	width: 0%;
-	background: #7c3aed;
-	transition: .3s;
-	border-radius: 10px;
+.nav-link::after{
+content:"";
+position:absolute;
+left:0;
+bottom:-6px;
+height:3px;
+width:0%;
+background:#7c3aed;
+transition:.3s;
+border-radius:10px;
 }
 
-.nav-link:hover::after {
-	width: 100%;
+.nav-link:hover::after{
+width:100%;
 }
 
-.hero {
-	background: linear-gradient(90deg, #6d28d9, #db2777, #f97316);
+.hero{
+background:linear-gradient(90deg,#6d28d9,#db2777,#f97316);
 }
 
-.card {
-	transition: .35s;
-	cursor: pointer;
+.card{
+transition:.35s;
+cursor:pointer;
 }
 
-.card:hover {
-	transform: translateY(-10px);
-	box-shadow: 0 20px 35px rgba(0, 0, 0, .15);
+.card:hover{
+
+transform:translateY(-10px);
+box-shadow:0 20px 35px rgba(0,0,0,.15);
+
 }
 
-.module-card {
-	transition: .35s;
-	border-radius: 25px;
+.module-card{
+
+transition:.35s;
+border-radius:25px;
+
 }
 
-.module-card:hover {
-	transform: translateY(-8px) scale(1.02);
+.module-card:hover{
+
+transform:translateY(-8px) scale(1.02);
+
 }
 
-.glass {
-	background: rgba(255, 255, 255, .18);
-	backdrop-filter: blur(15px);
-	border: 1px solid rgba(255, 255, 255, .25);
+.glass{
+
+background:rgba(255,255,255,.18);
+
+backdrop-filter:blur(15px);
+
+border:1px solid rgba(255,255,255,.25);
+
 }
 
-.section-title {
-	font-size: 34px;
-	font-weight: 700;
-	color: #1e293b;
+.section-title{
+
+font-size:34px;
+font-weight:700;
+color:#1e293b;
+
 }
 
-.dashboard-card {
-	background: white;
-	border-radius: 25px;
-	padding: 28px;
-	box-shadow: 0 10px 25px rgba(0, 0, 0, .08);
-	transition: .3s;
+.dashboard-card{
+
+background:white;
+border-radius:25px;
+padding:28px;
+box-shadow:0 10px 25px rgba(0,0,0,.08);
+transition:.3s;
+
 }
 
-.dashboard-card:hover {
-	transform: translateY(-8px);
+.dashboard-card:hover{
+
+transform:translateY(-8px);
+
 }
 
-.icon-circle {
-	width: 80px;
-	height: 80px;
-	border-radius: 50%;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	font-size: 32px;
+.icon-circle{
+
+width:80px;
+height:80px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:32px;
+
 }
 
-#customers, #categories, #events, #venues, #bookings {
-	scroll-margin-top: 100px;
+#customers,
+#categories,
+#events,
+#venues,
+#bookings{
+
+scroll-margin-top:100px;
+
 }
+
 </style>
 </head>
 
 <body>
 
-	<!-- ================= NAVBAR ================= -->
+<!-- ================= NAVBAR ================= -->
 
-	<nav class="bg-white shadow-lg sticky top-0 z-50">
+<nav class="bg-white shadow-lg sticky top-0 z-50">
 
-		<div class="max-w-7xl mx-auto px-8">
+<div class="max-w-7xl mx-auto px-8">
 
-			<div class="flex justify-between items-center h-20">
+<div class="flex justify-between items-center h-20">
 
-				<div class="flex items-center gap-2">
-
-					<div
-						class="w-14 h-14 rounded-full bg-purple-700 text-white flex items-center justify-center text-2xl font-bold">
-
-						BC</div>
-
-					<div>
-
-						<h1 class="text-2xl text-purple-700">BEYOND CELEBRATIONS</h1>
-
-					</div>
-
-				</div>
-
-				<ul class="hidden lg:flex gap-8 font-medium">
-
-					<li><a href="AdminDashboard.jsp" class="nav-link">Dashboard</a></li>
-					<li><a href="#customers" class="nav-link">Customers</a></li>
-					<li><a href="#categories" class="nav-link">Categories</a></li>
-					<li><a href="#events" class="nav-link">Events</a></li>
-					<li><a href="#venues" class="nav-link">Venues</a></li>
-					<li><a href="#bookings" class="nav-link">Bookings</a></li>
+<div class="flex items-center gap-2">
 
 <div class="w-14 h-14 rounded-full bg-purple-700 text-white flex items-center justify-center text-2xl font-bold">
 BC
@@ -175,40 +178,18 @@ BC
 <p class="text-yellow-500" style="font-family: 'Great Vibes';">More than events, we create experiences</p>
 </div>
 
+</div>
 
-				</ul>
+<ul class="hidden lg:flex gap-8 font-medium">
 
-				<div class="flex items-center gap-4 ">
+<li><a href="AdminDashboard.jsp" class="nav-link">Dashboard</a></li>
+<li><a href="#customers" class="nav-link">Customers</a></li>
+<li><a href="#categories" class="nav-link">Categories</a></li>
+<li><a href="#events"class="nav-link">Events</a></li>
+<li><a href="#venues"class="nav-link">Venues</a></li>
+<li><a href="#bookings"class="nav-link">Bookings</a></li>
 
-					<div class="text-right"></div>
-
-					<div
-						class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-700 to-pink-500 text-white flex items-center justify-center text-3xl font-bold">
-
-
-						A</div>
-
-					<a href="logout"
-						class="bg-red-600 hover:bg-red-700 text-white px-7 py-3 rounded-xl text-lg font-semibold">
-
-						Logout </a>
-
-				</div>
-
-			</div>
-
-		</div>
-
-	</nav>
-	<!-- ================= HERO ================= -->
-
-	<section class="hero">
-
-		<div class="max-w-7xl mx-auto px-10 py-20">
-
-			<div class="grid lg:grid-cols-2 gap-16 items-center">
-
-				<div>
+</ul>
 
 <div class="flex items-center gap-4 ">
 <div class="text-right"></div>
@@ -223,860 +204,768 @@ class="bg-red-600 hover:bg-red-700 text-white px-7 py-3 rounded-xl text-lg font-
 Logout
 </a>
 
+</div>
 
-					<h1 class="text-4xl font-extrabold text-white">Welcome
-						Administrator 👑</h1>
+</div>
 
-					<p class="text-3xl mt-3 text-white"
-						style="font-family: 'Great Vibes', cursive;">Manage every
-						celebration with elegance.</p>
+</div>
 
-					<p class="text-white text-1xl mt-10 leading-10">Control
-						customers, event categories, event types, venues and bookings from
-						one beautiful dashboard.</p>
+</nav>
+<!-- ================= HERO ================= -->
 
-					<div class="mt-12 flex gap-6">
+<section class="hero">
 
-						<a href="#customers"
-							class="bg-white text-purple-700 px-8 py-4 rounded-xl text-xl font-bold hover:scale-105 transition">
+<div class="max-w-7xl mx-auto px-10 py-20">
 
-							Manage Customers </a> <a href="#bookings"
-							class="glass text-white px-8 py-4 rounded-xl text-xl"> View
-							Bookings </a>
+<div class="grid lg:grid-cols-2 gap-16 items-center">
 
-					</div>
+<div>
 
-				</div>
+<h1 class="text-4xl font-extrabold text-white">
 
-				<div>
+Welcome Administrator 👑
 
-					<div class="grid grid-cols-2 gap-8">
+</h1>
 
-						<div class="dashboard-card">
+<p
+class="text-3xl mt-3 text-white"
+style="font-family:'Great Vibes',cursive;">
 
-							<div class="flex justify-between items-center">
+Manage every celebration with elegance.
 
-								<div>
+</p>
 
-									<p class="text-gray-500">Customers</p>
+<p class="text-white text-1xl mt-10 leading-10">
 
-									<h2 class="text-3xl font-bold text-purple-700 mt-3">
+Control customers, event categories, event types,
+venues and bookings from one beautiful dashboard.
 
-										<%
-										customer_inf cus = new Customer_impl();
-										Long l = cus.CountOfCustomers();
-										%>
-										<%=l%>
+</p>
 
+<div class="mt-12 flex gap-6">
 
-									</h2>
+<a href="ViewCustomer.jsp"
+class="bg-white text-purple-700 px-8 py-4 rounded-xl text-xl font-bold hover:scale-105 transition">
 
-								</div>
+Manage Customers
 
-								<div class="icon-circle bg-purple-100">
-
-									<i class="fa-solid fa-users text-purple-700"></i>
-
-
-								</div>
+</a>
 
 <a href="ViewBookings.jsp"
 class="glass text-white px-8 py-4 rounded-xl text-xl hover:scale-105 transition">
 
+View Bookings
 
-							</div>
+</a>
 
-						</div>
+</div>
 
-						<div class="dashboard-card">
+</div>
 
-							<div class="flex justify-between items-center">
+<div>
 
-								<div>
+<div class="grid grid-cols-2 gap-8">
 
-									<p class="text-gray-500">Categories</p>
+<div class="dashboard-card">
 
-									<h2 class="text-3xl font-bold text-pink-600 mt-3">
+<div class="flex justify-between items-center">
 
-										<%
-										event_category_inf event = new Event_Category_impl();
-										Long lo = event.countOfCategory();
-										%>
-										<%=lo%>
+<div>
 
-									</h2>
+<p class="text-gray-500">
 
-								</div>
+Customers
 
-								<div class="icon-circle bg-pink-100">
+</p>
 
-									<i class="fa-solid fa-layer-group text-pink-600"></i>
+<h2 class="text-3xl font-bold text-purple-700 mt-3">
 
-								</div>
+<%customer_inf cus=new Customer_impl();
+Long l=cus.CountOfCustomers();
+%>
+<%= l %>
 
-							</div>
 
-						</div>
+</h2>
 
-						<div class="dashboard-card">
+</div>
 
-							<div class="flex justify-between items-center">
+<div class="icon-circle bg-purple-100">
 
-								<div>
+<i class="fa-solid fa-users text-purple-700"></i>
 
-									<p class="text-gray-500">Event Types</p>
+</div>
 
-									<h2 class="text-3xl font-bold text-green-600 mt-3">
+</div>
 
-										<%
-										event_type_inf e = new Event_type_impl();
-										Long lon = e.countOfEvent();
-										%>
-										<%=lon%>
-									</h2>
+</div>
 
-								</div>
+<div class="dashboard-card">
 
-								<div class="icon-circle bg-green-100">
+<div class="flex justify-between items-center">
 
-									<i class="fa-solid fa-calendar-days text-green-600"></i>
+<div>
 
-								</div>
+<p class="text-gray-500">
 
-							</div>
+Categories
 
-						</div>
+</p>
 
-						<div class="dashboard-card">
+<h2 class="text-3xl font-bold text-pink-600 mt-3">
 
-							<div class="flex justify-between items-center">
+<%event_category_inf event=new Event_Category_impl();
+Long lo=event.countOfCategory();
+%>
+<%= lo %>
 
-								<div>
+</h2>
 
-									<p class="text-gray-500">Bookings</p>
+</div>
 
-									<h2 class="text-3xl font-bold text-orange-500 mt-3">
+<div class="icon-circle bg-pink-100">
 
+<i class="fa-solid fa-layer-group text-pink-600"></i>
 
-										<%
-										booking_inf b = new Booking_impl();
-										Long lonn = b.countOfBooking();
-										%>
-										<%=lonn%>
+</div>
 
-									</h2>
+</div>
 
-								</div>
+</div>
 
-								<div class="icon-circle bg-orange-100">
+<div class="dashboard-card">
 
-									<i class="fa-solid fa-book text-orange-500"></i>
+<div class="flex justify-between items-center">
 
-								</div>
+<div>
 
-							</div>
+<p class="text-gray-500">
 
-						</div>
+Event Types
 
-					</div>
+</p>
 
-				</div>
+<h2 class="text-3xl font-bold text-green-600 mt-3">
 
-			</div>
+<%event_type_inf e=new Event_type_impl();
+Long lon=e.countOfEvent(); 
+%>
+<%= lon %>
+</h2>
 
-		</div>
+</div>
 
-	</section>
+<div class="icon-circle bg-green-100">
 
-	<!-- ================= DASHBOARD MODULES ================= -->
+<i class="fa-solid fa-calendar-days text-green-600"></i>
 
-	<section class="max-w-7xl mx-auto py-16 px-8">
+</div>
 
-		<h2 class="section-title mb-10">Administrator Overview</h2>
+</div>
 
-		<div class="grid md:grid-cols-5 gap-8">
+</div>
 
-			<a href="#customers">
+<div class="dashboard-card">
 
-				<div class="dashboard-card text-center">
+<div class="flex justify-between items-center">
 
-					<div class="icon-circle bg-blue-100 mx-auto">
+<div>
 
-						<i class="fa-solid fa-users text-blue-600"></i>
+<p class="text-gray-500">
 
-					</div>
+Bookings
 
-					<h3 class="text-2xl font-bold mt-6">Customers</h3>
+</p>
 
-					<p class="text-gray-500 mt-2">Manage Customers</p>
+<h2 class="text-3xl font-bold text-orange-500 mt-3">
 
-				</div>
 
-			</a> <a href="#categories">
+<%booking_inf b=new Booking_impl();
+Long lonn=b.countOfBooking(); 
+%>
+<%= lonn %>
 
-				<div class="dashboard-card text-center">
+</h2>
 
-					<div class="icon-circle bg-indigo-100 mx-auto">
+</div>
 
-						<i class="fa-solid fa-layer-group text-indigo-600"></i>
+<div class="icon-circle bg-orange-100">
 
-					</div>
+<i class="fa-solid fa-book text-orange-500"></i>
 
-					<h3 class="text-2xl font-bold mt-6">Categories</h3>
+</div>
 
-					<p class="text-gray-500 mt-2">Manage Categories</p>
+</div>
 
-				</div>
+</div>
 
-			</a> <a href="#events">
+</div>
 
-				<div class="dashboard-card text-center">
+</div>
 
-					<div class="icon-circle bg-green-100 mx-auto">
+</div>
 
-						<i class="fa-solid fa-calendar-days text-green-600"></i>
+</div>
 
-					</div>
+</section>
 
-					<h3 class="text-2xl font-bold mt-6">Events</h3>
 
 
-					<p class="text-gray-500 mt-2">Manage Event Types</p>
 
-				</div>
 
-			</a> <a href="#venues">
+<!-- ================= EVENT CATEGORY MANAGEMENT ================= -->
 
-				<div class="dashboard-card text-center">
+<section id="categories" class="max-w-7xl mx-auto px-8 py-16">
 
-					<div class="icon-circle bg-orange-100 mx-auto">
+    <div class="flex items-center justify-between mb-8">
 
-						<i class="fa-solid fa-building text-orange-500"></i>
+        <div>
 
-					</div>
+            <h2 class="text-4xl font-bold text-slate-800">
+                Event Category Management
+            </h2>
 
-					<h3 class="text-2xl font-bold mt-6">Venues</h3>
+            <p class="text-gray-500 mt-2">
+                Create and manage categories for every celebration.
+            </p>
 
-					<p class="text-gray-500 mt-2">Manage Venues</p>
+        </div>
 
-				</div>
+        <i class="fa-solid fa-layer-group text-5xl text-indigo-600"></i>
 
-			</a> <a href="#bookings">
+    </div>
 
-				<div class="dashboard-card text-center">
+    <div class="grid md:grid-cols-3 gap-8">
 
-					<div class="icon-circle bg-purple-100 mx-auto">
+        <!-- Add Category -->
 
-						<i class="fa-solid fa-book text-purple-700"></i>
+        <a href="AddEventCategory.jsp">
 
-					</div>
+            <div class="module-card bg-gradient-to-r from-purple-600 to-indigo-700 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-					<h3 class="text-2xl font-bold mt-6">Bookings</h3>
+                <div class="flex justify-between items-center">
 
-					<p class="text-gray-500 mt-2">Manage Bookings</p>
+                    <div>
 
-				</div>
+                        <p class="text-purple-100">
+                            New Category
+                        </p>
 
-			</a>
+                        <h3 class="text-3xl font-bold mt-2">
+                            Add Category
+                        </h3>
 
-		</div>
+                    </div>
 
-	</section>
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
 
-	<!-- ================= CUSTOMER MANAGEMENT ================= -->
+                        <i class="fa-solid fa-plus text-3xl"></i>
 
-	<section id="customers" class="max-w-7xl mx-auto px-8 py-16">
+                    </div>
 
-		<div class="flex items-center justify-between mb-8">
+                </div>
 
-			<div>
+                <p class="text-purple-100 mt-5">
+                    Create a new event category for your services.
+                </p>
 
-				<h2 class="text-4xl font-bold text-slate-800">Customer
-					Management</h2>
+            </div>
 
-				<p class="text-gray-500 mt-2">Manage all registered customers
-					efficiently.</p>
+        </a>
 
-			</div>
 
-			<i class="fa-solid fa-users text-5xl text-purple-600"></i>
 
-		</div>
+        <!-- View Categories -->
 
-		<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <a href="viewEventCategory.jsp">
 
-			<!-- View Customers -->
+            <div class="module-card bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-			<a href="ViewCustomer.jsp">
+                <div class="flex justify-between items-center">
 
-				<div
-					class="module-card bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+                    <div>
 
-					<div class="flex justify-between items-center">
+                        <p class="text-gray-300">
+                            Available Categories
+                        </p>
 
-						<div>
+                        <h3 class="text-3xl font-bold mt-2">
+                            View Categories
+                        </h3>
 
-							<p class="text-blue-100">Customer Details</p>
+                    </div>
 
-							<h3 class="text-3xl font-bold mt-2">View Customers</h3>
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
 
-						</div>
+                        <i class="fa-solid fa-eye text-3xl"></i>
 
-						<div
-							class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+                    </div>
 
-							<i class="fa-solid fa-users text-3xl"></i>
+                </div>
 
-						</div>
+                <p class="text-gray-300 mt-5">
+                    Browse all existing event categories.
+                </p>
 
-					</div>
+            </div>
 
-					<p class="text-blue-100 mt-5">View all registered customers
-						with complete profile details.</p>
+        </a>
 
-				</div>
-			</a>
 
 
+        <!-- Update Category -->
 
+        <a href="updateEventCategory.jsp">
 
+            <div class="module-card bg-gradient-to-r from-orange-400 to-amber-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-			<!-- Delete Customer -->
+                <div class="flex justify-between items-center">
 
-			<a href="ViewCustomer.jsp">
+                    <div>
 
-				<div
-					class="module-card bg-gradient-to-r from-red-500 to-pink-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+                        <p class="text-yellow-100">
+                            Edit Categories
+                        </p>
 
-					<div class="flex justify-between items-center">
+                        <h3 class="text-3xl font-bold mt-2">
+                            Update Category
+                        </h3>
 
-						<div>
+                    </div>
 
-							<p class="text-red-100">Remove Customer</p>
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
 
-							<h3 class="text-3xl font-bold mt-2">Delete Customer</h3>
+                        <i class="fa-solid fa-pen-to-square text-3xl"></i>
 
-						</div>
+                    </div>
 
-						<div
-							class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+                </div>
 
-							<i class="fa-solid fa-user-xmark text-3xl"></i>
+                <p class="text-yellow-100 mt-5">
+                    Modify category names and descriptions anytime.
+                </p>
 
-						</div>
+            </div>
 
-					</div>
+        </a>
 
-					<p class="text-red-100 mt-5">Delete inactive or unwanted
-						customer accounts safely.</p>
+    </div>
 
-				</div>
+</section>
 
-			</a>
+<!-- ================= EVENT TYPE MANAGEMENT ================= -->
 
-		</div>
+<section id="events" class="max-w-7xl mx-auto px-8 py-16">
 
-	</section>
+    <div class="flex items-center justify-between mb-8">
 
+        <div>
 
+            <h2 class="text-4xl font-bold text-slate-800">
+                Event Type Management
+            </h2>
 
-	<!-- ================= EVENT CATEGORY MANAGEMENT ================= -->
+            <p class="text-gray-500 mt-2">
+                Manage event types under every category.
+            </p>
 
-	<section id="categories" class="max-w-7xl mx-auto px-8 py-16">
+        </div>
 
-		<div class="flex items-center justify-between mb-8">
+        <i class="fa-solid fa-calendar-days text-5xl text-emerald-600"></i>
 
-			<div>
+    </div>
 
-				<h2 class="text-4xl font-bold text-slate-800">Event Category
-					Management</h2>
+    <div class="grid md:grid-cols-3 gap-8">
 
+        <!-- Add Event Type -->
 
-				<p class="text-gray-500 mt-2">Create and manage categories for
-					every celebration.</p>
+        <a href="AddEventType.jsp">
 
-			</div>
+            <div class="module-card bg-gradient-to-r from-green-500 to-emerald-700 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-			<i class="fa-solid fa-layer-group text-5xl text-indigo-600"></i>
+                <div class="flex justify-between items-center">
 
-		</div>
+                    <div>
 
-		<div class="grid md:grid-cols-3 gap-8">
+                        <p class="text-green-100">
+                            New Event
+                        </p>
 
-			<!-- Add Category -->
+                        <h3 class="text-3xl font-bold mt-2">
+                            Add Event Type
+                        </h3>
 
-			<a href="AddEventCategory.jsp">
+                    </div>
 
-				<div
-					class="module-card bg-gradient-to-r from-purple-600 to-indigo-700 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
 
-					<div class="flex justify-between items-center">
+                        <i class="fa-solid fa-calendar-plus text-3xl"></i>
 
-						<div>
+                    </div>
 
-							<p class="text-purple-100">New Category</p>
+                </div>
 
-							<h3 class="text-3xl font-bold mt-2">Add Category</h3>
+                <p class="text-green-100 mt-5">
+                    Add a new event type with budget and description.
+                </p>
 
-						</div>
+            </div>
 
-						<div
-							class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+        </a>
 
-							<i class="fa-solid fa-plus text-3xl"></i>
+        <!-- View Event Types -->
 
-						</div>
+        <a href="viewEventType">
 
-					</div>
+            <div class="module-card bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-					<p class="text-purple-100 mt-5">Create a new event category for
-						your services.</p>
+                <div class="flex justify-between items-center">
 
-				</div>
+                    <div>
 
-			</a>
+                        <p class="text-gray-300">
+                            Existing Events
+                        </p>
 
+                        <h3 class="text-3xl font-bold mt-2">
+                            View Event Types
+                        </h3>
 
+                    </div>
 
-			<!-- View Categories -->
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
 
-			<a href="viewEventCategory.jsp">
+                        <i class="fa-solid fa-list text-3xl"></i>
 
-				<div
-					class="module-card bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+                    </div>
 
-					<div class="flex justify-between items-center">
+                </div>
 
-						<div>
+                <p class="text-gray-300 mt-5">
+                    View all available event types.
+                </p>
 
-							<p class="text-gray-300">Available Categories</p>
+            </div>
 
-							<h3 class="text-3xl font-bold mt-2">View Categories</h3>
+        </a>
 
-						</div>
+        <!-- Update Event Type -->
 
-						<div
-							class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+        <a href="updateEventType.jsp">
 
-							<i class="fa-solid fa-eye text-3xl"></i>
+            <div class="module-card bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-						</div>
+                <div class="flex justify-between items-center">
 
-					</div>
+                    <div>
 
-					<p class="text-gray-300 mt-5">Browse all existing event
-						categories.</p>
+                        <p class="text-orange-100">
+                            Modify Events
+                        </p>
 
-				</div>
+                        <h3 class="text-3xl font-bold mt-2">
+                            Update Event Type
+                        </h3>
 
-			</a>
+                    </div>
 
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
 
+                        <i class="fa-solid fa-file-pen text-3xl"></i>
 
-			<!-- Update Category -->
+                    </div>
 
-			<a href="updateEventCategory.jsp">
+                </div>
 
-				<div
-					class="module-card bg-gradient-to-r from-orange-400 to-amber-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+                <p class="text-orange-100 mt-5">
+                    Update event details whenever required.
+                </p>
 
-					<div class="flex justify-between items-center">
+            </div>
 
-						<div>
+        </a>
 
-							<p class="text-yellow-100">Edit Categories</p>
+    </div>
 
-							<h3 class="text-3xl font-bold mt-2">Update Category</h3>
+</section>
 
-						</div>
 
-						<div
-							class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
 
-							<i class="fa-solid fa-pen-to-square text-3xl"></i>
+<!-- ================= VENUE MANAGEMENT ================= -->
 
-						</div>
+<section id="venues" class="max-w-7xl mx-auto px-8 py-16">
 
-					</div>
+    <div class="flex items-center justify-between mb-8">
 
-					<p class="text-yellow-100 mt-5">Modify category names and
-						descriptions anytime.</p>
+        <div>
 
-				</div>
+            <h2 class="text-4xl font-bold text-slate-800">
+                Venue Management
+            </h2>
 
-			</a>
+            <p class="text-gray-500 mt-2">
+                Manage all venue information.
+            </p>
 
-		</div>
+        </div>
 
-	</section>
+        <i class="fa-solid fa-building text-5xl text-cyan-600"></i>
 
-	<!-- ================= EVENT TYPE MANAGEMENT ================= -->
+    </div>
 
-	<section id="events" class="max-w-7xl mx-auto px-8 py-16">
+    <div class="grid md:grid-cols-3 gap-8">
 
-		<div class="flex items-center justify-between mb-8">
+        <!-- Add Venue -->
 
-			<div>
+        <a href="addVenue.jsp">
 
-				<h2 class="text-4xl font-bold text-slate-800">Event Type
-					Management</h2>
+            <div class="module-card bg-gradient-to-r from-cyan-500 to-blue-700 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-				<p class="text-gray-500 mt-2">Manage event types under every
-					category.</p>
+                <div class="flex justify-between">
 
-			</div>
+                    <div>
 
-			<i class="fa-solid fa-calendar-days text-5xl text-emerald-600"></i>
+                        <p class="text-cyan-100">
+                            New Venue
+                        </p>
 
-		</div>
+                        <h3 class="text-3xl font-bold mt-2">
+                            Add Venue
+                        </h3>
 
-		<div class="grid md:grid-cols-3 gap-8">
+                    </div>
 
-			<!-- Add Event Type -->
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
 
-			<a href="AddEventType.jsp">
+                        <i class="fa-solid fa-building-circle-check text-3xl"></i>
 
-				<div
-					class="module-card bg-gradient-to-r from-green-500 to-emerald-700 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+                    </div>
 
-					<div class="flex justify-between items-center">
+                </div>
 
-						<div>
+                <p class="text-cyan-100">
+                    Add beautiful venues for celebrations.
+                </p>
 
-							<p class="text-green-100">New Event</p>
+            </div>
 
-							<h3 class="text-3xl font-bold mt-2">Add Event Type</h3>
+        </a>
 
-						</div>
+        <!-- View Venue -->
 
-						<div
-							class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+        <a href="viewVenue.jsp">
 
-							<i class="fa-solid fa-calendar-plus text-3xl"></i>
+            <div class="module-card bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-						</div>
+                <div class="flex justify-between">
 
-					</div>
+                    <div>
 
-					<p class="text-green-100 mt-5">Add a new event type with budget
-						and description.</p>
+                        <p class="text-gray-300">
+                            Venue List
+                        </p>
 
-				</div>
+                        <h3 class="text-3xl font-bold mt-2">
+                            View Venues
+                        </h3>
 
-			</a>
+                    </div>
 
-			<!-- View Event Types -->
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
 
-			<a href="viewEventType">
+                        <i class="fa-solid fa-hotel text-3xl"></i>
 
-				<div
-					class="module-card bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+                    </div>
 
-					<div class="flex justify-between items-center">
+                </div>
 
-						<div>
+                <p class="text-gray-300">
+                    Browse all registered venues.
+                </p>
 
-							<p class="text-gray-300">Existing Events</p>
+            </div>
 
-							<h3 class="text-3xl font-bold mt-2">View Event Types</h3>
+        </a>
 
-						</div>
+        <!-- Update Venue -->
 
-						<div
-							class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+        <a href="updateVenue.jsp">
 
-							<i class="fa-solid fa-list text-3xl"></i>
+            <div class="module-card bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-						</div>
+                <div class="flex justify-between">
 
-					</div>
+                    <div>
 
-					<p class="text-gray-300 mt-5">View all available event types.</p>
+                        <p class="text-pink-100">
+                            Edit Venue
+                        </p>
 
-				</div>
+                        <h3 class="text-3xl font-bold mt-2">
+                            Update Venue
+                        </h3>
 
-			</a>
+                    </div>
 
-			<!-- Update Event Type -->
+                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
 
-			<a href="updateEventType.jsp">
+                        <i class="fa-solid fa-pen text-3xl"></i>
 
-				<div
-					class="module-card bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+                    </div>
 
-					<div class="flex justify-between items-center">
+                </div>
 
-						<div>
+                <p class="text-pink-100">
+                    Update venue information quickly.
+                </p>
 
-							<p class="text-orange-100">Modify Events</p>
+            </div>
 
-							<h3 class="text-3xl font-bold mt-2">Update Event Type</h3>
+        </a>
 
-						</div>
+    </div>
 
-						<div
-							class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+</section>
 
-							<i class="fa-solid fa-file-pen text-3xl"></i>
 
-						</div>
 
-					</div>
+<!-- ================= BOOKING MANAGEMENT ================= -->
 
-					<p class="text-orange-100 mt-5">Update event details whenever
-						required.</p>
+<section id="bookings" class="max-w-7xl mx-auto px-8 py-16">
 
-				</div>
+    <div class="flex items-center justify-between mb-8">
 
-			</a>
+        <div>
 
-		</div>
+            <h2 class="text-4xl font-bold text-slate-800">
+                Booking Management
+            </h2>
 
-	</section>
+            <p class="text-gray-500 mt-2">
+                Track every customer booking efficiently.
+            </p>
 
+        </div>
 
+        <i class="fa-solid fa-book text-5xl text-purple-600"></i>
 
-	<!-- ================= VENUE MANAGEMENT ================= -->
+    </div>
 
-	<section id="venues" class="max-w-7xl mx-auto px-8 py-16">
+    <div class="grid md:grid-cols-4 gap-8">
 
-		<div class="flex items-center justify-between mb-8">
+        <!-- View Bookings -->
 
-			<div>
+        <a href="ViewBookings.jsp">
 
-				<h2 class="text-4xl font-bold text-slate-800">Venue Management
-				</h2>
+            <div class="module-card bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-				<p class="text-gray-500 mt-2">Manage all venue information.</p>
+                <i class="fa-solid fa-book-open text-5xl"></i>
 
-			</div>
+                <h3 class="text-3xl font-bold">
+                    View Bookings
+                </h3>
 
-			<i class="fa-solid fa-building text-5xl text-cyan-600"></i>
+                <p>
+                    View every customer booking.
+                </p>
 
-		</div>
+            </div>
 
-		<div class="grid md:grid-cols-3 gap-8">
+        </a>
 
-			<!-- Add Venue -->
+        <!-- Pending -->
 
-			<a href="addVenue.jsp">
+        <a href="PendingBookings.jsp">
 
-				<div
-					class="module-card bg-gradient-to-r from-cyan-500 to-blue-700 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+            <div class="module-card bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-					<div class="flex justify-between">
+                <i class="fa-solid fa-clock text-5xl"></i>
 
-						<div>
+                <h3 class="text-3xl font-bold">
+                    Pending
+                </h3>
 
-							<p class="text-cyan-100">New Venue</p>
+                <p>
+                    Pending booking approvals.
+                </p>
 
-							<h3 class="text-3xl font-bold mt-2">Add Venue</h3>
+            </div>
 
-						</div>
+        </a>
 
-						<div
-							class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+        <!-- Approved -->
 
-							<i class="fa-solid fa-building-circle-check text-3xl"></i>
+        <a href="ApprovedBookings.jsp">
 
-						</div>
+            <div class="module-card bg-gradient-to-r from-green-500 to-emerald-700 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-					</div>
+                <i class="fa-solid fa-circle-check text-5xl"></i>
 
-					<p class="text-cyan-100">Add beautiful venues for celebrations.
-					</p>
+                <h3 class="text-3xl font-bold">
+                    Approved
+                </h3>
 
-				</div>
+                <p>
+                    Approved customer bookings.
+                </p>
 
-			</a>
+            </div>
 
-			<!-- View Venue -->
+        </a>
 
-			<a href="viewVenue.jsp">
+        <!-- Completed -->
 
-				<div
-					class="module-card bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+        <a href="CompletedBookings.jsp">
 
-					<div class="flex justify-between">
+            <div class="module-card bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
-						<div>
+                <i class="fa-solid fa-calendar-check text-5xl"></i>
 
-							<p class="text-gray-300">Venue List</p>
+                <h3 class="text-3xl font-bold">
+                    Completed
+                </h3>
 
-							<h3 class="text-3xl font-bold mt-2">View Venues</h3>
+                <p>
+                    Successfully completed events.
+                </p>
 
-						</div>
+            </div>
 
-						<div
-							class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+        </a>
 
-							<i class="fa-solid fa-hotel text-3xl"></i>
+    </div>
 
-						</div>
+</section>
 
-					</div>
 
-					<p class="text-gray-300">Browse all registered venues.</p>
 
-				</div>
+<!-- ================= FOOTER ================= -->
 
-			</a>
+<footer class="bg-slate-900 text-white py-8 mt-10">
 
-			<!-- Update Venue -->
+    <div class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center">
 
-			<a href="updateVenue.jsp">
+        <div>
 
-				<div
-					class="module-card bg-gradient-to-r from-pink-500 to-rose-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+            <h3 class="text-2xl font-bold">
+                Beyond Celebrations
+            </h3>
 
-					<div class="flex justify-between">
+            <p class="text-gray-400 mt-2">
+                Administrator Control Panel
+            </p>
 
-						<div>
+        </div>
 
-							<p class="text-pink-100">Edit Venue</p>
+        <div class="text-gray-400 text-center mt-5 md:mt-0">
 
-							<h3 class="text-3xl font-bold mt-2">Update Venue</h3>
+            © 2026 Beyond Celebrations. All Rights Reserved.
 
-						</div>
+        </div>
 
-						<div
-							class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+    </div>
 
-							<i class="fa-solid fa-pen text-3xl"></i>
-
-						</div>
-
-					</div>
-
-					<p class="text-pink-100">Update venue information quickly.</p>
-
-				</div>
-
-			</a>
-
-		</div>
-
-	</section>
-
-
-
-	<!-- ================= BOOKING MANAGEMENT ================= -->
-
-	<section id="bookings" class="max-w-7xl mx-auto px-8 py-16">
-
-		<div class="flex items-center justify-between mb-8">
-
-			<div>
-
-				<h2 class="text-4xl font-bold text-slate-800">Booking
-					Management</h2>
-
-				<p class="text-gray-500 mt-2">Track every customer booking
-					efficiently.</p>
-
-			</div>
-
-			<i class="fa-solid fa-book text-5xl text-purple-600"></i>
-
-		</div>
-
-		<div class="grid md:grid-cols-4 gap-8">
-
-			<!-- View Bookings -->
-
-			<a href="ViewBookings.jsp">
-
-				<div
-					class="module-card bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
-
-					<i class="fa-solid fa-book-open text-5xl"></i>
-
-					<h3 class="text-3xl font-bold">View Bookings</h3>
-
-					<p>View every customer booking.</p>
-
-				</div>
-
-			</a>
-
-			<!-- Pending -->
-
-			<a href="PendingBookings.jsp">
-
-				<div
-					class="module-card bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
-
-					<i class="fa-solid fa-clock text-5xl"></i>
-
-					<h3 class="text-3xl font-bold">Pending</h3>
-
-					<p>Pending booking approvals.</p>
-
-				</div>
-
-			</a>
-
-			<!-- Approved -->
-
-			<a href="ApprovedBookings.jsp">
-
-				<div
-					class="module-card bg-gradient-to-r from-green-500 to-emerald-700 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
-
-					<i class="fa-solid fa-circle-check text-5xl"></i>
-
-					<h3 class="text-3xl font-bold">Approved</h3>
-
-					<p>Approved customer bookings.</p>
-
-				</div>
-
-			</a>
-
-			<!-- Completed -->
-
-			<a href="CompletedBookings.jsp">
-
-				<div
-					class="module-card bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
-
-					<i class="fa-solid fa-calendar-check text-5xl"></i>
-
-					<h3 class="text-3xl font-bold">Completed</h3>
-
-					<p>Successfully completed events.</p>
-
-				</div>
-
-			</a>
-
-		</div>
-
-	</section>
-
-
-
-	<!-- ================= FOOTER ================= -->
-
-	<footer class="bg-slate-900 text-white py-8 mt-10">
-
-		<div
-			class="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center">
-
-			<div>
-
-				<h3 class="text-2xl font-bold">Beyond Celebrations</h3>
-
-				<p class="text-gray-400 mt-2">Administrator Control Panel</p>
-
-			</div>
-
-			<div class="text-gray-400 text-center mt-5 md:mt-0">© 2026
-				Beyond Celebrations. All Rights Reserved.</div>
-
-		</div>
-
-	</footer>
+</footer>
 
 </body>
 </html>
