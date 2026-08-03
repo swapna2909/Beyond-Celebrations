@@ -166,6 +166,16 @@ html {
 					<li><a href="#venues" class="nav-link">Venues</a></li>
 					<li><a href="#bookings" class="nav-link">Bookings</a></li>
 
+<div class="w-14 h-14 rounded-full bg-purple-700 text-white flex items-center justify-center text-2xl font-bold">
+BC
+</div>
+
+<div>
+<h1 class="text-2xl text-purple-700" style="font-family: Cinzel;"> Beyond Celebrations </h1>
+<p class="text-yellow-500" style="font-family: 'Great Vibes';">More than events, we create experiences</p>
+</div>
+
+
 				</ul>
 
 				<div class="flex items-center gap-4 ">
@@ -174,6 +184,7 @@ html {
 
 					<div
 						class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-700 to-pink-500 text-white flex items-center justify-center text-3xl font-bold">
+
 
 						A</div>
 
@@ -198,6 +209,20 @@ html {
 			<div class="grid lg:grid-cols-2 gap-16 items-center">
 
 				<div>
+
+<div class="flex items-center gap-4 ">
+<div class="text-right"></div>
+
+<div
+class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-700 to-pink-500 text-white flex items-center justify-center text-3xl font-bold">
+A
+</div>
+
+<a href="logout"
+class="bg-red-600 hover:bg-red-700 text-white px-7 py-3 rounded-xl text-lg font-semibold">
+Logout
+</a>
+
 
 					<h1 class="text-4xl font-extrabold text-white">Welcome
 						Administrator 👑</h1>
@@ -252,7 +277,12 @@ html {
 
 									<i class="fa-solid fa-users text-purple-700"></i>
 
+
 								</div>
+
+<a href="ViewBookings.jsp"
+class="glass text-white px-8 py-4 rounded-xl text-xl hover:scale-105 transition">
+
 
 							</div>
 
@@ -410,6 +440,7 @@ html {
 
 					<h3 class="text-2xl font-bold mt-6">Events</h3>
 
+
 					<p class="text-gray-500 mt-2">Manage Event Types</p>
 
 				</div>
@@ -559,6 +590,7 @@ html {
 
 				<h2 class="text-4xl font-bold text-slate-800">Event Category
 					Management</h2>
+
 
 				<p class="text-gray-500 mt-2">Create and manage categories for
 					every celebration.</p>
