@@ -101,6 +101,8 @@ Search
 
 <th class="py-4 px-4">Status</th>
 
+<th class="py-4 px-4">Action</th>
+
 </tr>
 
 </thead>
@@ -122,6 +124,19 @@ List<Customer> li = inf.findAll();%>
 <span class="bg-green-500 text-white px-3 py-1 rounded-full text-sm">
 Active
 </span>
+</td>
+
+<td>
+
+<a href="deletecustomer?customerId=<%=c.getCustomer_id()%>"
+   onclick="return confirm('Are you sure you want to delete this customer?');"
+   class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg transition">
+
+    <i class="fa-solid fa-trash"></i>
+    Delete
+
+</a>
+
 </td>
 
 </tr>
