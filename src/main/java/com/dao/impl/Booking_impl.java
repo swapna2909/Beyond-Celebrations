@@ -10,6 +10,7 @@ import java.util.List;
 
 import com.dao.inf.booking_inf;
 import com.dto.Booking;
+import com.dto.BookingDetails;
 import com.utility.Connectivity;
 
 public class Booking_impl implements booking_inf{
@@ -150,30 +151,236 @@ public class Booking_impl implements booking_inf{
     }
 
     @Override
-    public List<Booking> findPendingBookings() {
+    public List<BookingDetails> findPendingBookings() {
 
-        return getBookingsByStatus("Pending");
+    	
 
+    	    List<BookingDetails> list = new ArrayList<>();
+
+    	    String sql = "SELECT b.booking_id, c.first_name AS customer_name, "
+    	            + "o.organizer_name, e.event_name, v.venue_name, "
+    	            + "b.booking_date, b.event_date, b.guest_count, "
+    	            + "b.budget, b.status, b.special_request "
+    	            + "FROM booking b "
+    	            + "JOIN customer c ON b.customer_id = c.customer_id "
+    	            + "JOIN organizer o ON b.organizer_id = o.organizer_id "
+    	            + "JOIN event_type e ON b.event_type_id = e.event_type_id "
+    	            + "JOIN venue v ON b.venue_id = v.venue_id "
+    	            + "WHERE b.status='Pending' "
+    	            + "ORDER BY b.booking_id DESC";
+
+    	    try {
+
+    	        PreparedStatement ps = con.prepareStatement(sql);
+
+    	        ResultSet rs = ps.executeQuery();
+
+    	        while (rs.next()) {
+
+    	            BookingDetails b = new BookingDetails();
+
+    	            b.setBookingId(rs.getInt("booking_id"));
+    	            b.setCustomerName(rs.getString("customer_name"));
+    	            b.setOrganizerName(rs.getString("organizer_name"));
+    	            b.setEventType(rs.getString("event_name"));
+    	            b.setVenueName(rs.getString("venue_name"));
+    	            b.setBookingDate(rs.getString("booking_date"));
+    	            b.setEventDate(rs.getString("event_date"));
+    	            b.setGuestCount(rs.getInt("guest_count"));
+    	            b.setBudget(rs.getDouble("budget"));
+    	            b.setStatus(rs.getString("status"));
+    	            b.setSpecialRequest(rs.getString("special_request"));
+
+    	            list.add(b);
+    	        }
+
+    	    } catch (Exception e) {
+    	        e.printStackTrace();
+    	    }
+
+    	    return list;
+    	}
+
+    
+
+    @Override
+    public List<BookingDetails> findApprovedBookings() {
+
+    	
+
+    	    List<BookingDetails> list = new ArrayList<>();
+
+    	    String sql = "SELECT b.booking_id, c.first_name AS customer_name, "
+    	            + "o.organizer_name, e.event_name, v.venue_name, "
+    	            + "b.booking_date, b.event_date, b.guest_count, "
+    	            + "b.budget, b.status, b.special_request "
+    	            + "FROM booking b "
+    	            + "JOIN customer c ON b.customer_id = c.customer_id "
+    	            + "JOIN organizer o ON b.organizer_id = o.organizer_id "
+    	            + "JOIN event_type e ON b.event_type_id = e.event_type_id "
+    	            + "JOIN venue v ON b.venue_id = v.venue_id "
+    	            + "WHERE b.status='Approved' "
+    	            + "ORDER BY b.booking_id DESC";
+
+    	    try {
+
+    	        PreparedStatement ps = con.prepareStatement(sql);
+
+    	        ResultSet rs = ps.executeQuery();
+
+    	        while (rs.next()) {
+
+    	            BookingDetails b = new BookingDetails();
+
+    	            b.setBookingId(rs.getInt("booking_id"));
+    	            b.setCustomerName(rs.getString("customer_name"));
+    	            b.setOrganizerName(rs.getString("organizer_name"));
+    	            b.setEventType(rs.getString("event_name"));
+    	            b.setVenueName(rs.getString("venue_name"));
+    	            b.setBookingDate(rs.getString("booking_date"));
+    	            b.setEventDate(rs.getString("event_date"));
+    	            b.setGuestCount(rs.getInt("guest_count"));
+    	            b.setBudget(rs.getDouble("budget"));
+    	            b.setStatus(rs.getString("status"));
+    	            b.setSpecialRequest(rs.getString("special_request"));
+
+    	            list.add(b);
+    	        }
+
+    	    } catch (Exception e) {
+    	        e.printStackTrace();
+    	    }
+
+    	    return list;
+    	}
+    
+
+    @Override
+    public List<BookingDetails> findRejectedBookings() {
+
+    	
+
+    	    List<BookingDetails> list = new ArrayList<>();
+
+    	    String sql = "SELECT b.booking_id, c.first_name AS customer_name, "
+    	            + "o.organizer_name, e.event_name, v.venue_name, "
+    	            + "b.booking_date, b.event_date, b.guest_count, "
+    	            + "b.budget, b.status, b.special_request "
+    	            + "FROM booking b "
+    	            + "JOIN customer c ON b.customer_id = c.customer_id "
+    	            + "JOIN organizer o ON b.organizer_id = o.organizer_id "
+    	            + "JOIN event_type e ON b.event_type_id = e.event_type_id "
+    	            + "JOIN venue v ON b.venue_id = v.venue_id "
+    	            + "WHERE b.status='Rejected' "
+    	            + "ORDER BY b.booking_id DESC";
+
+    	    try {
+
+    	        PreparedStatement ps = con.prepareStatement(sql);
+
+    	        ResultSet rs = ps.executeQuery();
+
+    	        while (rs.next()) {
+
+    	            BookingDetails b = new BookingDetails();
+
+    	            b.setBookingId(rs.getInt("booking_id"));
+    	            b.setCustomerName(rs.getString("customer_name"));
+    	            b.setOrganizerName(rs.getString("organizer_name"));
+    	            b.setEventType(rs.getString("event_name"));
+    	            b.setVenueName(rs.getString("venue_name"));
+    	            b.setBookingDate(rs.getString("booking_date"));
+    	            b.setEventDate(rs.getString("event_date"));
+    	            b.setGuestCount(rs.getInt("guest_count"));
+    	            b.setBudget(rs.getDouble("budget"));
+    	            b.setStatus(rs.getString("status"));
+    	            b.setSpecialRequest(rs.getString("special_request"));
+
+    	            list.add(b);
+    	        }
+
+    	    } catch (Exception e) {
+    	        e.printStackTrace();
+    	    }
+
+    	    return list;
+    	}
+
+    public Integer getVenueIdByBookingId(Integer bookingId) {
+
+        Integer venueId = null;
+
+        String sql = "SELECT venue_id FROM booking WHERE booking_id=?";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setInt(1, bookingId);
+
+            ResultSet rs = ps.executeQuery();
+
+            if (rs.next()) {
+
+                venueId = rs.getInt("venue_id");
+            }
+
+        } catch (Exception e) {
+
+            e.printStackTrace();
+        }
+
+        return venueId;
     }
 
     @Override
-    public List<Booking> findApprovedBookings() {
+    public List<BookingDetails> findCompletedBookings() {
 
-        return getBookingsByStatus("Approved");
 
-    }
+	    List<BookingDetails> list = new ArrayList<>();
 
-    @Override
-    public List<Booking> findRejectedBookings() {
+	    String sql = "SELECT b.booking_id, c.first_name AS customer_name, "
+	            + "o.organizer_name, e.event_name, v.venue_name, "
+	            + "b.booking_date, b.event_date, b.guest_count, "
+	            + "b.budget, b.status, b.special_request "
+	            + "FROM booking b "
+	            + "JOIN customer c ON b.customer_id = c.customer_id "
+	            + "JOIN organizer o ON b.organizer_id = o.organizer_id "
+	            + "JOIN event_type e ON b.event_type_id = e.event_type_id "
+	            + "JOIN venue v ON b.venue_id = v.venue_id "
+	            + "WHERE b.status='Completed' "
+	            + "ORDER BY b.booking_id DESC";
 
-        return getBookingsByStatus("Rejected");
+	    try {
 
-    }
+	        PreparedStatement ps = con.prepareStatement(sql);
 
-    @Override
-    public List<Booking> findCompletedBookings() {
+	        ResultSet rs = ps.executeQuery();
 
-        return getBookingsByStatus("Completed");
+	        while (rs.next()) {
+
+	            BookingDetails b = new BookingDetails();
+
+	            b.setBookingId(rs.getInt("booking_id"));
+	            b.setCustomerName(rs.getString("customer_name"));
+	            b.setOrganizerName(rs.getString("organizer_name"));
+	            b.setEventType(rs.getString("event_name"));
+	            b.setVenueName(rs.getString("venue_name"));
+	            b.setBookingDate(rs.getString("booking_date"));
+	            b.setEventDate(rs.getString("event_date"));
+	            b.setGuestCount(rs.getInt("guest_count"));
+	            b.setBudget(rs.getDouble("budget"));
+	            b.setStatus(rs.getString("status"));
+	            b.setSpecialRequest(rs.getString("special_request"));
+
+	            list.add(b);
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return list;
 
     }
 
@@ -317,10 +524,98 @@ public class Booking_impl implements booking_inf{
         return list;
     }
 
-	@Override
-	public List<Booking> getAllBookings() {
-		// TODO Auto-generated method stub
-		return null;
+    @Override
+    public List<Booking> getAllBookings() {
+
+        List<Booking> list = new ArrayList<>();
+
+        String sql = "SELECT * FROM booking ORDER BY booking_id DESC";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ResultSet rs = ps.executeQuery();
+
+            while(rs.next()){
+
+                Booking b = new Booking();
+
+                b.setBooking_id(rs.getInt("booking_id"));
+                b.setCustomer_id(rs.getInt("customer_id"));
+                b.setOrganizer_id(rs.getInt("organizer_id"));
+                b.setEvent_type_id(rs.getInt("event_type_id"));
+                b.setVenue_id(rs.getInt("venue_id"));
+                b.setBooking_date(rs.getString("booking_date"));
+                b.setEvent_date(rs.getString("event_date"));
+                b.setGuest_count(rs.getInt("guest_count"));
+                b.setBudget(rs.getDouble("budget"));
+                b.setStatus(rs.getString("status"));
+                b.setSpecial_request(rs.getString("special_request"));
+
+                list.add(b);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+    @Override
+	public List<BookingDetails> getAllBookingDetails() {
+
+	    List<BookingDetails> list = new ArrayList<>();
+
+	    String query = "SELECT b.booking_id, " +
+	            "CONCAT(c.first_name,' ',c.last_name) AS customerName, " +
+	            "o.organizer_name AS organizerName, " +
+	            "et.event_name, " +
+	            "v.venue_name, " +
+	            "b.booking_date, " +
+	            "b.event_date, " +
+	            "b.guest_count, " +
+	            "b.budget, " +
+	            "b.status, " +
+	            "b.special_request " +
+	            "FROM booking b " +
+	            "JOIN customer c ON b.customer_id = c.customer_id " +
+	            "JOIN organizer o ON b.organizer_id = o.organizer_id " +
+	            "JOIN event_type et ON b.event_type_id = et.event_type_id " +
+	            "JOIN venue v ON b.venue_id = v.venue_id";
+
+	    try {
+
+	        PreparedStatement ps = con.prepareStatement(query);
+
+	        ResultSet rs = ps.executeQuery();
+
+	        while (rs.next()) {
+
+	            BookingDetails bd = new BookingDetails();
+
+	            bd.setBookingId(rs.getInt("booking_id"));
+	            bd.setCustomerName(rs.getString("customerName"));
+	            bd.setOrganizerName(rs.getString("organizerName"));
+	            bd.setEventType(rs.getString("event_name"));
+	            bd.setVenueName(rs.getString("venue_name"));
+	            bd.setBookingDate(rs.getString("booking_date"));
+	            bd.setEventDate(rs.getString("event_date"));
+	            bd.setGuestCount(rs.getInt("guest_count"));
+	            bd.setBudget(rs.getDouble("budget"));
+	            bd.setStatus(rs.getString("status"));
+	            bd.setSpecialRequest(rs.getString("special_request"));
+
+	            list.add(bd);
+	        }
+
+	    } catch (Exception e) {
+
+	        e.printStackTrace();
+
+	    }
+
+	    return list;
 	}
 
 	@Override
@@ -344,5 +639,61 @@ public class Booking_impl implements booking_inf{
 
         return count;
 	}
+	public BookingDetails getBookingDetailsById(Integer bookingId) {
+
+	    BookingDetails booking = null;
+
+	    String sql = "SELECT " +
+	            "b.booking_id, " +
+	            "c.first_name AS customer_name, " +
+	            "o.organizer_name, " +
+	            "e.event_name, " +
+	            "v.venue_name, " +
+	            "b.booking_date, " +
+	            "b.event_date, " +
+	            "b.guest_count, " +
+	            "b.budget, " +
+	            "b.status, " +
+	            "b.special_request " +
+	            "FROM booking b " +
+	            "JOIN customer c ON b.customer_id = c.customer_id " +
+	            "JOIN organizer o ON b.organizer_id = o.organizer_id " +
+	            "JOIN event_type e ON b.event_type_id = e.event_type_id " +
+	            "JOIN venue v ON b.venue_id = v.venue_id " +
+	            "WHERE b.booking_id=?";
+
+	    try {
+
+	        PreparedStatement ps = con.prepareStatement(sql);
+
+	        ps.setInt(1, bookingId);
+
+	        ResultSet rs = ps.executeQuery();
+
+	        if (rs.next()) {
+
+	            booking = new BookingDetails();
+
+	            booking.setBookingId(rs.getInt("booking_id"));
+	            booking.setCustomerName(rs.getString("customer_name"));
+	            booking.setOrganizerName(rs.getString("organizer_name"));
+	            booking.setEventType(rs.getString("event_name"));
+	            booking.setVenueName(rs.getString("venue_name"));
+	            booking.setBookingDate(rs.getString("booking_date"));
+	            booking.setEventDate(rs.getString("event_date"));
+	            booking.setGuestCount(rs.getInt("guest_count"));
+	            booking.setBudget(rs.getDouble("budget"));
+	            booking.setStatus(rs.getString("status"));
+	            booking.setSpecialRequest(rs.getString("special_request"));
+
+	        }
+
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+
+	    return booking;
+	}
+	
 
 }

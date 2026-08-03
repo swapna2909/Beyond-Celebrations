@@ -13,7 +13,7 @@ List<BookingDetails> bookings =
 
 <meta charset="UTF-8">
 
-<title>Pending Bookings</title>
+<title>Rejected Bookings</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -26,20 +26,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <!-- Header -->
 
-<div class="bg-yellow-500 shadow-lg">
+<div class="bg-red-600 shadow-lg">
 
 <div class="max-w-7xl mx-auto flex justify-between items-center p-6">
 
 <h1 class="text-4xl font-bold text-white">
 
-<i class="fa-solid fa-clock mr-3"></i>
+<i class="fa-solid fa-circle-xmark mr-3"></i>
 
-Pending Bookings
+Rejected Bookings
 
 </h1>
 
 <a href="AdminDashboard.jsp"
-class="bg-white text-yellow-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200">
+class="bg-white text-red-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200">
 
 Back to Dashboard
 
@@ -78,9 +78,9 @@ Booked On :
 
 </div>
 
-<span class="bg-yellow-100 text-yellow-700 px-5 py-2 rounded-full font-semibold">
+<span class="bg-red-100 text-red-700 px-5 py-2 rounded-full font-semibold">
 
-Pending
+Rejected
 
 </span>
 
@@ -168,14 +168,16 @@ Pending
 
 </div>
 
-<div class="flex justify-end gap-5 mt-8">
+<div class="flex justify-end mt-8">
 
-				<a href="bookingdetails?id=<%=b.getBookingId()%>&from=pending"
-					class="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700">
+<a href="bookingdetails?id=<%=b.getBookingId()%>&from=rejected"
+class="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700">
 
-					View Details </a>
+View Details
 
-			</div>
+</a>
+
+</div>
 
 </div>
 
@@ -187,17 +189,17 @@ else{
 
 <div class="bg-white rounded-3xl shadow-lg p-16 text-center">
 
-<i class="fa-solid fa-calendar-xmark text-6xl text-gray-300"></i>
+<i class="fa-solid fa-circle-xmark text-6xl text-red-300"></i>
 
 <h2 class="text-3xl font-bold text-gray-500 mt-6">
 
-No Pending Bookings
+No Rejected Bookings
 
 </h2>
 
 <p class="text-gray-400 mt-3">
 
-All bookings have been processed.
+No bookings have been rejected.
 
 </p>
 

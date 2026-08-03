@@ -1,12 +1,9 @@
 package com.servlets;
 
-
-
 import java.io.IOException;
-import java.util.List;
 
 import com.dao.impl.Booking_impl;
-import com.dto.BookingDetails;
+import com.dao.impl.Venue_impl;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -14,24 +11,25 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/completedbookings")
-public class CompletedBookingsServlet extends HttpServlet {
+@WebServlet("/rejectbooking")
+public class RejectBookingServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
 
-        Booking_impl dao = new Booking_impl();
+        int bookingId =
+                Integer.parseInt(request.getParameter("id"));
 
-        List<BookingDetails> bookings =
-                dao.findCompletedBookings();
+        Booking_impl bookingDao = new Booking_impl();
+        Venue_impl venueDao = new Venue_impl();
 
-        request.setAttribute("bookings", bookings);
+        bookingDao.rejectBooking(bookingId);
 
-        request.getRequestDispatcher("completedBookings.jsp")
-                .forward(request, response);
+        int venueId = bookingDao.getVenueIdByBookingId(bookingId);
 
+        venueDao.updateVenueAvailability(venueId, "Available");
     }
 
 }

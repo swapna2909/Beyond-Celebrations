@@ -1,5 +1,4 @@
 package com.servlets;
-
 import java.io.IOException;
 
 import com.dao.impl.Booking_impl;
@@ -9,9 +8,8 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-
-@WebServlet("/approvedbookings")
-public class ApprovedBookingsServlet extends HttpServlet{
+@WebServlet("/rejectedbookings")
+public class RejectedBookingsServlet extends HttpServlet{
 
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
@@ -20,9 +18,9 @@ public class ApprovedBookingsServlet extends HttpServlet{
         Booking_impl dao = new Booking_impl();
 
         request.setAttribute("bookings",
-                dao.findApprovedBookings());
+                dao.findRejectedBookings());
 
-        request.getRequestDispatcher("approvedBookings.jsp")
+        request.getRequestDispatcher("rejectedBookings.jsp")
         .forward(request,response);
 
     }

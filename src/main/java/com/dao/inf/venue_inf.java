@@ -21,6 +21,9 @@ public interface venue_inf {
 	    List<Venue> findByCapacity(Integer capacity);
 
 	    List<Venue> AvailableVenues();
+	    
+	    void updateVenueAvailability(Integer venueId, String availability);
+	    
 	}
 
 
