@@ -2,11 +2,9 @@ package com.servlets;
 
 import java.io.IOException;
 import java.util.List;
-
 import com.dao.impl.Booking_impl;
 import com.dao.inf.booking_inf;
 import com.dto.Booking;
-
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
