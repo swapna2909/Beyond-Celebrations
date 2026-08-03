@@ -170,19 +170,12 @@ scroll-margin-top:100px;
 <div class="flex items-center gap-2">
 
 <div class="w-14 h-14 rounded-full bg-purple-700 text-white flex items-center justify-center text-2xl font-bold">
-
 BC
-
 </div>
 
 <div>
-
-<h1 class="text-2xl text-purple-700">
-
-BEYOND CELEBRATIONS
-
-</h1>
-
+<h1 class="text-2xl text-purple-700" style="font-family: Cinzel;"> Beyond Celebrations </h1>
+<p class="text-yellow-500" style="font-family: 'Great Vibes';">More than events, we create experiences</p>
 </div>
 
 </div>
@@ -199,25 +192,16 @@ BEYOND CELEBRATIONS
 </ul>
 
 <div class="flex items-center gap-4 ">
-
-<div class="text-right">
-
-
-
-</div>
+<div class="text-right"></div>
 
 <div
 class="w-12 h-12 rounded-full bg-gradient-to-r from-purple-700 to-pink-500 text-white flex items-center justify-center text-3xl font-bold">
-
 A
-
 </div>
 
 <a href="logout"
 class="bg-red-600 hover:bg-red-700 text-white px-7 py-3 rounded-xl text-lg font-semibold">
-
 Logout
-
 </a>
 
 </div>
@@ -267,8 +251,8 @@ Manage Customers
 
 </a>
 
-<a href="#bookings"
-class="glass text-white px-8 py-4 rounded-xl text-xl">
+<a href="ViewBookings.jsp"
+class="glass text-white px-8 py-4 rounded-xl text-xl hover:scale-105 transition">
 
 View Bookings
 
@@ -425,156 +409,6 @@ Long lonn=b.countOfBooking();
 
 </section>
 
-<!-- ================= DASHBOARD MODULES ================= -->
-
-<section class="max-w-7xl mx-auto py-16 px-8">
-
-<h2 class="section-title mb-10">
-
-Administrator Overview
-
-</h2>
-
-<div class="grid md:grid-cols-5 gap-8">
-
-<a href="#customers">
-
-<div class="dashboard-card text-center">
-
-<div
-class="icon-circle bg-blue-100 mx-auto">
-
-<i class="fa-solid fa-users text-blue-600"></i>
-
-</div>
-
-<h3 class="text-2xl font-bold mt-6">
-
-Customers
-
-</h3>
-
-<p class="text-gray-500 mt-2">
-
-Manage Customers
-
-</p>
-
-</div>
-
-</a>
-
-<a href="#categories">
-
-<div class="dashboard-card text-center">
-
-<div
-class="icon-circle bg-indigo-100 mx-auto">
-
-<i class="fa-solid fa-layer-group text-indigo-600"></i>
-
-</div>
-
-<h3 class="text-2xl font-bold mt-6">
-
-Categories
-
-</h3>
-
-<p class="text-gray-500 mt-2">
-
-Manage Categories
-
-</p>
-
-</div>
-
-</a>
-
-<a href="#events">
-
-<div class="dashboard-card text-center">
-
-<div
-class="icon-circle bg-green-100 mx-auto">
-
-<i class="fa-solid fa-calendar-days text-green-600"></i>
-
-</div>
-
-<h3 class="text-2xl font-bold mt-6">
-
-Events
-
-</h3>
-
-<p class="text-gray-500 mt-2">
-
-Manage Event Types
-
-</p>
-
-</div>
-
-</a>
-
-<a href="#venues">
-
-<div class="dashboard-card text-center">
-
-<div
-class="icon-circle bg-orange-100 mx-auto">
-
-<i class="fa-solid fa-building text-orange-500"></i>
-
-</div>
-
-<h3 class="text-2xl font-bold mt-6">
-
-Venues
-
-</h3>
-
-<p class="text-gray-500 mt-2">
-
-Manage Venues
-
-</p>
-
-</div>
-
-</a>
-
-<a href="#bookings">
-
-<div class="dashboard-card text-center">
-
-<div
-class="icon-circle bg-purple-100 mx-auto">
-
-<i class="fa-solid fa-book text-purple-700"></i>
-
-</div>
-
-<h3 class="text-2xl font-bold mt-6">
-
-Bookings
-
-</h3>
-
-<p class="text-gray-500 mt-2">
-
-Manage Bookings
-
-</p>
-
-</div>
-
-</a>
-
-</div>
-
-</section>
 
 <!-- ================= CUSTOMER MANAGEMENT ================= -->
 
