@@ -244,7 +244,7 @@ venues and bookings from one beautiful dashboard.
 
 <div class="mt-12 flex gap-6">
 
-<a href="#customers"
+<a href="ViewCustomer.jsp"
 class="bg-white text-purple-700 px-8 py-4 rounded-xl text-xl font-bold hover:scale-105 transition">
 
 Manage Customers
@@ -411,108 +411,6 @@ Long lonn=b.countOfBooking();
 </section>
 
 
-<!-- ================= CUSTOMER MANAGEMENT ================= -->
-
-<section id="customers" class="max-w-7xl mx-auto px-8 py-16">
-
-    <div class="flex items-center justify-between mb-8">
-
-        <div>
-
-            <h2 class="text-4xl font-bold text-slate-800">
-                Customer Management
-            </h2>
-
-            <p class="text-gray-500 mt-2">
-                Manage all registered customers efficiently.
-            </p>
-
-        </div>
-
-        <i class="fa-solid fa-users text-5xl text-purple-600"></i>
-
-    </div>
-
-    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <!-- View Customers -->
-
-        <a href="ViewCustomer.jsp">
-
-            <div class="module-card bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
-
-                <div class="flex justify-between items-center">
-
-                    <div>
-
-                        <p class="text-blue-100">
-                            Customer Details
-                        </p>
-
-                        <h3 class="text-3xl font-bold mt-2">
-                            View Customers
-                        </h3>
-
-                    </div>
-
-                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
-
-                        <i class="fa-solid fa-users text-3xl"></i>
-
-                    </div>
-
-                </div>
-
-                <p class="text-blue-100 mt-5">
-                    View all registered customers with complete profile details.
-                </p>
-
-            </div>
-        </a>
-
-
-
-
-
-        <!-- Delete Customer -->
-
-        <a href="deleteCustomer.jsp">
-
-            <div class="module-card bg-gradient-to-r from-red-500 to-pink-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
-
-                <div class="flex justify-between items-center">
-
-                    <div>
-
-                        <p class="text-red-100">
-                            Remove Customer
-                        </p>
-
-                        <h3 class="text-3xl font-bold mt-2">
-                            Delete Customer
-                        </h3>
-
-                    </div>
-
-                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
-
-                        <i class="fa-solid fa-user-xmark text-3xl"></i>
-
-                    </div>
-
-                </div>
-
-                <p class="text-red-100 mt-5">
-                    Delete inactive or unwanted customer accounts safely.
-                </p>
-
-            </div>
-
-        </a>
-
-    </div>
-
-</section>
 
 
 
