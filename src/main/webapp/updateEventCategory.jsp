@@ -1,64 +1,107 @@
+<%@page import="java.util.List"%>
 <%@page import="com.dto.Event_Category"%>
 
 <%
-Event_Category ec = (Event_Category) request.getAttribute("category");
+List<Event_Category> categoryList =
+(List<Event_Category>)request.getAttribute("categoryList");
+
+Event_Category ec =
+(Event_Category)request.getAttribute("category");
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
+
 <meta charset="UTF-8">
+
 <title>Update Event Category</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 </head>
+
 <body class="bg-gray-100">
 
-<div class="max-w-xl mx-auto mt-10 bg-white shadow-lg rounded-lg p-8">
+<div class="max-w-5xl mx-auto mt-10">
 
-<h2 class="text-3xl font-bold text-center text-indigo-600 mb-8">
-Update Event Category
+<div class="bg-white shadow-lg rounded-lg p-8">
+
+<h2 class="text-3xl font-bold text-center text-indigo-700 mb-8">
+
+Update Event Categories
+
 </h2>
 
-<!-- STEP 1 : SEARCH -->
+<table class="w-full border border-gray-300">
 
-<form action="UpdateEventCategoryServlet" method="get">
+<thead class="bg-indigo-600 text-white">
 
-<div class="mb-5">
-<label class="block font-semibold mb-2">
-Enter Category ID
-</label>
+<tr>
 
-<input
-type="number"
-name="categoryId"
-required
-class="w-full border rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+<th class="p-3">ID</th>
+
+<th class="p-3">Category Name</th>
+
+<th class="p-3">Description</th>
+
+<th class="p-3">Action</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<%
+if(categoryList!=null){
+
+for(Event_Category c:categoryList){
+%>
+
+<tr class="border text-center">
+
+<td class="p-3"><%=c.getCategory_id()%></td>
+
+<td class="p-3"><%=c.getCategory_name()%></td>
+
+<td class="p-3"><%=c.getDescription()%></td>
+
+<td class="p-3">
+
+<a href="UpdateEventCategoryServlet?categoryId=<%=c.getCategory_id()%>"
+class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+
+Update
+
+</a>
+
+</td>
+
+</tr>
+
+<%
+}
+}
+%>
+
+</tbody>
+
+</table>
 
 </div>
-
-<div class="text-center">
-
-<button
-type="submit"
-class="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700">
-
-Search
-
-</button>
-
-</div>
-
-</form>
 
 <%
 if(ec!=null){
 %>
 
-<hr class="my-8">
+<div class="bg-white shadow-lg rounded-lg p-8 mt-8">
 
-<!-- STEP 2 : UPDATE -->
+<h2 class="text-2xl font-bold text-center text-green-700 mb-6">
+
+Edit Category
+
+</h2>
 
 <form action="UpdateEventCategoryServlet" method="post">
 
@@ -69,7 +112,7 @@ value="<%=ec.getCategory_id()%>">
 
 <div class="mb-5">
 
-<label class="block font-semibold mb-2">
+<label class="font-semibold">
 
 Category Name
 
@@ -80,13 +123,13 @@ type="text"
 name="categoryName"
 value="<%=ec.getCategory_name()%>"
 required
-class="w-full border rounded px-4 py-2">
+class="w-full border rounded-lg p-3">
 
 </div>
 
 <div class="mb-5">
 
-<label class="block font-semibold mb-2">
+<label class="font-semibold">
 
 Description
 
@@ -96,7 +139,7 @@ Description
 name="description"
 rows="4"
 required
-class="w-full border rounded px-4 py-2"><%=ec.getDescription()%></textarea>
+class="w-full border rounded-lg p-3"><%=ec.getDescription()%></textarea>
 
 </div>
 
@@ -104,7 +147,7 @@ class="w-full border rounded px-4 py-2"><%=ec.getDescription()%></textarea>
 
 <button
 type="submit"
-class="bg-green-600 text-white px-6 py-2 rounded hover:bg-green-700">
+class="bg-green-600 text-white px-8 py-3 rounded-lg hover:bg-green-700">
 
 Update Category
 
@@ -114,17 +157,22 @@ Update Category
 
 </form>
 
+</div>
+
 <%
 }
 %>
 
 <%
 String msg=(String)request.getAttribute("msg");
+
 if(msg!=null){
 %>
 
-<p class="text-center mt-5 text-red-600 font-semibold">
+<p class="text-center mt-5 text-green-700 font-bold">
+
 <%=msg%>
+
 </p>
 
 <%
@@ -134,4 +182,5 @@ if(msg!=null){
 </div>
 
 </body>
+
 </html>
