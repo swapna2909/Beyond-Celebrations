@@ -210,40 +210,35 @@ class="text-blue-600 hover:underline font-semibold">
 
 </div>
 
-<!-- Email -->
+<!-- Email --><!-- Email -->
 
-<div class="bg-red-50 rounded-2xl shadow-md p-6 hover:shadow-xl transition">
+<div class="bg-yellow-50 rounded-2xl shadow-md p-6 hover:shadow-xl transition">
 
-<div class="flex items-center">
+    <div class="flex items-center">
 
-<div class="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center">
+        <div class="w-14 h-14 bg-yellow-500 rounded-full flex items-center justify-center">
 
-<i class="fas fa-envelope text-white text-2xl"></i>
+            <i class="fas fa-envelope text-white text-2xl"></i>
 
-</div>
+        </div>
 
-<div class="ml-5">
+        <div class="ml-5">
 
-<h2 class="font-bold text-xl text-red-700">
+            <h2 class="font-bold text-xl text-yellow-600">
+                Email
+            </h2>
 
-Email
-
-</h2>
-
-<a href="mailto:info@beyondcelebrations.com"
-
-class="text-blue-600 hover:underline font-semibold">
-
-info@beyondcelebrations.com
-
+           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=snehasada2004@gmail.com"
+   target="_blank"
+   class="text-yellow-600 hover:underline font-semibold">
+    info@beyondcelebrations.com
 </a>
 
-</div>
+        </div>
+
+    </div>
 
 </div>
-
-</div>
-
 <!-- Website -->
 
 <div class="bg-blue-50 rounded-2xl shadow-md p-6 hover:shadow-xl transition">
