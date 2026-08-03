@@ -9,7 +9,7 @@ public class Connectivity {
 		Connection con=null;
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/BeyondCelebrations", "root", "tiger");
+			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/BeyondCelebrations", "root", "snehananda");
 		}
 		catch (ClassNotFoundException | SQLException  e) {
 			// TODO Auto-generated catch block
