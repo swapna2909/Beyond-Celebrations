@@ -1,11 +1,9 @@
 package com.servlets;
 
 import java.io.IOException;
-
 import com.dao.impl.Customer_impl;
 import com.dao.inf.customer_inf;
 import com.dto.Customer;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;

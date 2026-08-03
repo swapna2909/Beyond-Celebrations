@@ -10,6 +10,7 @@ public interface event_type_inf {
 	    Event_type findByEventName(String eventName);
 	    void updateEventType(Event_type et);
 	    void deleteEventTypeById(Integer id);
+	    Long countOfEvent();
 }
 
 

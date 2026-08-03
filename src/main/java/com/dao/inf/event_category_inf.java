@@ -9,6 +9,7 @@ public interface event_category_inf {
 	    List<Event_Category> findAll();
 	    void updateEventCategory(Event_Category ec);
 	    void deleteEventCategoryById(Integer id);
+	    Long countOfCategory();
 	}
 
 

@@ -14,12 +14,9 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-@WebServlet("/ViewEventTypeServlet")
+@WebServlet("/viewEventType")
 public class ViewEventTypeServlet extends HttpServlet {
 
-    private static final long serialVersionUID = 1L;
-
-    @Override
     protected void doGet(HttpServletRequest request,
             HttpServletResponse response)
             throws ServletException, IOException {
@@ -32,8 +29,6 @@ public class ViewEventTypeServlet extends HttpServlet {
 
         RequestDispatcher rd =
                 request.getRequestDispatcher("viewEventType.jsp");
-
         rd.forward(request, response);
     }
-
 }

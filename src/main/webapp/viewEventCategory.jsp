@@ -17,10 +17,11 @@ List<Event_Category> list = dao.findAll();
 
 <style>
 body{
-    background:url("https://images.unsplash.com/photo-1505236858219-8359eb29e329?auto=format&fit=crop&w=1600&q=80");
+    background-image:url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1600&q=80');
     background-size:cover;
     background-position:center;
     background-repeat:no-repeat;
+    background-attachment:fixed;
     font-family:'Poppins',sans-serif;
 }
 </style>
@@ -29,89 +30,109 @@ body{
 
 <body class="min-h-screen">
 
-<!-- Overlay -->
-<div class="absolute inset-0 bg-black/40"></div>
+<!-- Background Overlay -->
+<div class="fixed inset-0 bg-black/50 -z-10"></div>
 
-<div class="relative container mx-auto py-12 px-6">
+<div class="container mx-auto py-10 px-6">
 
     <!-- Heading -->
-    <div class="text-center mb-8">
+    <div class="text-center mb-10">
         <h1 class="text-5xl font-bold text-white">
             Event Categories
         </h1>
 
-        <p class="text-gray-200 mt-3">
-            Manage all celebration event categories
+        <p class="text-gray-200 mt-3 text-lg">
+            Manage all event categories from one place
         </p>
     </div>
 
-    <!-- Card -->
-    <div class="bg-white/85 backdrop-blur-lg rounded-3xl shadow-2xl p-8">
+    <!-- Buttons -->
+    <div class="flex justify-between items-center mb-8">
 
-        <!-- Top Section -->
-        <div class="flex justify-between items-center mb-6">
+        <a href="AdminDashboard.jsp"
+           class="bg-gray-700 hover:bg-gray-800 text-white px-6 py-3 rounded-xl shadow-lg transition duration-300">
+             Back to Dashboard
+        </a>
 
-            <input
-                type="text"
-                placeholder="Search Category..."
-                class="w-80 px-4 py-3 rounded-xl border border-gray-300 focus:ring-4 focus:ring-cyan-400 outline-none">
+        <a href="AddEventCategory.jsp"
+           class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-blue-600 hover:to-cyan-500 text-white px-6 py-3 rounded-xl shadow-lg transition duration-300 hover:scale-105">
+            + Add Category
+        </a>
 
-            <a href="AddEventCategory.jsp"
-               class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-6 py-3 rounded-xl shadow-lg hover:scale-105 duration-300">
-                + Add Category
-            </a>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <%
+        if(list != null && !list.isEmpty()){
+
+            for(Event_Category ec : list){
+        %>
+
+        <div class="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition duration-300 overflow-hidden">
+
+            <!-- Card Header -->
+            <div class="bg-gradient-to-r from-cyan-500 to-blue-600 p-5">
+
+                <h2 class="text-2xl font-bold text-white">
+                    <%=ec.getCategory_name()%>
+                </h2>
+
+            </div>
+
+            <!-- Card Body -->
+            <div class="p-6">
+
+                <p class="text-gray-700 mb-3">
+                    <span class="font-bold text-gray-900">Category ID :</span>
+                    <%=ec.getCategory_id()%>
+                </p>
+
+                <p class="text-gray-700 leading-7">
+                    <span class="font-bold text-gray-900">Description :</span><br>
+                    <%=ec.getDescription()%>
+                </p>
+
+                <!-- Action Buttons -->
+                <div class="flex justify-end mt-6">
+
+                    <a href="updateEventCategory.jsp?id=<%=ec.getCategory_id()%>"
+                       class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-lg shadow transition duration-300">
+                        Edit
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <%
+            }
+        }else{
+        %>
+
+        <!-- No Records -->
+        <div class="col-span-3">
+
+            <div class="bg-white rounded-3xl shadow-xl p-10 text-center">
+
+                <h2 class="text-3xl font-bold text-red-500">
+                    No Event Categories Found
+                </h2>
+
+                <p class="text-gray-600 mt-3">
+                    Click the button above to add your first event category.
+                </p>
+
+            </div>
 
         </div>
 
-        <!-- Table -->
-        <div class="overflow-x-auto">
-
-            <table class="w-full border-collapse">
-
-                <thead>
-
-                <tr class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white">
-
-                    <th class="py-4">Category ID</th>
-                    <th>Category Name</th>
-                    <th>Description</th>
-                   
-
-                </tr>
-
-                </thead>
-
-                <tbody>
-
-                <%
-                for(Event_Category ec : list){
-                %>
-
-                <tr class="text-center bg-white hover:bg-cyan-50 transition">
-
-                    <td class="py-4 border-b"><%=ec.getCategory_id()%></td>
-
-                    <td class="border-b">
-                        <%=ec.getCategory_name()%>
-                    </td>
-
-                    <td class="border-b">
-                        <%=ec.getDescription()%>
-                    </td>
-
-                   
-
-                </tr>
-
-                <%
-                }
-                %>
-
-                </tbody>
-
-            </table>
-
-        </div>
+        <%
+        }
+        %>
 
     </div>
 

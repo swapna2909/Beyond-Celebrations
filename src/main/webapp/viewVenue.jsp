@@ -1,130 +1,159 @@
 <%@page import="java.util.List"%>
-<%@page import="com.dto.Venue"%>
+<%@page import="com.dto.Event_type"%>
+<%@page language="java" contentType="text/html; charset=UTF-8"
+pageEncoding="UTF-8"%>
 
 <%
-List<Venue> list = (List<Venue>)request.getAttribute("list");
+List<Event_type> list = (List<Event_type>)request.getAttribute("eventTypeList");
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
-
 <meta charset="UTF-8">
-
-<title>View Venues</title>
+<title>View Event Types</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
+<style>
+body{
+    background-image:url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1600&q=80');
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    font-family:'Poppins',sans-serif;
+}
+</style>
+
 </head>
 
-<body class="bg-gray-100">
+<body class="min-h-screen">
 
-<div class="container mx-auto mt-10">
+<!-- Background Overlay -->
+<div class="fixed inset-0 bg-black/50 -z-10"></div>
 
-<h1 class="text-4xl font-bold text-center text-indigo-700 mb-8">
-Venue Details
-</h1>
+<div class="container mx-auto py-10 px-6">
 
-<div class="overflow-x-auto">
+    <!-- Heading -->
+    <div class="text-center mb-10">
+        <h1 class="text-5xl font-bold text-white">
+            Event Types
+        </h1>
 
-<table class="table-auto w-full bg-white shadow-lg rounded-lg">
+        <p class="text-gray-200 mt-3 text-lg">
+            Manage all event types from one place
+        </p>
+    </div>
 
-<thead class="bg-indigo-700 text-white">
+    <!-- Buttons -->
+    <div class="flex justify-between items-center mb-8">
 
-<tr>
+        <a href="AdminDashboard.jsp"
+           class="bg-gray-700 hover:bg-gray-800 text-white px-6 py-3 rounded-xl shadow-lg transition duration-300">
+            ← Back to Dashboard
+        </a>
 
-<th class="p-3">Venue ID</th>
+        <a href="addEventType.jsp"
+           class="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-blue-600 hover:to-cyan-500 text-white px-6 py-3 rounded-xl shadow-lg transition duration-300 hover:scale-105">
+            + Add Event Type
+        </a>
 
-<th class="p-3">Venue Name</th>
+    </div>
 
-<th class="p-3">Location</th>
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-<th class="p-3">Capacity</th>
+    <%
+    if(list != null && !list.isEmpty()){
 
-<th class="p-3">Price</th>
+        for(Event_type et : list){
+    %>
 
-<th class="p-3">Availability</th>
+        <div class="bg-white rounded-3xl shadow-xl hover:shadow-2xl transition duration-300 overflow-hidden">
 
-<th class="p-3">Update</th>
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-purple-600 to-indigo-600 p-5">
 
-<th class="p-3">Delete</th>
+                <h2 class="text-2xl font-bold text-white">
+                    <%=et.getEvent_name()%>
+                </h2>
 
-</tr>
+            </div>
 
-</thead>
+            <!-- Body -->
+            <div class="p-6">
 
-<tbody>
+                <p class="mb-2 text-gray-700">
+                    <span class="font-semibold text-gray-900">Event Type ID :</span>
+                    <%=et.getEvent_type_id()%>
+                </p>
 
-<%
-if(list!=null && !list.isEmpty()){
+                <p class="mb-2 text-gray-700">
+                    <span class="font-semibold text-gray-900">Category ID :</span>
+                    <%=et.getCategory_id()%>
+                </p>
 
-for(Venue v:list){
-%>
+                <p class="mb-2 text-gray-700">
+                    <span class="font-semibold text-gray-900">Description :</span><br>
+                    <%=et.getDescription()%>
+                </p>
 
-<tr class="border-b text-center hover:bg-gray-100">
+                <div class="mt-4 space-y-2">
 
-<td class="p-3"><%=v.getVenue_id()%></td>
+                    <p class="text-green-700 font-semibold">
+                        💰 Minimum Budget :
+                        ₹ <%=et.getMin_budget()%>
+                    </p>
 
-<td class="p-3"><%=v.getVenue_name()%></td>
+                    <p class="text-red-700 font-semibold">
+                        💰 Maximum Budget :
+                        ₹ <%=et.getMax_budget()%>
+                    </p>
 
-<td class="p-3"><%=v.getLocation()%></td>
+                </div>
 
-<td class="p-3"><%=v.getCapacity()%></td>
+                <!-- Action Button -->
+                <div class="flex justify-end mt-6">
 
-<td class="p-3"><%=v.getPrice()%></td>
+                    <a href="updateEventType.jsp?id=<%=et.getEvent_type_id()%>"
+                       class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-lg shadow transition duration-300">
+                        ✏ Edit
+                    </a>
 
-<td class="p-3"><%=v.getAvailability()%></td>
+                </div>
 
-<td class="p-3">
+            </div>
 
-<a href="updateVenue.jsp?id=<%=v.getVenue_id()%>"
-class="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600">
+        </div>
 
-Update
+    <%
+        }
+    }else{
+    %>
 
-</a>
+        <!-- No Records -->
+        <div class="col-span-3">
 
-</td>
+            <div class="bg-white rounded-3xl shadow-xl p-10 text-center">
 
-<td class="p-3">
+                <h2 class="text-3xl font-bold text-red-500">
+                    No Event Types Found
+                </h2>
 
-<a href="DeleteVenueServlet?id=<%=v.getVenue_id()%>"
-onclick="return confirm('Are you sure you want to delete this venue?');"
-class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                <p class="text-gray-600 mt-3">
+                    Click the button above to add your first event type.
+                </p>
 
-Delete
+            </div>
 
-</a>
+        </div>
 
-</td>
+    <%
+    }
+    %>
 
-</tr>
-
-<%
-}
-}
-else{
-%>
-
-<tr>
-
-<td colspan="8" class="text-center text-red-600 p-5">
-
-No Venue Records Found
-
-</td>
-
-</tr>
-
-<%
-}
-%>
-
-</tbody>
-
-</table>
-
-</div>
+    </div>
 
 </div>
 

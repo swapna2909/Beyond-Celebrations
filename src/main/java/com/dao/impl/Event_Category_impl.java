@@ -153,4 +153,24 @@ public class Event_Category_impl implements event_category_inf{
 		System.out.println("event category failed to delete");
 	}
 	}
+
+	@Override
+	public Long countOfCategory() {
+		
+		String s1="Select * from event_category";
+		Long count=(long) 0;
+
+		try {
+			PreparedStatement ps = con.prepareStatement(s1);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()) {
+				count++;
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return count;
+	}
 }

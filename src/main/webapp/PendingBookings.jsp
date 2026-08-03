@@ -35,7 +35,7 @@ Pending Bookings
 
 </h1>
 
-<a href="adminDashboard.jsp"
+<a href="AdminDashboard.jsp"
 class="bg-white text-yellow-700 px-4 py-2 rounded-lg font-semibold">
 
 Dashboard
