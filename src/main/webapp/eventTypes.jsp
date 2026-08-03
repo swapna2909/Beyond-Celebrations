@@ -179,49 +179,69 @@ duration-300
 <%
 String image = "";
 
-if(event.getEvent_name().equalsIgnoreCase("Royal Wedding")) {
+if(event.getEvent_name().equalsIgnoreCase("Destination Wedding")) {
 
-    image = "images/royal-wedding.jpg";
+    image = "Images/Destination.jpg";
 
 }
 else if(event.getEvent_name().equalsIgnoreCase("Traditional Wedding")) {
 
-    image = "images/traditional-wedding.jpg";
+    image = "Images/Traditional.jpg";
 
 }
-else if(event.getEvent_name().equalsIgnoreCase("Destination Wedding")) {
+else if(event.getEvent_name().equalsIgnoreCase("Royal Wedding")) {
 
-    image = "images/destination-wedding.jpg";
+    image = "Images/Royal.png";
 
 }
 else if(event.getEvent_name().equalsIgnoreCase("Kids Birthday Party")) {
 
-    image = "images/kids-birthday.jpg";
+    image = "Images/Kidsbirthday.jpg";
 
 }
 else if(event.getEvent_name().equalsIgnoreCase("Grand Birthday Celebration")) {
 
-    image = "images/grand-birthday.jpg";
+    image = "Images/GrandBirthday.jpg";
+
+}
+else if(event.getEvent_name().equalsIgnoreCase("Surprise Birthday Party")) {
+
+    image = "Images/SurpriseBirthday.jpg";
 
 }
 else if(event.getEvent_name().equalsIgnoreCase("Corporate Meeting")) {
 
-    image = "images/corporate-meeting.jpg";
+    image = "Images/CorporateMeeting.jpg";
 
 }
 else if(event.getEvent_name().equalsIgnoreCase("Product Launch Event")) {
 
-    image = "images/product-launch.jpg";
+    image = "Images/ProductLaunch.jpg";
+
+}
+else if(event.getEvent_name().equalsIgnoreCase("Annual Corporate Event")) {
+
+    image = "Images/AnnualCorporateEvent.jpg";
 
 }
 else if(event.getEvent_name().equalsIgnoreCase("Romantic Anniversary")) {
 
-    image = "images/anniversary.jpg";
+    image = "Images/Anniversary.jpg";
+
+}
+else if(event.getEvent_name().equalsIgnoreCase("Silver Jubilee Celebration")) {
+
+    image = "Images/SilverJublie.jpg";
+
+}
+else if(event.getEvent_name().equalsIgnoreCase("Golden Jubilee Celebration")) {
+
+    image = "Images/Goldenjublie.jpg";
 
 }
 else {
 
-    image = "images/default-event.jpg";
+    image = "Images/Default.jpg";
 
 }
 
@@ -231,28 +251,10 @@ else {
 				<!-- CARD HEADER -->
 
 
-				<div
-					class="
-h-36
-bg-gradient-to-r
-from-purple-700
-via-pink-500
-to-orange-500
-flex
-items-center
-justify-center
-">
-
-
-					<i class="
-fa-solid
-fa-champagne-glasses
-text-white
-text-6xl
-"></i>
-
-
-				</div>
+				<img
+    src="<%=request.getContextPath()%>/<%=image%>"
+    alt="<%=event.getEvent_name()%>"
+    class="w-full h-[450px] object-cover rounded-t-3xl">
 
 
 
