@@ -13,7 +13,7 @@ List<BookingDetails> bookings =
 
 <meta charset="UTF-8">
 
-<title>Pending Bookings</title>
+<title>Approved Bookings</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
@@ -26,20 +26,20 @@ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
 
 <!-- Header -->
 
-<div class="bg-yellow-500 shadow-lg">
+<div class="bg-green-600 shadow-lg">
 
 <div class="max-w-7xl mx-auto flex justify-between items-center p-6">
 
 <h1 class="text-4xl font-bold text-white">
 
-<i class="fa-solid fa-clock mr-3"></i>
+<i class="fa-solid fa-circle-check mr-3"></i>
 
-Pending Bookings
+Approved Bookings
 
 </h1>
 
 <a href="AdminDashboard.jsp"
-class="bg-white text-yellow-600 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200">
+class="bg-white text-green-700 px-6 py-2 rounded-lg font-semibold hover:bg-gray-200">
 
 Back to Dashboard
 
@@ -78,9 +78,9 @@ Booked On :
 
 </div>
 
-<span class="bg-yellow-100 text-yellow-700 px-5 py-2 rounded-full font-semibold">
+<span class="bg-green-100 text-green-700 px-5 py-2 rounded-full font-semibold">
 
-Pending
+Approved
 
 </span>
 
@@ -92,57 +92,21 @@ Pending
 
 <div>
 
-<p class="mb-3">
+<p class="mb-3"><b>Customer :</b> <%=b.getCustomerName()%></p>
 
-<b>Customer :</b>
+<p class="mb-3"><b>Organizer :</b> <%=b.getOrganizerName()%></p>
 
-<%=b.getCustomerName()%>
+<p class="mb-3"><b>Event :</b> <%=b.getEventType()%></p>
 
-</p>
-
-<p class="mb-3">
-
-<b>Organizer :</b>
-
-<%=b.getOrganizerName()%>
-
-</p>
-
-<p class="mb-3">
-
-<b>Event :</b>
-
-<%=b.getEventType()%>
-
-</p>
-
-<p>
-
-<b>Venue :</b>
-
-<%=b.getVenueName()%>
-
-</p>
+<p><b>Venue :</b> <%=b.getVenueName()%></p>
 
 </div>
 
 <div>
 
-<p class="mb-3">
+<p class="mb-3"><b>Event Date :</b> <%=b.getEventDate()%></p>
 
-<b>Event Date :</b>
-
-<%=b.getEventDate()%>
-
-</p>
-
-<p class="mb-3">
-
-<b>Guests :</b>
-
-<%=b.getGuestCount()%>
-
-</p>
+<p class="mb-3"><b>Guests :</b> <%=b.getGuestCount()%></p>
 
 <p class="mb-3">
 
@@ -168,14 +132,27 @@ Pending
 
 </div>
 
-<div class="flex justify-end gap-5 mt-8">
+<div class="mt-6 flex gap-4">
 
-				<a href="bookingdetails?id=<%=b.getBookingId()%>&from=pending"
-					class="bg-blue-600 text-white px-6 py-3 rounded-xl hover:bg-blue-700">
+<a href="bookingdetails?id=<%=b.getBookingId()%>&from=approved"
+class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700">
 
-					View Details </a>
+<i class="fa-solid fa-eye mr-2"></i>
 
-			</div>
+View Details
+
+</a>
+
+<a href="completebooking?id=<%=b.getBookingId()%>"
+class="bg-green-600 text-white px-5 py-2 rounded-lg hover:bg-green-700">
+
+<i class="fa-solid fa-check mr-2"></i>
+
+Complete
+
+</a>
+
+</div>
 
 </div>
 
@@ -187,17 +164,17 @@ else{
 
 <div class="bg-white rounded-3xl shadow-lg p-16 text-center">
 
-<i class="fa-solid fa-calendar-xmark text-6xl text-gray-300"></i>
+<i class="fa-solid fa-circle-check text-6xl text-green-300"></i>
 
 <h2 class="text-3xl font-bold text-gray-500 mt-6">
 
-No Pending Bookings
+No Approved Bookings
 
 </h2>
 
 <p class="text-gray-400 mt-3">
 
-All bookings have been processed.
+No bookings have been approved yet.
 
 </p>
 

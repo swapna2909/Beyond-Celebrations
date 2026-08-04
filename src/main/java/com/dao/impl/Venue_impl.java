@@ -258,5 +258,22 @@ public class Venue_impl implements venue_inf {
 
         return list;
     }
+    public void updateVenueAvailability(Integer venueId, String availability) {
+
+        String sql = "UPDATE venue SET availability=? WHERE venue_id=?";
+
+        try {
+
+            PreparedStatement ps = con.prepareStatement(sql);
+
+            ps.setString(1, availability);
+            ps.setInt(2, venueId);
+
+            ps.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
 }

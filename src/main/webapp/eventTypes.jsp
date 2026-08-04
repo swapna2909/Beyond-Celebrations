@@ -356,7 +356,7 @@ text-gray-800
 					<!-- BUTTON -->
 
 
-					<a href="bookevent.jsp?eventTypeId=<%=event.getEvent_type_id()%>"
+					<a href="bookevent?eventTypeId=<%=event.getEvent_type_id()%>"
 						class="
 mt-7
 block
@@ -378,6 +378,7 @@ transition
 
 
 					</a>
+					
 
 
 

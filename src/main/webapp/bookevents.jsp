@@ -1,13 +1,21 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-pageEncoding="UTF-8"%>
+<%@page import="java.util.List"%>
+<%@page import="com.dto.Event_type"%>
+<%@page import="com.dto.Organizer"%>
+<%@page import="com.dto.Venue"%>
 
-<%@ page import="java.util.List"%>
-<%@ page import="com.dto.Event_type"%>
-<%@ page import="com.dto.Organizer"%>
-<%@ page import="com.dto.Venue"%>
+<%
+Event_type event = (Event_type)request.getAttribute("event");
+
+List<Organizer> organizers =
+(List<Organizer>)request.getAttribute("organizers");
+
+List<Venue> venues =
+(List<Venue>)request.getAttribute("venues");
+%>
 
 <!DOCTYPE html>
 <html>
+
 <head>
 
 <meta charset="UTF-8">
@@ -16,133 +24,81 @@ pageEncoding="UTF-8"%>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
+<link rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
 </head>
 
-<body class="bg-gray-100">
+<body class="bg-gray-100"
+style="font-family:Poppins;">
 
-<div class="max-w-4xl mx-auto mt-10 bg-white shadow-xl rounded-xl p-8">
+<div class="max-w-3xl mx-auto mt-10 mb-10">
 
-<h2 class="text-3xl font-bold text-center text-purple-700 mb-8">
-Book Your Event
-</h2>
+<div class="bg-white rounded-3xl shadow-xl p-10">
 
-<%
-if(request.getParameter("success")!=null){
-%>
+<h1 class="text-4xl font-bold text-center text-purple-700">
 
-<div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6">
+Book Event
 
-Event Booked Successfully!
+</h1>
 
-</div>
+<p class="text-center text-gray-500 mt-2">
 
-<%
-}
-%>
+Fill the details below to confirm your booking
 
-<form action="bookevents" method="post">
+</p>
 
-<!-- Category -->
-
-<div class="mb-5">
-
-<label class="font-semibold">
-
-Event Category
-
-</label>
-
-<select
-name="category"
-onchange="this.form.submit()"
-class="w-full border rounded-lg p-3 mt-2">
-
-<option>Select Category</option>
-
-<option value="Wedding">Wedding</option>
-
-<option value="Birthday">Birthday</option>
-
-<option value="Anniversary">Anniversary</option>
-
-<option value="Baby Shower">Baby Shower</option>
-
-<option value="Corporate Events">Corporate Events</option>
-
-<option value="Housewarming">Housewarming</option>
-
-</select>
-
-</div>
+<form action="savebooking" method="post" class="mt-8">
 
 <!-- Event Type -->
 
-<div class="mb-5">
+<div class="mb-6">
 
 <label class="font-semibold">
 
-Event Type
+Selected Event
 
 </label>
 
-<select
+<input
+type="text"
+value="<%=event.getEvent_name()%>"
+readonly
+class="w-full mt-2 border rounded-lg p-3 bg-gray-100">
+
+<input
+type="hidden"
 name="event_type_id"
-class="w-full border rounded-lg p-3 mt-2">
-
-<option>Select Event Type</option>
-
-<%
-
-List<Event_type> events=(List<Event_type>)request.getAttribute("eventList");
-
-if(events!=null){
-
-for(Event_type e:events){
-
-%>
-
-<option value="<%=e.getEvent_type_id()%>">
-
-<%=e.getEvent_name()%>
-
-</option>
-
-<%
-
-}
-
-}
-
-%>
-
-</select>
+value="<%=event.getEvent_type_id()%>">
 
 </div>
 
 <!-- Organizer -->
 
-<div class="mb-5">
+<div class="mb-6">
 
 <label class="font-semibold">
 
-Organizer
+Select Organizer
 
 </label>
 
 <select
 name="organizer_id"
-class="w-full border rounded-lg p-3 mt-2">
+required
+class="w-full mt-2 border rounded-lg p-3">
 
-<option>Select Organizer</option>
+<option value="">Select Organizer</option>
 
 <%
-
-List<Organizer> organizers=(List<Organizer>)request.getAttribute("organizerList");
-
-if(organizers!=null){
-
-for(Organizer o:organizers){
-
+for(Organizer o : organizers){
 %>
 
 <option value="<%=o.getOrganizer_id()%>">
@@ -152,11 +108,7 @@ for(Organizer o:organizers){
 </option>
 
 <%
-
 }
-
-}
-
 %>
 
 </select>
@@ -165,42 +117,38 @@ for(Organizer o:organizers){
 
 <!-- Venue -->
 
-<div class="mb-5">
+<div class="mb-6">
 
 <label class="font-semibold">
 
-Venue
+Select Venue
 
 </label>
 
 <select
 name="venue_id"
-class="w-full border rounded-lg p-3 mt-2">
+required
+class="w-full mt-2 border rounded-lg p-3">
 
-<option>Select Venue</option>
+<option value="">Select Venue</option>
 
 <%
-
-List<Venue> venues=(List<Venue>)request.getAttribute("venueList");
-
-if(venues!=null){
-
-for(Venue v:venues){
-
+for(Venue v : venues){
 %>
 
 <option value="<%=v.getVenue_id()%>">
 
 <%=v.getVenue_name()%>
+-
+<%=v.getLocation()%>
+
+(Capacity :
+<%=v.getCapacity()%>)
 
 </option>
 
 <%
-
 }
-
-}
-
 %>
 
 </select>
@@ -209,7 +157,7 @@ for(Venue v:venues){
 
 <!-- Event Date -->
 
-<div class="mb-5">
+<div class="mb-6">
 
 <label class="font-semibold">
 
@@ -221,31 +169,33 @@ Event Date
 type="date"
 name="event_date"
 required
-class="w-full border rounded-lg p-3 mt-2">
+class="w-full mt-2 border rounded-lg p-3">
 
 </div>
 
-<!-- Guests -->
+<!-- Guest Count -->
 
-<div class="mb-5">
+<div class="mb-6">
 
 <label class="font-semibold">
 
-Guest Count
+Number of Guests
 
 </label>
 
 <input
 type="number"
 name="guest_count"
+min="1"
 required
-class="w-full border rounded-lg p-3 mt-2">
+placeholder="Enter Guests Count"
+class="w-full mt-2 border rounded-lg p-3">
 
 </div>
 
 <!-- Budget -->
 
-<div class="mb-5">
+<div class="mb-6">
 
 <label class="font-semibold">
 
@@ -256,8 +206,10 @@ Budget
 <input
 type="number"
 name="budget"
+step="0.01"
 required
-class="w-full border rounded-lg p-3 mt-2">
+placeholder="Enter Your Budget"
+class="w-full mt-2 border rounded-lg p-3">
 
 </div>
 
@@ -273,32 +225,37 @@ Special Request
 
 <textarea
 name="special_request"
-rows="4"
-class="w-full border rounded-lg p-3 mt-2"></textarea>
+rows="5"
+placeholder="Any Decoration, Food, Music, Theme..."
+class="w-full mt-2 border rounded-lg p-3"></textarea>
 
 </div>
 
-<div class="flex justify-center gap-6">
+<!-- Buttons -->
+
+<div class="flex justify-center gap-6 mt-8">
 
 <button
 type="submit"
-class="bg-purple-700 text-white px-8 py-3 rounded-lg hover:bg-purple-800">
+class="bg-purple-700 hover:bg-purple-800 text-white px-8 py-3 rounded-xl">
 
-Book Event
-
-</button>
-
-<button
-type="reset"
-class="bg-red-500 text-white px-8 py-3 rounded-lg hover:bg-red-600">
-
-Reset
+Confirm Booking
 
 </button>
+
+<a
+href="customerdashboard"
+class="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-xl">
+
+Cancel
+
+</a>
 
 </div>
 
 </form>
+
+</div>
 
 </div>
 

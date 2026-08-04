@@ -322,7 +322,7 @@ font-semibold
 hover:bg-gray-100">
 
 
-					Explore Packages </a> <a href="bookevents.jsp"
+					Explore Packages </a> <a href="mybookings"
 					class="
 border
 border-white

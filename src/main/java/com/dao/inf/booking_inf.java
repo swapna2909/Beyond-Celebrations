@@ -3,6 +3,7 @@ package com.dao.inf;
 import java.util.List;
 
 import com.dto.Booking;
+import com.dto.BookingDetails;
 
 public interface booking_inf {
 	void addBooking(Booking b);
@@ -12,10 +13,10 @@ public interface booking_inf {
     List<Booking> findByOrganizerId(Integer organizerId);
     List<Booking> findByEventTypeId(Integer eventTypeId);
     List<Booking> findByVenueId(Integer venueId);
-    List<Booking> findPendingBookings();
-    List<Booking> findApprovedBookings();
-    List<Booking> findRejectedBookings();
-    List<Booking> findCompletedBookings();
+    List<BookingDetails> findPendingBookings();
+    List<BookingDetails> findApprovedBookings();
+    List<BookingDetails> findRejectedBookings();
+    List<BookingDetails> findCompletedBookings();
     List<Booking> findByStatus(String status);
     void approveBooking(Integer bookingId);
     void rejectBooking(Integer bookingId);
@@ -24,4 +25,8 @@ public interface booking_inf {
     void deleteBookingById(Integer id);
 	List<Booking> getAllBookings();
 	Long countOfBooking();
+	List<BookingDetails> getAllBookingDetails();
+	BookingDetails getBookingDetailsById(Integer bookingId);
+	Integer getVenueIdByBookingId(Integer bookingId);
+	
 }

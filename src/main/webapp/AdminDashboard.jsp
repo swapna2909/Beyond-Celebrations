@@ -251,12 +251,13 @@ Manage Customers
 
 </a>
 
-<a href="ViewBookings.jsp"
+<a href="adminbookings"
 class="glass text-white px-8 py-4 rounded-xl text-xl hover:scale-105 transition">
 
 View Bookings
 
 </a>
+
 
 </div>
 
@@ -855,7 +856,7 @@ Long lonn=b.countOfBooking();
 
         <!-- View Bookings -->
 
-        <a href="ViewBookings.jsp">
+        <a href="adminbookings">
 
             <div class="module-card bg-gradient-to-r from-blue-500 to-indigo-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
@@ -875,7 +876,7 @@ Long lonn=b.countOfBooking();
 
         <!-- Pending -->
 
-        <a href="PendingBookings.jsp">
+        <a href="pendingbookings">
 
             <div class="module-card bg-gradient-to-r from-yellow-400 to-orange-500 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
@@ -895,7 +896,7 @@ Long lonn=b.countOfBooking();
 
         <!-- Approved -->
 
-        <a href="ApprovedBookings.jsp">
+        <a href="approvedbookings">
 
             <div class="module-card bg-gradient-to-r from-green-500 to-emerald-700 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
@@ -913,9 +914,28 @@ Long lonn=b.countOfBooking();
 
         </a>
 
-        <!-- Completed -->
+        <!-- Rejected -->
 
-        <a href="CompletedBookings.jsp">
+        <a href="rejectedbookings">
+
+            <div class="module-card bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+
+                <i class="fa-solid fa-calendar-check text-5xl"></i>
+
+                <h3 class="text-3xl font-bold">
+                    Rejected
+                </h3>
+
+                <p>
+                     Rejected events.
+                </p>
+
+            </div>
+
+        </a>
+         <!-- Completed -->
+
+        <a href="completedbookings">
 
             <div class="module-card bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
