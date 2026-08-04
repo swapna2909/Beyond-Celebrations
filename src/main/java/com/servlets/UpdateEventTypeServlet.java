@@ -1,11 +1,11 @@
 package com.servlets;
 
-
 import java.io.IOException;
 
 import com.dao.impl.Event_type_impl;
 import com.dto.Event_type;
 
+import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -15,38 +15,64 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/UpdateEventTypeServlet")
 public class UpdateEventTypeServlet extends HttpServlet {
 
-    protected void doPost(HttpServletRequest request,
-                          HttpServletResponse response)
+    Event_type_impl dao = new Event_type_impl();
+
+    @Override
+    protected void doGet(HttpServletRequest request,
+            HttpServletResponse response)
             throws ServletException, IOException {
 
-        Event_type et = new Event_type();
+        int id = Integer.parseInt(request.getParameter("eventTypeId"));
 
-        et.setEvent_type_id(
-                Integer.parseInt(
-                request.getParameter("eventTypeId")));
+        Event_type et = dao.findById(id);
 
-        et.setCategory_id(
-                Integer.parseInt(
-                request.getParameter("categoryId")));
+        request.setAttribute("eventType", et);
 
-        et.setEvent_name(
-                request.getParameter("eventName"));
+        RequestDispatcher rd =
+                request.getRequestDispatcher("updateEventType.jsp");
 
-        et.setDescription(
-                request.getParameter("description"));
+        rd.forward(request, response);
+    }
 
-        et.setMin_budget(
-                Double.parseDouble(
-                request.getParameter("minBudget")));
+    @Override
+    protected void doPost(HttpServletRequest request,
+            HttpServletResponse response)
+            throws ServletException, IOException {
 
-        et.setMax_budget(
-                Double.parseDouble(
-                request.getParameter("maxBudget")));
+        try {
 
-        Event_type_impl dao = new Event_type_impl();
+            Event_type et = new Event_type();
 
-        dao.updateEventType(et);
+            et.setEvent_type_id(
+                    Integer.parseInt(request.getParameter("eventTypeId")));
 
-        response.sendRedirect("viewEventType");
+            et.setCategory_id(
+                    Integer.parseInt(request.getParameter("categoryId")));
+
+            et.setEvent_name(
+                    request.getParameter("eventName"));
+
+            et.setDescription(
+                    request.getParameter("description"));
+
+            et.setMin_budget(
+                    Double.parseDouble(request.getParameter("minBudget")));
+
+            et.setMax_budget(
+                    Double.parseDouble(request.getParameter("maxBudget")));
+
+            dao.updateEventType(et);
+
+            response.sendRedirect(
+                    "viewEventType.jsp?msg=Event+Type+Updated+Successfully");
+
+        }
+        catch (Exception e) {
+
+            e.printStackTrace();
+
+            response.sendRedirect(
+                    "viewEventType.jsp?msg=Failed+to+Update+Event+Type");
+        }
     }
 }

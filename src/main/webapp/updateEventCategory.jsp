@@ -33,61 +33,6 @@ Update Event Categories
 
 </h2>
 
-<table class="w-full border border-gray-300">
-
-<thead class="bg-indigo-600 text-white">
-
-<tr>
-
-<th class="p-3">ID</th>
-
-<th class="p-3">Category Name</th>
-
-<th class="p-3">Description</th>
-
-<th class="p-3">Action</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<%
-if(categoryList!=null){
-
-for(Event_Category c:categoryList){
-%>
-
-<tr class="border text-center">
-
-<td class="p-3"><%=c.getCategory_id()%></td>
-
-<td class="p-3"><%=c.getCategory_name()%></td>
-
-<td class="p-3"><%=c.getDescription()%></td>
-
-<td class="p-3">
-
-<a href="UpdateEventCategoryServlet?categoryId=<%=c.getCategory_id()%>"
-class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
-
-Update
-
-</a>
-
-</td>
-
-</tr>
-
-<%
-}
-}
-%>
-
-</tbody>
-
-</table>
 
 </div>
 

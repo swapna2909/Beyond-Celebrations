@@ -426,7 +426,7 @@ Long lonn=b.countOfBooking();
                 Event Category Management
             </h2>
 
-            <p class="text-gray-500 mt-2">
+            <p class="text-gray-300 mt-2">
                 Create and manage categories for every celebration.
             </p>
 
@@ -442,113 +442,115 @@ Long lonn=b.countOfBooking();
 
         <a href="AddEventCategory.jsp">
 
-            <div class="module-card bg-gradient-to-r from-purple-600 to-indigo-700 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
+<div class="module-card bg-gradient-to-r from-purple-700 to-indigo-800 text-white rounded-3xl p-10 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 h-80 flex flex-col justify-between">
 
-                <div class="flex justify-between items-center">
+    <!-- Top Section -->
+    <div class="flex justify-between items-center">
 
-                    <div>
+        <div>
 
-                        <p class="text-purple-100">
-                            New Category
-                        </p>
+            <p class="text-purple-200 text-base font-medium">
+                New Category
+            </p>
 
-                        <h3 class="text-3xl font-bold mt-2">
-                            Add Category
-                        </h3>
+            <h2 class="text-4xl font-bold mt-2">
+                Add Category
+            </h2>
 
-                    </div>
+            <p class="text-purple-100 text-lg mt-4 leading-8 max-w-sm">
+                Create a new event category to expand your event management services.
+            </p>
 
-                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
+        </div>
 
-                        <i class="fa-solid fa-plus text-3xl"></i>
+        <div class="w-20 h-20 rounded-full bg-white/20 flex items-center justify-center">
 
-                    </div>
+            <i class="fa-solid fa-plus text-4xl"></i>
 
-                </div>
+        </div>
 
-                <p class="text-purple-100 mt-5">
-                    Create a new event category for your services.
-                </p>
+    </div>
 
+    <!-- Bottom Section -->
+
+    <div class="border-t border-white/20 pt-5">
+
+        <div class="flex items-center gap-3">
+
+            <i class="fa-solid fa-circle-plus text-purple-200 text-xl"></i>
+
+            <span class="text-lg">
+                Add a new category with name and description
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
+
+</a>
+<!-- View & Update Categories -->
+
+<a href="viewEventCategory.jsp" class="lg:col-span-2">
+
+<div class="module-card bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-3xl p-10 shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all duration-300 h-80 flex flex-col justify-between">
+
+    <!-- Header -->
+    <div class="flex justify-between items-center">
+
+        <div>
+
+            <p class="text-gray-300 text-base font-medium">
+                Category Management
+            </p>
+
+            <h2 class="text-4xl font-bold mt-2">
+                View & Update Categories
+            </h2>
+
+            <p class="text-gray-200 text-lg mt-4 leading-8 max-w-2xl">
+                Browse all available event categories and easily edit category
+                names and descriptions whenever required.
+            </p>
+
+        </div>
+
+        <div class="w-24 h-24 rounded-full bg-white/20 flex items-center justify-center">
+
+            <i class="fa-solid fa-layer-group text-5xl"></i>
+
+        </div>
+
+    </div>
+
+    <!-- Bottom Section -->
+
+    <div class="flex justify-between items-center mt-6">
+
+        <div class="space-y-2">
+
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-eye text-cyan-300"></i>
+                <span class="text-lg">View all event categories</span>
             </div>
 
-        </a>
-
-
-
-        <!-- View Categories -->
-
-        <a href="viewEventCategory.jsp">
-
-            <div class="module-card bg-gradient-to-r from-slate-700 to-slate-900 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
-
-                <div class="flex justify-between items-center">
-
-                    <div>
-
-                        <p class="text-gray-300">
-                            Available Categories
-                        </p>
-
-                        <h3 class="text-3xl font-bold mt-2">
-                            View Categories
-                        </h3>
-
-                    </div>
-
-                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
-
-                        <i class="fa-solid fa-eye text-3xl"></i>
-
-                    </div>
-
-                </div>
-
-                <p class="text-gray-300 mt-5">
-                    Browse all existing event categories.
-                </p>
-
+            <div class="flex items-center gap-3">
+                <i class="fa-solid fa-pen-to-square text-yellow-300"></i>
+                <span class="text-lg">Edit category information</span>
             </div>
 
-        </a>
+        </div>
 
+        <div class="bg-white/20 px-8 py-3 rounded-xl text-lg font-semibold">
+            Manage 
+        </div>
 
+    </div>
 
-        <!-- Update Category -->
+</div>
 
-        <a href="updateEventCategory.jsp">
-
-            <div class="module-card bg-gradient-to-r from-orange-400 to-amber-600 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
-
-                <div class="flex justify-between items-center">
-
-                    <div>
-
-                        <p class="text-yellow-100">
-                            Edit Categories
-                        </p>
-
-                        <h3 class="text-3xl font-bold mt-2">
-                            Update Category
-                        </h3>
-
-                    </div>
-
-                    <div class="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center">
-
-                        <i class="fa-solid fa-pen-to-square text-3xl"></i>
-
-                    </div>
-
-                </div>
-
-                <p class="text-yellow-100 mt-5">
-                    Modify category names and descriptions anytime.
-                </p>
-
-            </div>
-
-        </a>
+</a>
 
     </div>
 
@@ -652,7 +654,7 @@ Long lonn=b.countOfBooking();
 
         <!-- Update Event Type -->
 
-        <a href="updateEventType.jsp">
+        <a href="UpdateEventTypeServlet">
 
             <div class="module-card bg-gradient-to-r from-orange-500 to-red-500 text-white rounded-3xl p-8 shadow-xl h-72 flex flex-col justify-between">
 
