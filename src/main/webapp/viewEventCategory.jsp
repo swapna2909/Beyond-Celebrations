@@ -1,7 +1,9 @@
 <%@page import="java.util.List"%>
 <%@page import="com.dto.Event_Category"%>
 <%@page import="com.dao.impl.Event_Category_impl"%>
-
+<%
+String msg = request.getParameter("msg");
+%>
 <%
 Event_Category_impl dao = new Event_Category_impl();
 List<Event_Category> list = dao.findAll();
@@ -60,7 +62,17 @@ body{
         </a>
 
     </div>
+<%
+if(msg != null){
+%>
 
+<div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-6 text-center">
+    <%=msg%>
+</div>
+
+<%
+}
+%>
     <!-- Cards -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
@@ -95,13 +107,13 @@ body{
                 </p>
 
                 <!-- Action Buttons -->
+                
                 <div class="flex justify-end mt-6">
 
-                    <a href="updateEventCategory.jsp?id=<%=ec.getCategory_id()%>"
-                       class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-lg shadow transition duration-300">
-                        Edit
-                    </a>
-
+                    <a href="UpdateEventCategoryServlet?categoryId=<%=ec.getCategory_id()%>"
+   class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-lg shadow transition duration-300">
+    Edit
+</a>
                 </div>
 
             </div>

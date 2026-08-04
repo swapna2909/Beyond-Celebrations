@@ -5,7 +5,14 @@
 <%
 Event_type et = (Event_type)request.getAttribute("eventType");
 %>
+<%
 
+
+if(et == null){
+    out.println("<h2 style='color:red;text-align:center;'>No Event Type Selected</h2>");
+    return;
+}
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +32,7 @@ Event_type et = (Event_type)request.getAttribute("eventType");
             Update Event Type
         </h2>
 
-        <form action="UpdateEventTypeServlet" method="post">
+       <form action="UpdateEventTypeServlet" method="post">
 
             <input type="hidden"
                    name="eventTypeId"
