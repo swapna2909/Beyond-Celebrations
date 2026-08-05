@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import com.dao.inf.booking_inf;
 import com.dto.Booking;
+import com.dto.BookingDetails;
 import com.utility.Connectivity;
 
 public class Booking_impl implements booking_inf{

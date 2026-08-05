@@ -21,7 +21,7 @@ public class PendingBookingsServlet extends HttpServlet{
         request.setAttribute("bookings",
                 dao.findPendingBookings());
 
-        request.getRequestDispatcher("pendingBookings.jsp")
+        request.getRequestDispatcher("PendingBookings.jsp")
         .forward(request,response);
 
     }
