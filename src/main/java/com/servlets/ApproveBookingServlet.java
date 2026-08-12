@@ -22,17 +22,33 @@ public class ApproveBookingServlet extends HttpServlet {
         int bookingId =
                 Integer.parseInt(request.getParameter("id"));
 
-        
         Booking_impl bookingDao = new Booking_impl();
         Venue_impl venueDao = new Venue_impl();
 
+        // Get venue ID from booking
+        Integer venueId =
+                bookingDao.getVenueIdByBookingId(bookingId);
+
+        System.out.println("Booking ID = " + bookingId);
+        System.out.println("Venue ID = " + venueId);
+
+        // Approve booking
         bookingDao.approveBooking(bookingId);
 
-        int venueId = bookingDao.getVenueIdByBookingId(bookingId);
+        // Make venue unavailable
+        if (venueId != null) {
 
-        venueDao.updateVenueAvailability(venueId, "Not Available");
+            venueDao.updateVenueAvailability(
+                    venueId,
+                    "Booked"
+            );
+
+            System.out.println(
+                    "Venue " + venueId +
+                    " changed to Not Available"
+            );
+        }
 
         response.sendRedirect("adminbookings");
     }
-
 }

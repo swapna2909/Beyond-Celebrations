@@ -485,62 +485,7 @@ justify-center">
 			<!-- WISHLIST -->
 
 
-			<div
-				class="
-bg-white
-rounded-2xl
-shadow-lg
-p-6
-hover:-translate-y-2
-transition">
-
-
-				<div class="flex justify-between items-center">
-
-
-					<div>
-
-
-						<p class="text-gray-500">Wishlist</p>
-
-
-
-						<h2 class="text-4xl font-bold text-red-500 mt-2">
-
-
-							<%=wishlistCount%>
-
-
-						</h2>
-
-
-					</div>
-
-
-
-					<div
-						class="
-w-16
-h-16
-rounded-full
-bg-red-100
-flex
-items-center
-justify-center">
-
-
-						<i class="fa-solid fa-heart text-3xl text-red-500"></i>
-
-
-					</div>
-
-
-
-				</div>
-
-
-			</div>
-
+			
 
 
 
