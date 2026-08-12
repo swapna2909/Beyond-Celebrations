@@ -26,11 +26,12 @@ public class ApproveBookingServlet extends HttpServlet {
         Booking_impl bookingDao = new Booking_impl();
         Venue_impl venueDao = new Venue_impl();
 
-        bookingDao.approveBooking(bookingId);
-
         int venueId = bookingDao.getVenueIdByBookingId(bookingId);
 
         venueDao.updateVenueAvailability(venueId, "Not Available");
+        bookingDao.approveBooking(bookingId);
+
+        
 
         response.sendRedirect("adminbookings");
     }

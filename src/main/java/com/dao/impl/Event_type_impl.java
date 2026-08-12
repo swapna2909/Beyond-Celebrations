@@ -181,28 +181,42 @@ public class Event_type_impl implements event_type_inf{
 
 	}
 
+	
 	@Override
 	public void deleteEventTypeById(Integer id) {
-		String s1="delete from event_type where event_type_id=?";
-		try {
-			PreparedStatement ps=con.prepareStatement(s1);
-			ps.setInt(1, id);
-			int rows = ps.executeUpdate();
 
-			if(rows > 0) {
-			    System.out.println("Data Deleted Successfully");
-			}
-			else {
-			    System.out.println("No Event Type Found");
-			}
+	    String sql = "DELETE FROM event_type WHERE event_type_id = ?";
 
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.out.println("Failed to Delete the Data");
-		}
+	    System.out.println("Trying to delete Event Type ID = " + id);
 
+	    try {
 
+	        if (con == null) {
+	            System.out.println("ERROR: Database connection is NULL");
+	            return;
+	        }
+
+	        PreparedStatement ps = con.prepareStatement(sql);
+
+	        ps.setInt(1, id);
+
+	        int rows = ps.executeUpdate();
+
+	        System.out.println("Rows deleted = " + rows);
+
+	        if (rows > 0) {
+	            System.out.println("Event Type deleted successfully");
+	        } else {
+	            System.out.println("No Event Type found with ID = " + id);
+	        }
+
+	        ps.close();
+
+	    } catch (SQLException e) {
+
+	        System.out.println("DELETE FAILED");
+	        e.printStackTrace();
+	    }
 	}
 
 

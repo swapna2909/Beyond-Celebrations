@@ -136,17 +136,20 @@ body{
                 ₹ <%=et.getMax_budget()%>
             </p>
 
-            <div class="flex justify-end mt-6">
+           <div class="flex justify-end gap-3 mt-6">
 
-                <a href="UpdateEventTypeServlet?eventTypeId=<%=et.getEvent_type_id()%>"
-                class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-lg">
+    <a href="UpdateEventTypeServlet?eventTypeId=<%=et.getEvent_type_id()%>"
+       class="bg-yellow-500 hover:bg-yellow-600 text-white px-5 py-2 rounded-lg">
+        Edit
+    </a>
 
-                    Edit
+    <a href="DeleteEventTypeServlet?eventTypeId=<%=et.getEvent_type_id()%>"
+       onclick="return confirm('Are you sure you want to delete this event type?');"
+       class="bg-red-600 hover:bg-red-700 text-white px-5 py-2 rounded-lg">
+        Delete
+    </a>
 
-                </a>
-
-            </div>
-
+</div>
         </div>
 
     </div>
@@ -180,7 +183,6 @@ body{
     <%
     }
     %>
-
     </div>
 
 </div>
