@@ -30,6 +30,11 @@ public class RejectBookingServlet extends HttpServlet {
         int venueId = bookingDao.getVenueIdByBookingId(bookingId);
 
         venueDao.updateVenueAvailability(venueId, "Available");
-    }
+    
+    request.setAttribute("bookings", 
+            bookingDao.findRejectedBookings());
 
+    request.getRequestDispatcher("rejectedBookings.jsp")
+           .forward(request, response);
+    }
 }
