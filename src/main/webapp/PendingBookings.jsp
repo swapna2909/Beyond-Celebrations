@@ -150,7 +150,7 @@ Pending
 
 <span class="text-green-700 font-bold">
 
-₹<%=b.getBudget()%>
+<%=b.getBudget()%>
 
 </span>
 
