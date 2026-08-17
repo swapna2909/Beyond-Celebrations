@@ -107,6 +107,19 @@ Approved
 
 <%
 
+}
+else if(b.getStatus().equalsIgnoreCase("Completed")){
+
+%>
+
+<span class="bg-green-100 text-green-700 px-4 py-2 rounded-full">
+
+Completed
+
+</span>
+
+<%
+
 }else{
 
 %>
