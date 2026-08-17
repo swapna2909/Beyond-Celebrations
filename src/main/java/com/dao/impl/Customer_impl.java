@@ -41,17 +41,23 @@ public class Customer_impl implements customer_inf{
 
 	@Override
 	public void DeleteCustomer(Integer id) {
-		String Query="delete from Customer where customer_id=?";
-		try {
-			PreparedStatement ps=con.prepareStatement(Query);
-			ps.setInt(1, id);
-			ps.executeUpdate();
-		}
-		catch(SQLException e) {
-			e.printStackTrace();
-		}
+		 String Query = "DELETE FROM customer WHERE customer_id=?";
 
-	}
+		    try {
+		        PreparedStatement ps = con.prepareStatement(Query);
+
+		        ps.setInt(1, id);
+
+		        int rows = ps.executeUpdate();
+
+		        System.out.println("Customer ID received = " + id);
+		        System.out.println("Rows deleted = " + rows);
+
+		    } catch (SQLException e) {
+		        e.printStackTrace();
+		    }
+		}
+	
 
 	@Override
 	public void UpdateProfile(Customer c) {
