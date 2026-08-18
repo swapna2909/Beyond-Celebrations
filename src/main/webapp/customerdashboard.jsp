@@ -161,14 +161,12 @@ text-white text-2xl font-bold">
 
 
 
-					<li><a href="bookevents.jsp" class="hover:text-purple-700">
-
-
-							Bookings </a></li>
-
-
-
-
+					<li>
+    <a href="<%=request.getContextPath()%>/mybookings"
+       class="hover:text-purple-700">
+        My Bookings
+    </a>
+</li>
 					<li><a href="contact.jsp" class="hover:text-purple-700">
 
 

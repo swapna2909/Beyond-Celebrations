@@ -16,7 +16,6 @@ List<Event_type> list = dao.findAll();
 <title>View Event Types</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
-
 <style>
 body{
     background-image:url('https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=1600&q=80');
